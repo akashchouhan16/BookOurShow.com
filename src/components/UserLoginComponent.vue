@@ -12,13 +12,13 @@
 
 <form>
 
-         <div class="mb-3">
+         <!-- <div class="mb-3">
 
   <label for="exampleFormControlInput1" class="form-label" >Username</label>
 
   <input type="text" class="form-control"   v-model="user.username">
 
-</div>
+</div> -->
 
 <div class="mb-3">
 

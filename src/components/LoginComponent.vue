@@ -1,75 +1,80 @@
 <template>
   <div class="login">
-    <h4>Login</h4>
-    <div class="alert alert-danger" role="alert" v-if="flag">
-      Username and password is incorrect
-    </div>
-    <form>
-      <div class="mb-3">
-        <label for="exampleFormControlInput1" class="form-label"
-          >Username</label
-        >
-        <input type="text" class="form-control" v-model="user" />
+    <form class="login-form">
+    <h2>Login</h2>
+    <br />
+    
+      <div class="error-message" role="alert" v-if="flag">
+        Phone Number or Password is incorrect
       </div>
-      <div class="mb-3">
-        <label for="exampleFormControlInput1" class="form-label"
-          >Password</label
-        >
-        <input type="password" class="form-control" v-model="pass" />
+      <div class="login-input-div">
+        <label for="username" class="input-tag">Phone Number</label>
+        <br />
+        <input
+          type="phonenumber"
+          class="login-form-input"
+          placeholder="Phone Number"
+          v-model="user.phonenumber"
+        />
       </div>
-      <button type="button" @click="check()">login</button>
+      <div class="login-input-div">
+        <label for="password" class="input-tag">Password</label>
+        <br />
+        <input
+          type="password"
+          class="login-form-input"
+          placeholder="Password"
+          v-model="user.pass"
+        />
+      </div>
+      <button type="button" class="login-button" @click="check()">Login</button>
     </form>
   </div>
 </template>
 
-<script>
-export default {
-  data() {
-    return {
-      user: "",
-      pass: "",
-      flag: false,
-    };
-  },
-  methods: {
-    check() {
-      this.flag = false;
-      console.log(this.user + " " + this.pass);
-      if (this.user == "admin" && this.pass == "admin") {
-        this.$router.push({ path: "/addmovie" });
-      } else {
-        this.flag = true;
-      }
-    },
-  },
-};
-</script>
-
 <style scoped>
-form {
-  margin-left: 10%;
-}
 .login {
-  border-radius: 10px;
-  color: black;
-  background-color: rgb(219, 219, 231) !important;
-  margin-top: 10%;
-  width: 50%;
-  margin-left: 25%;
-  margin-right: 25%;
-}
-button {
-  color: white;
-  background-color: rgb(25, 19, 58) !important;
-  margin-left: 40%;
-  margin-right: 40%;
-  margin-bottom: 10px;
-  border-radius: 10px;
-}
-h4 {
   text-align: center;
+  height: 30vh;
+  display: block;
+  margin: 10% auto;
 }
-input {
-  width: 80% !important;
+.login-form {
+  border: none;
+  border-radius: 1em;
+  color: black;
+  width:250px;
+  display: block;
+  margin: auto;
+  background-color: whitesmoke;
+}
+.login-form-input {
+  border: none;
+  border-radius: 1em;
+  padding: 5px 20px;
+  margin: 8px 0;
+  width: 90% !important;
+}
+.login-input-div {
+  margin: 10px;
+}
+.login-button {
+  border:none;
+  background-color: #f84464 !important;
+  border-radius: 1em;
+  width: 50px;
+  text-align: center;
+  height: 30px;
+}
+@media screen and(max-width:450px) {
+  /* .login-form {
+    max-width: fit-content !important;
+    width: 200px !important;
+  }
+  .login-form-input {
+    width:180px!important;
+  } */
 }
 </style>
+
+<script src="./scripts/LoginComponent.js"></script>
