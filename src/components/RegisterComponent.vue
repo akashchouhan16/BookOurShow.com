@@ -1,18 +1,14 @@
  <template>
   <div class="register-component">
     <h2>Register</h2>
-    <div
-      class="alert alert-danger"
-      role="alert"
-      v-if="errorflag"
-      >
+    <div class="alert alert-danger" role="alert" v-if="errorflag">
       Check! all the fields are filled
     </div>
     <div class="alert alert-success" role="alert" v-if="successflag">
       Successfully added
     </div>
     <div class="user">
-      <form>
+      <form class="register-form"> 
         <div class="content">
           <div class="left">
             <label>UserName </label>
@@ -46,11 +42,39 @@
 
 <style>
 .register-component {
-   text-align: center;
+  text-align: center;
   height: 30vh;
   display: block;
   margin: 10% auto;
 }
+.register-form {
+  border: none;
+  border-radius: 1em;
+  color: black;
+  width:250px;
+  display: block;
+  margin: auto;
+  background-color: whitesmoke;
+}
+.login-form-input {
+  border: none;
+  border-radius: 1em;
+  padding: 5px 20px;
+  margin: 8px 0;
+  width: 90% !important;
+}
+.login-input-div {
+  margin: 10px;
+}
+.login-button {
+  border:none;
+  background-color: #f84464 !important;
+  border-radius: 1em;
+  width: 50px;
+  text-align: center;
+  height: 30px;
+}
+/* ********************************* */
 .user {
   margin-left: 25%;
   margin-right: 25%;

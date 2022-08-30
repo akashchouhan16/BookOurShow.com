@@ -1,9 +1,10 @@
+import RegisterComponent from "../RegisterComponent.vue"
 export default {
     data() {
         return {
             user: {
-                phonenumber: '',
-                pass: '',
+                phoneNumber: '',
+                password: '',
             },
             flag: false,
         };
@@ -14,4 +15,7 @@ export default {
             this.$store.dispatch("LOGIN_USER", this.user);
         },
     },
+    components:{
+        RegisterComponent
+    }
 };

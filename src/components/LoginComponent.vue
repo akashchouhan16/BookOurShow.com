@@ -14,7 +14,7 @@
           type="phonenumber"
           class="login-form-input"
           placeholder="Phone Number"
-          v-model="user.phonenumber"
+          v-model="user.phoneNumber"
         />
       </div>
       <div class="login-input-div">
@@ -24,10 +24,11 @@
           type="password"
           class="login-form-input"
           placeholder="Password"
-          v-model="user.pass"
+          v-model="user.password"
         />
       </div>
       <button type="button" class="login-button" @click="check()">Login</button>
+      <!-- Don't have a user?<RegisterComponent>Click here to Register User</RegisterComponent> -->
     </form>
   </div>
 </template>
@@ -39,11 +40,16 @@
   display: block;
   margin: 10% auto;
 }
+.login-form:hover {
+  box-shadow: 2px 2px 2px 2px gray;
+}
 .login-form {
   border: none;
   border-radius: 1em;
   color: black;
-  width:250px;
+  /* width:250px; */
+  width:30%;
+  height:300px;
   display: block;
   margin: auto;
   background-color: whitesmoke;
@@ -54,6 +60,7 @@
   padding: 5px 20px;
   margin: 8px 0;
   width: 90% !important;
+  height:40px;
 }
 .login-input-div {
   margin: 10px;
@@ -62,18 +69,22 @@
   border:none;
   background-color: #f84464 !important;
   border-radius: 1em;
-  width: 50px;
+  width: 20%;
   text-align: center;
   height: 30px;
 }
-@media screen and(max-width:450px) {
-  /* .login-form {
-    max-width: fit-content !important;
-    width: 200px !important;
+/* .login-button:hover{
+  box-shadow: 3px 3px 3px 2px #f996a8cc;
+} */
+@media screen and (max-width:900px) {
+  .login-form {
+    width:50%;
   }
-  .login-form-input {
-    width:180px!important;
-  } */
+}
+@media screen and (max-width:400px) {
+  .login-form {
+    width:60%;
+  }
 }
 </style>
 

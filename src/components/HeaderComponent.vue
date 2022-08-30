@@ -174,11 +174,9 @@
 }
 @media screen and (max-width: 450px) {
   .nav-menu,
-  .navigation, .logged-in-user {
+  .navigation,
+  .login-btn {
     display: none;
-  }
-  .home-banner h2 {
-    font-size: small !important;
   }
 }
 </style>
