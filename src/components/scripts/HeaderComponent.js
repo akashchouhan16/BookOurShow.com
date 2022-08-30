@@ -6,6 +6,8 @@ export default {
         }
     },
     methods:{
-        
+        logIn(){
+            this.$router.push({path: '/login'});
+        }
     }
 }

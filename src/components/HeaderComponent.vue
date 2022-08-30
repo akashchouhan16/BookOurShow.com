@@ -20,7 +20,7 @@
 </template>
 
 
-<script src="./scripts/HeaderComponent"></script>
+<script src="./scripts/HeaderComponent.js"></script>
 
 <style scoped>
 .highlighted-text{
@@ -174,9 +174,11 @@
 }
 @media screen and (max-width: 450px) {
   .nav-menu,
-  .navigation,
-  .login-btn {
+  .navigation, .logged-in-user {
     display: none;
+  }
+  .home-banner h2 {
+    font-size: small !important;
   }
 }
 </style>

@@ -49,7 +49,10 @@
   padding: .5em;
   background-color: #F84464 !important;
 }
-
+.view-movie-description-btn:hover{
+  cursor: pointer;
+  background-color: #D52344 !important;
+}
 
 @media screen and (min-width: 950px) {
   img {
