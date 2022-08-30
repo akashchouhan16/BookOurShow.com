@@ -1,6 +1,6 @@
 import { mapGetters } from "vuex";
 import MovieCardComponent from '@/components/MovieCardComponent'
-
+import { Carousel, Slide } from 'vue-carousel';
 
 export default {
   name: "HomeComponent",
@@ -10,7 +10,9 @@ export default {
     };
   },
   components: {
-    MovieCardComponent
+    MovieCardComponent,
+    Carousel,
+    Slide
   },
   computed: {
     ...mapGetters({

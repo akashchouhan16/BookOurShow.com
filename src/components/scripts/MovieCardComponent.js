@@ -6,6 +6,8 @@ export default {
         }
     },
     methods:{
-        
+        openMovieDescription(movieid){
+            this.$router.push({path: '/description', query: {movieid: movieid}});
+        }
     }
 }

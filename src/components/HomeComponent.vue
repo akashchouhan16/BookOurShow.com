@@ -1,6 +1,8 @@
 <template>
   <div class="home-container">
-    <div class="home-banner">Welcome To BookOurShow</div>
+    <div class="home-banner">
+      <h2>BookOurShow.com</h2>
+    </div>
     <div class="movie-container">
       <div class="grid-container">
         <MovieCardComponent
@@ -16,10 +18,11 @@
 
 <style scoped>
 .home-container {
-  height: 100vh;
+  height: 150vh;
   width: 100vw;
-  background-color: whitesmoke;
-  border-radius: 0.5em;
+  /* background-color: whitesmoke; */
+  background-color: #333545;
+  /* border-radius: 0.5em; */
 
   display: flex;
   flex-direction: column;
@@ -27,12 +30,20 @@
   align-content: center;
 }
 .home-banner {
-  background-color: white;
+  
+  background-color: #1F253A;
+  color: white;
   border-radius: 0.5em;
-  height: 100vh;
+  height: 50vh;
   margin: 1em;
   margin-top: 2em !important;
   padding: 1em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.home-banner img {
+  max-width: 50vw;
 }
 
 .movie-container {

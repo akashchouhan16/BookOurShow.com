@@ -1,18 +1,18 @@
 <template>
     <div class="movie-card">
     <img :src="require(`@/assets/movie1.avif`)" alt="Image" />
-    <p style="font-size: small">
+    <p class="movie-card-info">
         Thiruchitrambalam <br /><span class="movie-rating">4.5/5⭐</span
       ><span class="movie-id">2h 10m | Drama </span>
     </p>
 
-    <button class="view-movie-description-btn">
+    <button class="view-movie-description-btn" @click="openMovieDescription('abc123')">
        View Movie
     </button>
   </div>
 </template>
 
-<script src="./MovieCardComponent.vue"></script>
+<script src="./scripts/MovieCardComponent.js"></script>
 
 
 
@@ -35,10 +35,11 @@
   text-decoration: underline;
   cursor: pointer;
 }
+
 .movie-card img {
-  max-width: 50%;
+  max-width: 60%;
   border-radius: .1em;
-  border: 2px solid #bababa;
+  border: 1px solid #bababa;
   margin-bottom: 0.4em;
 }
 .view-movie-description-btn {
@@ -71,11 +72,14 @@
   justify-content: flex-end;
   align-items: center;
 }
-
 .movie-card:hover {
   background-color: rgb(255, 255, 255);
   box-shadow: 3px 3px 20px rgb(107, 106, 106);
   cursor: pointer;
+}
+
+.movie-card-info{
+  font-size: small;
 }
 @media screen and (max-width: 950px) {
   img {

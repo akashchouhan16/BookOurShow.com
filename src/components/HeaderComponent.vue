@@ -1,126 +1,182 @@
 <template>
-  <header>
-    <nav class="navbar bg-light">
-      <div class="container-fluid">
-    <img src="../assets/agni.png" height="90px;" class="headerimage">
-        <form class="d-flex" role="search">
-          <ul>
-            <li>
-              <router-link to="/">Home</router-link>
-            </li>
-            <li>
-              <router-link to="/login">Add movie</router-link>
-            </li>
-            <li>
-              <router-link to="/about">About us</router-link>
-            </li>
-            <!-- <li>
-              <router-link to="/description">Description</router-link>
-            </li> -->
-          </ul>
-          <!-- <input
-            class="form-control me-2"
-            type="search"
-            placeholder="Search"
-            aria-label="Search"/>
+  <nav class="nav-bar" id="nav-bar">
+    <div class="brand">
+      <router-link to="/">
+        <p>Book<span class="highlighted-text">Our</span>Show</p>
+      </router-link>
+    </div>
 
-          <button class="btn btn-outline-success" type="submit">Search</button> -->
-        </form>
-      </div>
-    </nav>
-  </header>
+    <div class="nav-menu">
+      <router-link class="navigation-link" to="/">Home</router-link>
+      <router-link class="navigation-link" to="/about">About</router-link>
+      <router-link class="navigation-link" to="/">Lists</router-link>
+    </div>
+
+    <div class="login-div">
+      <div class="logged-in-user" v-if="true">Logged in as Admin </div>
+      <button @click="logIn()" class="login-btn">Login</button>
+    </div>
+  </nav>
 </template>
-<script>
-</script>
-<style >
-.headerimage{
-    height:60px;
+
+
+<script src="./scripts/HeaderComponent"></script>
+
+<style scoped>
+.highlighted-text{
+  color: #f84464 !important;
 }
-header {
+.nav-bar {
+  overflow: hidden;
+  background-color: #1f253a;
   position: sticky;
-    z-index: 1;
-    top: 0;
-  height: 70px !important;
-
-  background-color: rgb(25, 19, 58) !important;
+  top: 0;
+  z-index: 9999;
+  height: 10vh;
+  padding: 0.4em;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+.nav-bar .brand {
+  font-size: large;
+  font-weight: bold;
 }
 
-.bg-light {
-  background-color: rgb(25, 19, 58) !important;
+.nav-menu {
+    padding: 0.3em;
+    border-radius: 0.3em;
+    /* background-color: #0096da; */
+    color: white;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-content: center;
+    width: 40vw;
+    align-items: center;
 }
 
-button {
-  color: white !important;
-}
-
-ul {
-  width: 107% !important;
-
-  /* float:right!important; */
+.nav-menu .navigation-link{
   text-decoration: none;
-  font-size: 1vw ;
-
-  display: inline !important;
-}
-ul li a {
-  text-decoration: none;
-  color: rgb(248, 115, 137);
-}
-li {
   color: white;
+  margin: 0 1em;
+  width: 2em;
+  transition: all .2s;
+}
+.navigation-link:hover{
+  text-decoration: underline;
+}
+.login-div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: small;
+}
+.logged-in-user{
+  color: gray;
+  transition: all .2s;
+}
+.logged-in-user:hover{
+  color:#f9f9f9;
+  cursor: pointer;
+}
+.login-btn {
+  margin: 0.1em 0.8em;
+  padding: 0.2em 0.7em;
+  background-color: #f84464 !important;
+  border: none;
+  border-radius: 0.2em;
+  color: white;
+  transition: all 0.3s;
+}
 
-  display: inline-block;
-
-  padding: 2px;
-
-  /* float: right!important; */
-
+.login-btn:hover {
+  cursor: pointer;
+  background-color: #D52344 !important;
+}
+.login-div {
+  display: flex;
+}
+.nav-bar a {
+  float: left;
+  display: block;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 1vh 1vw 0 1vw;
   text-decoration: none;
+  font-size: 17px;
+  transition: all 0.2s;
 }
-.d-flex {
-  width: 25%;
+.nav-bar a:hover {
+  color: #ffffff;
+  cursor: pointer;
 }
-.me-2{
-    width: 27% !important;
+.nav-menu-button {
+  display: flex;
+  flex-direction: columns;
+  justify-content: center;
+  align-content: center;
+  color: white;
+  width: 2em;
 }
-@media screen and (max-width:947px) {
-    .d-flex{
-    width: 28%;
-    }
-    ul{
-    font-size: 1vw;
-    }
+.nav-menu-button ion-icon {
+  margin-left: 33%;
+  align-content: center;
 }
-@media screen and (max-width:701px) {
-    .d-flex{
-    width: 37%;
-    }
-    ul{
-    font-size: 1.4vw;
-    }
+/* Media Queries */
+@media screen and (min-width: 950px) {
+  .nav-menu-button {
+    display: none;
+  }
+  .login-btn {
+    margin: auto 0.8em;
+    padding: 0.4em 1em;
+    background-color: #f84464 !important;
+    border: none;
+    border-radius: 0.5em;
+    color: white;
+    transition: all 0.3s;
+  }
 }
-@media screen and (max-width:600px) {
-    .d-flex{
-    width: 43%;
-    }
-    ul{
-    font-size: 1.6vw;
-    }
+@media screen and (max-width: 950px) {
+  .nav-menu,
+  .navigation-link {
+    font-size: small !important;
+  }
+  .login-div {
+    font-size: x-small;
+  }
+  .login-btn {
+    margin: 0.1em 0.5em;
+    padding: 0.2em 0.5em;
+    background-color: #f84464 !important;
+    border: none;
+    border-radius: 0.2em;
+    color: white;
+    transition: all 0.3s;
+  }
 }
-@media screen and (max-width:510px) {
-    .d-flex{
-    width: 50%;
-    }
-    ul{
-    font-size: 1.7vw;
-    }
+
+@media screen and (max-width: 500px) {
+  .nav-menu,
+  .navigation {
+    display: none;
+  }
+  .nav-menu-button {
+    display: none !important;
+  }
 }
-@media screen and (max-width:414px) {
-     .d-flex{
-    width: 60%;
-    }
-    ul{
-    font-size: 1.9vw;
-    }
+@media screen and (max-width: 900px) {
+  .nav-menu-button {
+    display: block;
+  }
+}
+@media screen and (max-width: 450px) {
+  .nav-menu,
+  .navigation,
+  .login-btn {
+    display: none;
+  }
 }
 </style>
