@@ -3,9 +3,9 @@
         <router-view></router-view>
     </div>
 </template>
-<script src="../js/MainComponent.js">
+<script src="./scripts/MainComponent.js">
 
 </script>
-<style >
+<style scoped>
 
 </style>

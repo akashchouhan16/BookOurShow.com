@@ -1,125 +1,67 @@
 <template>
-  <div>
-    <h3 style="color: black">Recommended movies !!</h3>
-
-    <div class="main">
-      <div
-        class="card"
-        style="width: 18rem"
-        v-for="(data, index) in movielist"
-        :key="index"
-      >
-        <img :src="data.imageUrl" />
-
-        <div style="height: 50px; margin-top: 3px; font-size: 24px">
-          <span>{{ data.name }}</span>
-        </div>
-
-        <button @click="viewdetails(data.movieId, data.name)">view</button>
-
-        <!-- <input type="button" value="view" @click = "viewdetails(hi)" /> -->
+  <div class="home-container">
+    <div class="home-banner">Welcome To BookOurShow</div>
+    <div class="movie-container">
+      <div class="grid-container">
+        <MovieCardComponent
+          v-for="(movie, index) in 30"
+          :key="index"
+        ></MovieCardComponent>
       </div>
     </div>
   </div>
-
-  <!-- </div> -->
 </template>
 
-<script>
-import { mapGetters } from "vuex";
-
-export default {
-  data() {
-    return {};
-  },
-
-  computed: {
-    ...mapGetters({
-      movielist: "getmovie",
-    }),
-  },
-
-  methods: {
-    viewdetails(id, name) {
-      // this.$router.push({ path: '/description' });
-
-      console.log("movielist", id);
-
-      //  this.$router.push({path: '/description',query:{desc: 'movieid'}});
-      this.$router.push({
-        path: "/description",
-        query: { movieid: id, moviename: name },
-      });
-      //   this.$router.push({path:'/description',query:{movieid:this.ticketList.mobilenumber}})
-    },
-  },
-
-  created() {
-    this.$store.dispatch("GET_MOVIE");
-  },
-};
-</script>
+<script src="./scripts/HomeComponent.js"></script>
 
 <style scoped>
-.main {
-  max-width: 100%;
+.home-container {
+  height: 100vh;
+  width: 100vw;
+  background-color: whitesmoke;
+  border-radius: 0.5em;
 
   display: flex;
-
-  flex-direction: row;
-
-  flex-wrap: wrap;
-
-  margin-top: 20px;
-
-  /* justify-content: center; */
+  flex-direction: column;
+  justify-content: flex-start;
+  align-content: center;
 }
-
-.img {
-  max-width: 50%;
-}
-
-.card {
-  top: 0;
-
-  left: 0;
-
-  margin-top: 5px;
-
-  margin-left: 5%;
-
-  margin-right: 5%;
-
-  margin: 5px;
-
-  border-radius: 8px;
-
-  /* padding: 10px; */
-
-  font-size: 10px;
-
-  width: calc(100% / 4);
-
+.home-banner {
   background-color: white;
-
-  justify-content: space-between;
+  border-radius: 0.5em;
+  height: 100vh;
+  margin: 1em;
+  margin-top: 2em !important;
+  padding: 1em;
 }
 
-button {
-  margin-bottom: 4px;
+.movie-container {
+  border-radius: 0.5em;
+  background-color: white;
+  margin: 0.5em;
+  padding: 1em;
+  height: 200vh;
+  overflow: scroll;
+}
 
-  margin-left: 4px;
+.grid-container {
+  border-radius: 3%;
+  display: grid;
+  grid-template-columns: auto auto auto;
+  gap: 1em;
+  padding: 5vh 5vh;
+  scroll-behavior: smooth;
+}
 
-  font-size: 15px;
-
-  height: 30px;
-
-  width: 20%;
-
-  border-radius: 10px;
-
-  background-color: rgb(25, 19, 58);
-
-  color: white;
+/* Media Queries */
+@media screen and (max-width: 950px) {
+  .grid-container {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+@media screen and (max-width: 700px) {
+  .grid-container {
+    grid-template-columns: 2fr;
+  }
 }
 </style>

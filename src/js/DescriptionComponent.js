@@ -23,8 +23,6 @@ export default{
         ...mapGetters({
           movielist:'getmovie',
           moviedesc:'getmoviedescription',
-          
-
         })
 
     },
