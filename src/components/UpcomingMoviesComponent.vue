@@ -1,8 +1,30 @@
 <template>
   <div class="upcoming-movies-container">
-    <div class="upcoming-movies-banner">Upcoming Recommended Movies</div>
+    <div class="upcoming-movies-banner">
+      <div class="upcoming-movies-banner-title">
+        Upcoming Recommended Movies
+      </div>
+      <div class="search-div">
+        <input type="text" class="search-bar" placeholder="search" v-model="searchKey"/>
+        <button class="search-btn" @click="searchMovie()">Search</button>
+      </div>
+    </div>
     <div class="upcoming-movies-list">
-        List of Movies
+      <p class="movie-list-tag-1">New Releases</p>
+      <div class="grid-container">
+        <MovieCardComponent
+          v-for="(movie, index) in 5"
+          :key="index"
+        ></MovieCardComponent>
+      </div>
+
+      <p class="movie-list-tag-2">Upcoming Movies</p>
+      <div class="grid-container">
+        <MovieCardComponent
+          v-for="(movie, index) in 4"
+          :key="index"
+        ></MovieCardComponent>
+      </div>
     </div>
   </div>
 </template>
@@ -31,6 +53,10 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  font-size: x-large;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-content: center;
 }
 .upcoming-movies-list {
   border-radius: 0.5em;
@@ -39,5 +65,74 @@
   padding: 1em;
   height: 200vh;
   overflow: scroll;
+}
+
+.search-div {
+  margin: 0.3em;
+  width: 35vw;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.1em .3em;
+  background-color: white;
+  border-radius: 0.4em;
+  flex-wrap: nowrap;
+}
+
+.search-bar {
+  border: none;
+  padding: 0.2em 0.3em;
+  width: 80% !important;
+  /* border: 1px solid rgb(223, 222, 222); */
+  border-radius: 0.5em !important;
+  columns: white;
+  color: rgb(95, 95, 95);
+  width: 35vw;
+}
+.search-bar:focus {
+  outline: none;
+  border: 1px solid rgb(171, 169, 169);
+}
+.search-btn {
+  margin: 0em 0em 0em 0.2em;
+  padding: 0.2em 0.4em;
+  background-color: #f84464 !important;
+  border: none;
+  border-radius: 0.5em;
+  color: white;
+  transition: all 0.3s;
+}
+.search-btn:hover{
+  cursor: pointer;
+  background-color: #D52344 !important;
+}
+.movie-list-tag-1,
+.movie-list-tag-2 {
+  font-size: large;
+  background-color: whitesmoke;
+  border-radius: 1em;
+  padding: 1em;
+}
+
+.grid-container {
+  border-radius: 3%;
+  display: grid;
+  grid-template-columns: auto auto auto;
+  gap: 1em;
+  padding: 5vh 5vh;
+  scroll-behavior: smooth;
+}
+
+/* Media Queries */
+@media screen and (max-width: 950px) {
+  .grid-container {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+@media screen and (max-width: 700px) {
+  .grid-container {
+    grid-template-columns: 2fr;
+  }
 }
 </style>

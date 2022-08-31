@@ -7,7 +7,7 @@
           title="Hotstar Specials Dahan | Official Trailer | 16th September | DisneyPlus Hotstar"
           frameborder="0"
           allow="accelerometer; 
-         autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           allowfullscreen
         ></iframe>
       </div>
