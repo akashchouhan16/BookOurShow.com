@@ -8,13 +8,14 @@
 
     <div class="nav-menu">
       <router-link class="navigation-link" to="/">Home</router-link>
-      <router-link class="navigation-link" to="/about">About</router-link>
-      <router-link class="navigation-link" to="/">Lists</router-link>
+      <router-link class="navigation-link" to="/userbookings">Bookings</router-link>
+      <router-link class="navigation-link" to="/upcomingmovies">Upcoming</router-link>
     </div>
 
     <div class="login-div">
-      <div class="logged-in-user" v-if="true">Logged in as Admin </div>
-      <button @click="logIn()" class="login-btn">Login</button>
+      <div class="logged-in-user" v-if="checkLoggedIn()">Logged in as {{username}} </div>
+      <button @click="logIn()" class="login-btn" v-if="!checkLoggedIn()">Login</button>
+      <button @click="logOut()" class="login-btn" v-else>Logout</button>
     </div>
   </nav>
 </template>
@@ -47,11 +48,10 @@
 .nav-menu {
     padding: 0.3em;
     border-radius: 0.3em;
-    /* background-color: #0096da; */
-    color: white;
+    /* color: white; */
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    justify-content: space-evenly;
     align-content: center;
     width: 40vw;
     align-items: center;
@@ -59,13 +59,14 @@
 
 .nav-menu .navigation-link{
   text-decoration: none;
-  color: white;
-  margin: 0 1em;
-  width: 2em;
-  transition: all .2s;
+  color: rgb(211, 211, 211) !important;
+  margin: 0 1.5em;
+  width: 1em;
+  transition: all .5s;
 }
 .navigation-link:hover{
   text-decoration: underline;
+  color: #f84464 !important;
 }
 .login-div {
   display: flex;
@@ -174,8 +175,7 @@
 }
 @media screen and (max-width: 450px) {
   .nav-menu,
-  .navigation,
-  .login-btn {
+  .navigation {
     display: none;
   }
 }

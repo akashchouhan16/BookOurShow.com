@@ -1,7 +1,7 @@
 <template>
   <div class="home-container">
     <div class="home-banner">
-      <h2>BookOurShow.com</h2>
+      <h2>Book<span class="highlighted">Our</span>Show.com</h2>
     </div>
     <div class="movie-container">
       <div class="grid-container">
@@ -17,6 +17,9 @@
 <script src="./scripts/HomeComponent.js"></script>
 
 <style scoped>
+.highlighted{
+  color: #F84464 !important;
+}
 .home-container {
   height: 150vh;
   width: 100vw;

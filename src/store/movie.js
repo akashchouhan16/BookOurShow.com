@@ -45,7 +45,7 @@ export default{
             })
              
         },
-        GET_DESC(state,value){
+        GET_DESC(context,value){
             getmoviedesc({
                 success:({data})=>{
                   console.log('getdesc',data);

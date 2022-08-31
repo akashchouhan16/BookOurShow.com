@@ -1,5 +1,5 @@
 import AddMovieComponent from '@/components/AddMovieComponent'
-import AboutComponent from '@/components/AboutComponent'
+import UserBookings from '@/components/UserBookingsComponent'
 import DescriptionComponent from '@/components/DescriptionComponent'
 import BookedDetailsComponent from '@/components/BookedDetailsComponent'
 import BookingComponent from '@/components/BookingComponent'
@@ -12,7 +12,7 @@ export default {
     name: 'MainComponent',
     components: {
      AddMovieComponent,
-     AboutComponent ,
+     UserBookings,
      DescriptionComponent,
      BookedDetailsComponent,
      BookingComponent,

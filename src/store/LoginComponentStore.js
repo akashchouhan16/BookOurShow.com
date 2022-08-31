@@ -24,8 +24,8 @@ export default {
                     this.commit('setuser',data);
                     console.log(state.user);
 
-                    // console.log("this is the data");
-                    // console.log(data.value);
+                    localStorage.setItem('role', data.role);
+                    localStorage.setItem('userId', data.userId);
                 },
                 error: (err) => {
                     console.log(err)
