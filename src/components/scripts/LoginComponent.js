@@ -1,5 +1,6 @@
-import RegisterComponent from "../RegisterComponent.vue"
+// import RegisterComponent from "../RegisterComponent.vue"
 export default {
+    name:"LoginComponent",
     data() {
         return {
             user: {
@@ -10,12 +11,12 @@ export default {
         };
     },
     methods: {
-        check() {
+        checkLogin() {
             console.log(this.user);
             this.$store.dispatch("LOGIN_USER", this.user);
         },
     },
     components:{
-        RegisterComponent
+        // RegisterComponent
     }
 };
