@@ -7,7 +7,7 @@
     </div>
 
     <div class="nav-menu">
-      <router-link class="navigation-link" to="/">Home</router-link>
+      <router-link class="navigation-link home-nav-menu" to="/">Home</router-link>
       <router-link class="navigation-link" to="/userbookings">Bookings</router-link>
       <router-link class="navigation-link" to="/upcomingmovies">Upcoming</router-link>
     </div>
@@ -160,12 +160,22 @@
 }
 
 @media screen and (max-width: 500px) {
-  .nav-menu,
-  .navigation {
-    display: none;
+  .nav-menu {
+    margin-right: .4em;
+    padding: 0.1em;
+    border-radius: 0.3em;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-content: center;
+    width: 40vw;
+    align-items: center;
+    font-size: xx-small !important;
+    flex-wrap: nowrap;
   }
-  .nav-menu-button {
-    display: none !important;
+  .nav-menu .navigation-link {
+    padding: .3em !important;
+    font-size: x-small !important;
   }
 }
 @media screen and (max-width: 900px) {
@@ -174,9 +184,27 @@
   }
 }
 @media screen and (max-width: 450px) {
-  .nav-menu,
-  .navigation {
-    display: none;
+  .home-nav-menu{
+    display: none !important;
+  }
+  .nav-menu {
+    font-size: xx-small !important;
+  }
+  .brand{
+    font-size: small;
+  }
+  .nav-bar{
+    overflow: hidden;
+    background-color: #1f253a;
+    position: sticky;
+    top: 0;
+    z-index: 9999;
+    height: 10vh;
+    padding: 0.4em;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
   }
 }
 </style>

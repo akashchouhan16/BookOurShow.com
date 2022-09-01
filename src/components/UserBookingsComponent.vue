@@ -74,4 +74,13 @@
   height: 80vh;
   width: 95%;
 }
+
+@media screen and (max-width: 450px){
+  .user-booking-greeting{
+    font-size: medium;
+  }
+  .user-booking-meta{
+    font-size: x-small;
+  }
+}
 </style>
