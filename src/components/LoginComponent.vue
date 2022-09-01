@@ -41,7 +41,7 @@
   margin: 10% auto;
 }
 .login-form:hover {
-  box-shadow: 2px 2px 2px 2px gray;
+  box-shadow: 2px 2px 15px gray;
 }
 .login-form {
   border: none;
@@ -63,11 +63,9 @@
   width: 90% ;
   height:40px;
 }
-/* Not Working */
-.login-input:focus{
-  outline-color: #f84464,!important;
-  /* border: 5px solid #f84464,!important; */
 
+input:focus {
+  outline: 2px solid #f84464 !important;
 }
 .login-input-div {
   margin: 10px;

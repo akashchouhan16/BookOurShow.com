@@ -1,40 +1,92 @@
  <template>
   <div class="register-component">
-    
-      <h2>Register</h2>
-      <br/>
-      <form class="register-form">
+    <h2>Register</h2>
+    <br /><br />
+    <form class="register-form">
       <div class="error-message" role="alert" v-if="errorflag">
-        Check! all the fields are filled
+        Check! all the fields are not filled
       </div>
       <div class="success-message" role="alert" v-if="successflag">
         Successfully added
       </div>
+
       <div class="register-input-div">
         <label for="username" class="register-label">User Name </label>
-        <input type="text" class="register-input" placeholder="User Name" v-model="user.username" />
+        <div class="error-message" role="alert" v-if="nameerrorflag">
+          Please enter a valid name
+        </div>
+        <input
+          type="text"
+          class="register-input"
+          placeholder="User Name"
+          v-model="user.name"
+        />
+      </div>
+      <div class="error-message" role="alert" v-if="phoneerrorflag">
+        Please enter a valid phone number
       </div>
       <div class="register-input-div">
         <label for="phoneNumber" class="register-label">Phone Number</label>
-        <input type="text" class="register-input" placeholder="Phone Number" v-model="user.phoneNumber" />
+        <input
+          type="number"
+          class="register-input"
+          placeholder="Phone Number"
+          v-model="user.phoneNumber"
+        />
+      </div>
+      <div class="error-message" role="alert" v-if="passworderrorflag">
+        Password must contain at least a lowercase, uppercase, number and one
+        special character
       </div>
       <div class="register-input-div">
         <label for="password" class="register-label">Password </label>
-        <input type="password" class="register-input" placeholder="Password" v-model="user.password" />
+        <input
+          type="password"
+          class="register-input"
+          placeholder="Password"
+          v-model="user.password"
+        />
       </div>
-      <button type="button" class="register-button" @click="register()">Register</button>
-      <button type="button" class="register-button" @click="reset()">Reset</button>
-    <br/><br/>
-    <h6 class="register-login-text" >Already have an account?<router-link to="./login" class="register-login-text" >Click here to login</router-link></h6>
+      <!-- <div class="form-btn"> -->
+        <button type="button" class="register-button" @click="registerUser()">
+          Register
+        </button>
+        <button type="button" class="register-button" @click="reset()">
+          Reset
+        </button>
+      <!-- </div> -->
+
+      <br /><br />
+      <h6 class="register-login-text">
+        Already have an account?<router-link
+          to="./login"
+          class="register-login-text"
+          >Click here to login</router-link
+        >
+      </h6>
     </form>
   </div>
 </template>
 
 <style>
-.error-message{
-  background-color:#f14a4ac8;
+
+/* .form-btn{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+} */
+.error-message {
+  background-color: #f84464;
+  font-size: small;
+  color: white;
+  padding: 0.4em;
+  max-width: 70%;
+  display:block;
+  margin:auto;
+  border-radius: 1em;
 }
-.error-success{
+.error-success {
   background-color: #41f641d8;
 }
 .register-component {
@@ -48,53 +100,60 @@
   border-radius: 1em;
   color: black;
   width: 30%;
-  display: block;
+  display:block;
+  /* display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; */
   margin: auto;
-  height:370px;
+  height: 400px;
   background-color: whitesmoke;
-  padding:5px;
+  padding: 5px;
 }
 .register-form:hover {
-  box-shadow: 2px 2px 2px 2px gray;
+  box-shadow: 2px 2px 15px gray;
 }
 .register-input {
   border: none;
   border-radius: 1em;
   padding: 5px 20px;
   margin: 8px 0;
-  width: 90% ;
-  height:40px;
+  width: 90%;
+  height: 40px;
 }
 .register-input-div {
   margin: 10px;
 }
 .register-button {
   border: none;
-  background-color: #f84464 ;
+  background-color: #f84464;
   border-radius: 1em;
   width: 70px;
   text-align: center;
   height: 30px;
-  color:white;
-  margin:0px 5px;
+  color: white;
+  margin: 0px 5px;
 }
-.register-button:hover{
+.register-button:hover {
   background-color: #fd0230 !important;
-
 }
-.register-login-text{
-  text-decoration:none;
-  color:black;
-  font-weight:normal;
+.register-login-text {
+  text-decoration: none;
+  color: black;
+  font-weight: normal;
 }
-@media screen and (max-width:900px) {
+input:focus {
+  outline: 2px solid #f84464 !important;
+  /* border: 5px solid #f84464,!important; */
+}
+@media screen and (max-width: 900px) {
   .register-form {
-    width:50%;
+    width: 50%;
   }
 }
-@media screen and (max-width:400px) {
+@media screen and (max-width: 400px) {
   .register-form {
-    width:60%;
+    width: 60%;
   }
 }
 /* ********************************* */
@@ -118,5 +177,4 @@ button {
 } */
 </style>
 <script src="./scripts/RegisterComponent.js">
-
 </script>
