@@ -1,4 +1,4 @@
-<template>
+<!-- <template>
   <div>
     <div class="admin">
     <div class="adminform">
@@ -95,4 +95,4 @@ form {
   margin-top: 5% !important;
   text-align: center !important;
 }
-</style>
+</style> -->

@@ -1,4 +1,4 @@
-<template>
+<!-- <template>
     <div>
        <div class="card"  :key="index"
       v-for="(product, index) in FinalList">
@@ -16,8 +16,7 @@
     </div>
 </template>
 <script>
-import Const from './CustomerDetails'
-import { FinalList } from '@/service/theatreService'
+
 
 export default{
     name:'BookedDetailsComponent',
@@ -61,4 +60,4 @@ export default{
 .btn-primary{
   margin-left: 44%;
 }
-</style>
+</style> -->
