@@ -24,7 +24,7 @@
   height: 150vh;
   width: 100vw;
   /* background-color: whitesmoke; */
-  background-color: #333545;
+  background-color: #222434;
   /* border-radius: 0.5em; */
 
   display: flex;
@@ -34,7 +34,7 @@
 }
 .home-banner {
   
-  background-color: #1F253A;
+  background-color: #151928;
   color: white;
   border-radius: 0.5em;
   height: 50vh;

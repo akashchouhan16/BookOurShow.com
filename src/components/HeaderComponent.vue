@@ -7,14 +7,24 @@
     </div>
 
     <div class="nav-menu">
-      <router-link class="navigation-link home-nav-menu" to="/">Home</router-link>
-      <router-link class="navigation-link" to="/userbookings">Bookings</router-link>
-      <router-link class="navigation-link" to="/upcomingmovies">Upcoming</router-link>
+      <router-link class="navigation-link home-nav-menu" to="/"
+        >Home</router-link
+      >
+      <router-link class="navigation-link" to="/userbookings"
+        >Bookings</router-link
+      >
+      <router-link class="navigation-link" to="/upcomingmovies"
+        >Upcoming</router-link
+      >
     </div>
 
     <div class="login-div">
-      <div class="logged-in-user" v-if="checkLoggedIn()">Logged in as {{username}} </div>
-      <button @click="logIn()" class="login-btn" v-if="!checkLoggedIn()">Login</button>
+      <div class="logged-in-user" v-if="checkLoggedIn()">
+        Logged in as {{ username }}
+      </div>
+      <button @click="logIn()" class="login-btn" v-if="!checkLoggedIn()">
+        Login
+      </button>
       <button @click="logOut()" class="login-btn" v-else>Logout</button>
     </div>
   </nav>
@@ -24,12 +34,12 @@
 <script src="./scripts/HeaderComponent.js"></script>
 
 <style scoped>
-.highlighted-text{
+.highlighted-text {
   color: #f84464 !important;
 }
 .nav-bar {
   overflow: hidden;
-  background-color: #1f253a;
+  background-color: #151928;
   position: sticky;
   top: 0;
   z-index: 9999;
@@ -46,25 +56,24 @@
 }
 
 .nav-menu {
-    padding: 0.3em;
-    border-radius: 0.3em;
-    /* color: white; */
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    align-content: center;
-    width: 40vw;
-    align-items: center;
+  padding: 0.3em;
+  border-radius: 0.3em;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-content: center;
+  width: 50vw;
+  align-items: center;
+  flex-wrap: nowrap;
 }
 
-.nav-menu .navigation-link{
+.nav-menu .navigation-link {
   text-decoration: none;
   color: rgb(211, 211, 211) !important;
-  margin: 0 1.5em;
-  width: 1em;
-  transition: all .5s;
+  margin: 0 .5em;
+  transition: all 0.5s;
 }
-.navigation-link:hover{
+.navigation-link:hover {
   text-decoration: underline;
   color: #f84464 !important;
 }
@@ -74,12 +83,12 @@
   align-items: center;
   font-size: small;
 }
-.logged-in-user{
+.logged-in-user {
   color: gray;
-  transition: all .2s;
+  transition: all 0.2s;
 }
-.logged-in-user:hover{
-  color:#f9f9f9;
+.logged-in-user:hover {
+  color: #f9f9f9;
   cursor: pointer;
 }
 .login-btn {
@@ -94,7 +103,7 @@
 
 .login-btn:hover {
   cursor: pointer;
-  background-color: #D52344 !important;
+  background-color: #d52344 !important;
 }
 .login-div {
   display: flex;
@@ -161,7 +170,7 @@
 
 @media screen and (max-width: 500px) {
   .nav-menu {
-    margin-right: .4em;
+    margin-right: 0.4em;
     padding: 0.1em;
     border-radius: 0.3em;
     display: flex;
@@ -174,7 +183,7 @@
     flex-wrap: nowrap;
   }
   .nav-menu .navigation-link {
-    padding: .3em !important;
+    padding: 0.3em !important;
     font-size: x-small !important;
   }
 }
@@ -184,18 +193,18 @@
   }
 }
 @media screen and (max-width: 450px) {
-  .home-nav-menu{
+  .home-nav-menu {
     display: none !important;
   }
   .nav-menu {
     font-size: xx-small !important;
   }
-  .brand{
+  .brand {
     font-size: small;
   }
-  .nav-bar{
+  .nav-bar {
     overflow: hidden;
-    background-color: #1f253a;
+    background-color: #151928;
     position: sticky;
     top: 0;
     z-index: 9999;

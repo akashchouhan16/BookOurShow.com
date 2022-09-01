@@ -35,7 +35,7 @@
 .upcoming-movies-container {
   height: 150vh;
   width: 100vw;
-  background-color: #333545;
+  background-color: #222434;
 
   display: flex;
   flex-direction: column;
@@ -43,7 +43,7 @@
   align-content: center;
 }
 .upcoming-movies-banner {
-  background-color: #1f253a;
+  background-color: #151928;
   color: white;
   border-radius: 0.5em;
   height: 50vh;

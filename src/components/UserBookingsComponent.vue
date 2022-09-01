@@ -21,7 +21,7 @@
 .user-bookings-container {
   height: 100vh;
   width: 100vw;
-  background-color: #333545 !important;
+  background-color: #222434 !important;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -29,7 +29,7 @@
 }
 
 .user-booking-banner {
-  background-color: #1f253a;
+  background-color: #151928;
   color: white;
   border-radius: 0.5em;
   height: 50vh;
