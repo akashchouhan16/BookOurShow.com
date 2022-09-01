@@ -12,11 +12,12 @@
         ></iframe>
       </div>
       <div class="movie-meta">
-        <h1>{{ movie.name ? movie.name : "Liger (New Release)" }}</h1>
+        <!-- <h1>{{ movie.name ? movie.name : "Liger (New Release)" }}</h1> -->
+        <h1>{{movie.name}}</h1>
         <div class="movie-meta-additional">
-          <p class="movie-meta-durations">{{movie.duration? movie.duration : '2hr 10m'}}</p>
-          <p class="movie-meta-genre">{{movie.genre? movie.genre : 'Drama'}}</p>
-          <p class="movie-meta-rating">{{movie.rating? movie.rating : 'UA'}}</p>
+          <p class="movie-meta-durations">{{ movie.duration | durationFilter}}</p>
+          <p class="movie-meta-genre">{{ movie.genre | filterGenre }}</p>
+          <p class="movie-meta-rating">{{movie.rating? movie.rating : 'U/A'}}</p>
         </div>
         <button class="book-ticket" @click="bookTickets()">Book Tickets</button>
       </div>
@@ -25,14 +26,7 @@
       <h3 class="description-body-header">About the movie</h3>
       <p class="description-body-para"> 
         <!-- Data must come from Backend using GET: /movies/:movieId -->
-        The journey of Liger, from Karimnagar to Mumbai, from a nobody to a
-        competitor, in his search for recognition while navigating his
-        weaknesses, relationships, and love life.
-        Lorem ipsum dolor sit amet consectetur, adipisicing elit. 
-        Vero enim fuga quia eligendi exercitationem repudiandae nostrum totam voluptates sequi,
-        voluptatibus quam nemo similique suscipit impedit soluta inventore incidunt consequatur
-        assumenda labore sunt adipisci voluptatum illum nulla! Veritatis voluptates, ratione eveniet quod
-        voluptatibus aspernatur sed iure maiores exercitationem optio placeat. Eius?        
+        {{movie.description}}       
       </p>
       <p class="description-body-additional-para">
         Copyright BookOurShow 2022 &copy;<br>
@@ -143,7 +137,7 @@
   overflow: scroll;
 }
 .description-body .description-body-additional-para{
-  font-size: medium;
+  font-size: small;
   color: gray;
   margin: .5em 1em;
   padding: 1em;

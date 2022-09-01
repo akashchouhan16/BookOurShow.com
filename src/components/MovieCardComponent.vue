@@ -1,12 +1,13 @@
 <template>
     <div class="movie-card">
-    <img :src="require(`@/assets/movie1.avif`)" alt="Image" />
+    <!-- <img :src="require(`@/assets/movie1.avif`)" alt="Image" /> -->
+    <img :src="movie.imageUrl" alt="Image">
     <p class="movie-card-info">
-        Thiruchitrambalam <br /><span class="movie-rating">4.5/5⭐</span
-      ><span class="movie-id">2h 10m | Drama </span>
+        {{movie.name? movie.name : "Thiruchitrambalam"}} <br /><span class="movie-rating">4.5/5⭐</span
+      ><span class="movie-id"> {{ movie.duration | durationFilter }} | {{movie.genre | filterGenre }} </span>
     </p>
 
-    <button class="view-movie-description-btn" @click="openMovieDescription('abc123')">
+    <button class="view-movie-description-btn" @click="openMovieDescription()">
        View Movie
     </button>
   </div>

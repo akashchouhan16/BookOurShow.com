@@ -1,28 +1,22 @@
 import { mapGetters } from "vuex";
-import MovieCardComponent from '@/components/MovieCardComponent'
-import { Carousel, Slide } from 'vue-carousel';
+import MovieCardComponent from "@/components/MovieCardComponent";
 
 export default {
   name: "HomeComponent",
   data() {
-    return {
-
-    };
+    return {};
   },
   components: {
     MovieCardComponent,
-    Carousel,
-    Slide
   },
   computed: {
     ...mapGetters({
-      movielist: "getmovie",
+      movies: "getAllMovies",
     }),
   },
 
   methods: {
     viewdetails(id, name) {
-
       console.log("movielist", id);
       this.$router.push({
         path: "/description",
@@ -32,6 +26,6 @@ export default {
   },
 
   created() {
-    this.$store.dispatch("GET_MOVIE");
+    this.$store.dispatch("GET_ALL_MOVIES");
   },
 };

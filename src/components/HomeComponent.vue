@@ -6,8 +6,8 @@
     <div class="movie-container">
       <div class="grid-container">
         <MovieCardComponent
-          v-for="(movie, index) in 30"
-          :key="index"
+          v-for="(movie, index) in movies"
+          :key="index" :movie="movie"
         ></MovieCardComponent>
       </div>
     </div>

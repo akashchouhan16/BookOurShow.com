@@ -5,9 +5,15 @@ export default {
 
         }
     },
+    props:{
+        movie:{
+            type: Object,
+            required: true
+        }
+    },
     methods:{
-        openMovieDescription(movieid){
-            this.$router.push({path: '/description', query: {movieid: movieid}});
+        openMovieDescription(){
+            this.$router.push({path: '/description', query: {movieId: this.movie.movieId}});
         }
     }
 }

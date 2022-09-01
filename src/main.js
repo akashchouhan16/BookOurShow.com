@@ -9,7 +9,31 @@ Vue.config.productionTip = false
 
 
 Vue.use(BootstrapVue)
-// Vue.use(VueCarousel);
+
+
+Vue.filter('durationFilter', (durationInMinutes)=>{
+    const hours = durationInMinutes/60;
+    const roundedHours = Math.floor(hours);
+    const minutes = Math.round((hours - roundedHours)*60);
+    
+    if(minutes <= 0){
+      return roundedHours.toString() + 'hr';
+    }else{
+      const result =  (roundedHours).toString() + 'hr ' +  (minutes).toString() + 'm';
+      console.log(result);
+      return result;
+    }
+    
+})
+Vue.filter('filterGenre', (genre)=>{
+    if(genre.length > 6 ){
+        return genre.substring(0,6) + '+';
+    }
+    else{
+      return genre.substring(0,6);
+    }
+    
+})
 
 new Vue({
   router,

@@ -1,14 +1,24 @@
+import { mapGetters } from "vuex";
+
 export default {
     name: 'DescriptionComponent',
     data(){
         return {
-            movie: {
-                name: null,
-                duration: null,
-                genre: null,
-                rating: null
-            }
+            // movie: {
+            //     name: null,
+            //     duration: null,
+            //     genre: null,
+            //     rating: null
+            // }
         }
+    },
+    created(){
+        this.$store.dispatch('GET_MOVIE_BY_ID', this.$route.query.movieId);
+    },
+    computed:{
+        ...mapGetters({
+            movie: 'getSpecificMovie'
+        })
     },
     methods:{
         bookTickets(){
