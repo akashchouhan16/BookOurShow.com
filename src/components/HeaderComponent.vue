@@ -70,7 +70,7 @@
 .nav-menu .navigation-link {
   text-decoration: none;
   color: rgb(211, 211, 211) !important;
-  margin: 0 .5em;
+  margin: 0 0.5em;
   transition: all 0.5s;
 }
 .navigation-link:hover {
@@ -214,6 +214,28 @@
     flex-direction: row;
     align-items: center;
     justify-content: center;
+  }
+}
+
+@media screen and (max-width: 300px) {
+  .nav-bar .brand {
+    font-size: x-small !important;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+  }
+  .login-btn {
+    margin: 0.1em 0.3em;
+    padding: 0.1em 0.3em;
+    background-color: #f84464 !important;
+    border: none;
+    border-radius: 0.2em;
+    color: white;
+    transition: all 0.3s;
+    font-size: x-small;
   }
 }
 </style>

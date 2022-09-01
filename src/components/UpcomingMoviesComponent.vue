@@ -5,7 +5,12 @@
         Upcoming Recommended Movies
       </div>
       <div class="search-div">
-        <input type="text" class="search-bar" placeholder="search" v-model="searchKey"/>
+        <input
+          type="text"
+          class="search-bar"
+          placeholder="search"
+          v-model="searchKey"
+        />
         <button class="search-btn" @click="searchMovie()">Search</button>
       </div>
     </div>
@@ -74,7 +79,7 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  padding: 0.1em .3em;
+  padding: 0.1em 0.1em;
   background-color: white;
   border-radius: 0.4em;
   flex-wrap: nowrap;
@@ -84,11 +89,12 @@
   border: none;
   padding: 0.2em 0.3em;
   width: 80% !important;
-  /* border: 1px solid rgb(223, 222, 222); */
   border-radius: 0.5em !important;
+  -moz-columns: white;
   columns: white;
   color: rgb(95, 95, 95);
-  width: 35vw;
+  width: 30vw !important;
+  height: 3.5vh !important;
 }
 .search-bar:focus {
   outline: none;
@@ -96,16 +102,16 @@
 }
 .search-btn {
   margin: 0em 0em 0em 0.2em;
-  padding: 0.2em 0.4em;
+  padding: 0.5em 0.6em;
   background-color: #f84464 !important;
   border: none;
   border-radius: 0.5em;
   color: white;
   transition: all 0.3s;
 }
-.search-btn:hover{
+.search-btn:hover {
   cursor: pointer;
-  background-color: #D52344 !important;
+  background-color: #d52344 !important;
 }
 .movie-list-tag-1,
 .movie-list-tag-2 {
@@ -134,5 +140,57 @@
   .grid-container {
     grid-template-columns: 2fr;
   }
+  .search-div{
+    margin: 0.3em;
+    width: 44vw;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.1em 0.1em;
+    background-color: white;
+    border-radius: 0.4em;
+    flex-wrap: nowrap;
+  }
+  .search-bar {
+    width: 40vw !important;
+  }
+}
+
+@media screen and (max-width: 450px){
+    .upcoming-movies-banner-title{
+      font-size: large;
+    }
+    .search-div{
+      width: 55vw;
+      height: 3vh;
+    }
+    .search-bar {
+      height: 2vh !important;
+    }
+    .search-btn{
+      height: 2.5vh !important;
+      padding: .3em .3em !important;
+    }
+}
+
+@media screen  and (max-width: 300px){
+  .search-div{
+    width: 65vw;
+    height: 3vh;
+  }
+  .search-bar{
+    height: 2.5vh !important;
+    width: 43vw !important;
+  }
+  .search-btn {
+    height: 2.7vh !important;
+    padding: 0em 0.3em !important;
+  }
+  .upcoming-movies-banner-title{
+    font-size: small;
+    text-align: center;
+  }
+
 }
 </style>
