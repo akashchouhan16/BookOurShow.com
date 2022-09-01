@@ -3,7 +3,7 @@
     <div class="booking-banner">
       <div class="movie-details-main">
         <div class="title">
-          {{ movie.name ? movie.name : "Liger 2D - Movie" }}
+          {{ movie.name ? movie.name : "Liger 2D - movie" }}
         </div>
         <div class="movie-details">
           <div class="movie-genre">
@@ -31,20 +31,49 @@
         </div>
       </div>
     </div>
-    <div class="booking-body">
-      <div class="grid-container">
-        <DateSlotCardComponent
-          v-for="(dateSlot, index) in dateSlots"
-          :key="index" :dateSlot="dateSlot"
-        ></DateSlotCardComponent>
+    <div class="seating-body">
+      <div class="seat-booking-title">Confirm Your Seat!</div>
+      <div class="movie-hall-screen">Screen</div>
+      <div class="movie-hall">
+        <div class="seats-row" v-for="(seat, indexi) in 10" :key="indexi">
+          <div class="seats-col" v-for="(seat, indexj) in 10" :key="indexj">
+            <span class="seat-number">{{ (indexi + 1) * (indexj + 1) }}</span>
+            <input
+              :disabled="false"
+              type="checkbox"
+              :value="indexi + 1 * indexj + 1"
+              @click="setSeats((1 + indexi) * (1 + indexj))"
+            />
+          </div>
+        </div>
       </div>
+      <button class="book-ticket-btn">Book</button>
     </div>
   </div>
 </template>
 
-<script src="./scripts/BookingComponent.js">
-</script>
+
+<script src="./scripts/SeatBookingComponent.js"></script>
+
 <style scoped>
+.seat-number {
+  color: gray;
+  font-size: xx-small;
+  padding: 0.1em;
+}
+.book-ticket-btn {
+  margin: .8em 1em;
+  padding: 0.5em 1em;
+  background-color: #f84464 !important;
+  border: none;
+  border-radius: 0.2em;
+  color: white;
+  transition: all 0.3s;
+}
+.book-ticket-btn:hover {
+  cursor: pointer;
+  background-color: #d52344 !important;
+}
 .booking-container {
   margin: 0;
   padding: 0em;
@@ -154,28 +183,58 @@
 .movie-details-main {
   font-size: larger;
 }
-.booking-body {
+.seating-body {
   border-radius: 0.5em;
   background-color: rgb(235, 235, 235);
   margin: 1.5em 0.5em;
-  padding: .3em;
+  padding: 0.3em;
   height: 65vh;
   width: 90vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   overflow: scroll;
 }
-.grid-container {
+.seat-booking-title {
+  font-size: large;
+  font-weight: bold;
+}
+.movie-hall-screen {
+  background-color: rgb(194, 231, 244);
+  border: 1px solid rgb(134, 179, 194);
+  border-radius: 0.3em;
+  width: 40vw;
+  height: 1.5vh;
+  margin: 2em auto;
+  font-size: xx-small;
+  color: gray;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.seats-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 0.2em 0.3em;
+}
+.seats-col {
+  margin: 0.1em;
+  padding: 0.2em;
+}
+.movie-hall {
+  padding: 1em;
+  width: fit-content;
+  height: fit-content;
+  background-color: white;
   border-radius: 1em;
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: .6em;
-  padding: 5vh 5vh;
-  scroll-behavior: smooth;
 }
 
-
 /* Media Queries */
-@media screen  and (max-width:900px){
-    .booking-banner{
+@media screen and (max-width: 900px) {
+  .booking-banner {
     height: 30vh;
     width: 100%;
     display: flex;
@@ -186,21 +245,21 @@
     align-items: center;
     flex-wrap: nowrap;
     align-content: center;
-    }
-    .movie-details-main, .movie-details-secondary{
-        width: 90vw;
-        margin: .2em;
-        margin-bottom: .5em;
-    }
+  }
+  .movie-details-main,
+  .movie-details-secondary {
+    width: 90vw;
+    margin: 0.2em;
+    margin-bottom: 0.5em;
+  }
 }
 
 @media screen and (max-width: 450px) {
-    .movie-details-secondary .secondary-date {
-        font-size: small;
-    }
-    .secondary-slot{
-        font-size: xx-small !important
-    }
+  .movie-details-secondary .secondary-date {
+    font-size: small;
+  }
+  .secondary-slot {
+    font-size: xx-small !important;
+  }
 }
-
 </style>

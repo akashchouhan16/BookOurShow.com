@@ -14,6 +14,7 @@ import DeleteComponent from "../components/DeleteComponent";
 import RegisterComponent from "../components/RegisterComponent";
 import NotFoundComponent from "@/components/NotFoundComponent";
 import AdminBookingHistoryComponent from "@/components/AdminBookingHistoryComponent.vue";
+import SeatBookingComponent from "@/components/SeatBookingComponent.vue";
 
 //Functions
 const userBookingCheck = (to, from, next) => {
@@ -49,6 +50,19 @@ const adminBookingCheck = (to, from, next) => {
   }
 };
 
+const beforeBookTickets = (to, from, next) => {
+  const role = localStorage.getItem("role");
+  if (
+    role === null ||
+    role === undefined ||
+    role.toLocaleLowerCase() === "admin"
+  ) {
+    next({ path: "/login" });
+  } else if (role === "user") {
+    next();
+  }
+};
+
 const routes = [
   { path: "/", component: HomeComponent },
   { path: "/addmovie", component: AddMovieComponent }, //existing component needs a major fix to incorporate slots and validations
@@ -64,7 +78,16 @@ const routes = [
   },
   { path: "/upcomingmovies", component: UpcomingMoviesComponent },
   { path: "/description", component: DescriptionComponent },
-  { path: "/booking/", component: BookingComponent },
+  {
+    path: "/booking",
+    component: BookingComponent,
+    beforeEnter: beforeBookTickets
+  },
+  {
+    path: '/booking/seats',
+    component: SeatBookingComponent,
+    beforeEnter: beforeBookTickets
+  },
   { path: "/bookedDetails", component: BookedDetailsComponent }, //
   { path: "/login", component: LoginComponent }, //admin or user loggin (SSO) while updating movies or while user books a ticket.
   { path: "/delete", component: DeleteComponent }, //instead, we can have an update movie component

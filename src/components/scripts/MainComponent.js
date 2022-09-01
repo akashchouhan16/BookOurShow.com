@@ -1,12 +1,12 @@
 import AddMovieComponent from '@/components/AddMovieComponent'
 import UserBookings from '@/components/UserBookingsComponent'
 import DescriptionComponent from '@/components/DescriptionComponent'
-import BookedDetailsComponent from '@/components/BookedDetailsComponent'
-import BookingComponent from '@/components/BookingComponent'
+import BookingComponent from '@/components/BookingComponent.vue'
+import SeatBookingComponent from '@/components/SeatBookingComponent.vue'
 import LoginComponent from '@/components/LoginComponent'
 import DeleteComponent from '@/components/DeleteComponent'
 import RegisterComponent from '@/components/RegisterComponent'
-
+import DateSlotCardComponent from '@/components/DateSlotCardComponent'
 
 export default {
     name: 'MainComponent',
@@ -14,10 +14,11 @@ export default {
      AddMovieComponent,
      UserBookings,
      DescriptionComponent,
-     BookedDetailsComponent,
-     BookingComponent,
      LoginComponent,
      DeleteComponent,
-     RegisterComponent
+     RegisterComponent,
+     BookingComponent,
+     SeatBookingComponent,
+     DateSlotCardComponent
     }
   }

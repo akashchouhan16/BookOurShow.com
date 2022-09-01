@@ -12,7 +12,13 @@ export default {
     },
     methods:{
         bookTickets(){
-            console.log('Booking....'); 
+            const role = localStorage.getItem('role');
+            const username = localStorage.getItem('name');
+            if(role === null || username === null || role === undefined || username === undefined){
+                this.$router.push({path: '/login'}); //then again redirect back to the TicketBookingCompnent
+            }else{
+                this.$router.push({path: '/booking'});
+            }
         }
     }
 }
