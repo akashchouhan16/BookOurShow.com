@@ -22,10 +22,9 @@ export default {
                 success:({data})=>{
                     console.log(data);
                     this.commit('setuser',data);
-                    console.log(state.user);
-
                     localStorage.setItem('role', data.role);
                     localStorage.setItem('userId', data.userId);
+                    
                 },
                 error: (err) => {
                     console.log(err)

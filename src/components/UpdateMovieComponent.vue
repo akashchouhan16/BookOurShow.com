@@ -1,7 +1,7 @@
  <template>
   <div class="add-movie">
     <form class="movie-form">
-      <h2>Add Movie</h2>
+      <h2>Update Movie</h2>
       <br />
       <div class="error-message" v-if="fillfieldsflag">
         Please fill all Required fields
@@ -14,36 +14,28 @@
         <input
           type="text"
           class="add-movie-input"
-          v-model="movieinfo.name"
+          v-model="movieupdate.name"
           placeholder="Movie Name"
           required
+          :disabled=false
         />
       </div>
-
       <div class="flex-row">
         <div class="movie-tag-flex">
-          <label for="genre" class="addmovie-tag">Genre<span>*</span></label>
-          <div class="error-message" v-if="genreerror">
-            Please enter a valid genre
-          </div>
+          <label for="genre" class="addmovie-tag">Genre</label>
           <input
             type="text"
             class="add-movie-input"
             placeholder="Genre"
-            v-model="movieinfo.genre"
-            required
+            :disabled=true
+            v-model="movieupdate.genre"
           />
         </div>
         <div class="movie-tag-flex">
           <label for="movie-slots" class="addmovie-tag"
-            >Time slot<span>*</span>
+            >Time slot
           </label>
-          <div class="error-message" v-if="sloterror">
-            Please enter a valid time slot
-          </div>
           <div class="movie-input-row-flex">
-            <!-- <select class="add-movie-input" v-model="movieinfo.timeSlot">
-              <option value="null">None</option> -->
             <table class="table">
               <tr class="table">
                 <td class="table-data">
@@ -51,20 +43,16 @@
                     type="checkbox"
                     value="9:00 AM - 12:00 PM"
                     id="9:00 AM - 12:00 PM"
-                    v-model="movieinfo.slots"
+                    :disabled=true
                   />
-                <!-- </td>
-                <td  class="table-data"> -->
                   9:00 AM</td>
                 <td  class="table-data">
                   <input
                     type="checkbox"
                     value="1:00 PM - 4:00 PM"
                     id="1:00 PM - 4:00 PM"
-                    v-model="movieinfo.slots"
+                    :disabled=true
                   />
-                <!-- </td>
-                <td  class="table-data"> -->
                   1:00 PM</td>
               </tr>
               <tr class="table">
@@ -73,30 +61,24 @@
                     type="checkbox"
                     value="5:00 PM - 8:00 PM"
                     id="5:00 PM - 8:00 PM"
-                    v-model="movieinfo.slots"
+                    v-model="movieupdate.slots"
+                    :disabled=true
                   />
-                <!-- </td>
-                <td  class="table-data"> -->
                   5:00 PM</td>
                 <td>
                   <input
                     type="checkbox"
                     value="9:00 PM - 12:00 AM"
                     id="9:00 PM - 12:00 AM"
-                    v-model="movieinfo.slots"
+                    v-model="movieupdate.slots"
+                    :disabled=true
                   />
-                <!-- </td>
-                <td  class="table-data"> -->
                   9:00 PM</td>
               </tr>
             </table>
           </div>
         </div>
       </div>
-      <!-- <div class="movie-tag-div">
-        <label for="genre" class="addmovie-tag">Genre<span>*</span></label><br />
-        <input type="text" class="add-movie-input" placeholder="Genre" v-model="movieinfo.genre" required/>
-      </div> -->
       <div class="movie-tag-div">
         <label for="movie-description" class="addmovie-tag"
           >Description<span>*</span> </label
@@ -107,10 +89,11 @@
         <textarea
           class="add-movie-input description"
           placeholder="Movie Description"
-          v-model="movieinfo.description"
+          v-model="movieupdate.description"
           rows="4"
           cols="30"
           required
+          :disabled=false
         >
         </textarea>
       </div>
@@ -126,50 +109,45 @@
             type="number"
             class="add-movie-input"
             placeholder="Duration"
-            v-model="movieinfo.duration"
+            v-model="movieupdate.duration"
             required
+            :disabled=false
           />
         </div>
         <div class="movie-tag-flex">
-          <label for="rating" class="addmovie-tag">Rating<span>*</span></label>
-          <div class="error-message" v-if="ratingerror">
-            Please enter a valid duration
-          </div>
+          <label for="rating" class="addmovie-tag">Rating</label>
           <input
             type="text"
             class="add-movie-input"
             placeholder="Rating"
-            v-model="movieinfo.rating"
-            required
+            v-model="movieupdate.rating"
+            :disabled=true
           />
         </div>
-      </div>
-      <div class="error-message" v-if="dateerror">
-        Please enter a valid date range
       </div>
       <div class="flex-row">
         <div class="movie-tag-flex">
           <label for="start-date" class="addmovie-tag"
-            >Start Date<span>*</span></label
+            >Start Date</label
           >
           <input
             type="date"
             class="add-movie-input"
-            v-model="movieinfo.startDate"
             placeholder="Start Date"
-            required
+            v-model="movieupdate.startDate"
+            :disabled=true
           />
         </div>
         <div class="movie-tag-flex">
           <label for="end-date" class="addmovie-tag"
-            >End Date<span>*</span></label
+            >End Date</label
           >
           <input
             type="date"
             class="add-movie-input"
             placeholder="End Date"
-            v-model="movieinfo.endDate"
-            required
+            v-model="movieupdate.endDate"
+            :disabled=true
           />
         </div>
       </div>
@@ -196,21 +174,21 @@
             type="number"
             class="add-movie-input"
             placeholder="Normal"
-            v-model="movieinfo.normalPrice"
+            v-model="movieupdate.normalPrice"
             required
           /><br />
           <input
             type="number"
             class="add-movie-input"
             placeholder="Executive"
-            v-model="movieinfo.executivePrice"
+            v-model="movieupdate.executivePrice"
             required
           /><br />
           <input
             type="number"
             class="add-movie-input"
             placeholder="Premium"
-            v-model="movieinfo.premiumPrice"
+            v-model="movieupdate.premiumPrice"
             required
           /><br />
         </div>
@@ -224,7 +202,7 @@
           type="text"
           placeholder="MovieUrl"
           class="add-movie-input"
-          v-model="movieinfo.videoUrl"
+          v-model="movieupdate.videoUrl"
         />
       </div>
 
@@ -235,28 +213,11 @@
         <input
           type="text"
           class="add-movie-input"
-          v-model="movieinfo.imageUrl"
+          v-model="movieupdate.imageUrl"
           placeholder="Movie Image"
           required
         />
       </div>
-
-      <!-- <div class="movie-tag-div">
-          <label for="  class="addmovie-tag">Total Tickets </label>
-          <input type="number" v-model="movieinfo.total_no_tickets" /><br />
-        </div> -->
-
-      <!-- <div class="movie-tag-div">
-        <label for="movie-slots" class="addmovie-tag">Time slot<span>*</span> </label><br />
-        <select class="add-movie-input" v-model="movieinfo.timeSlot">
-          <option value="null">None</option>
-          <option value="9:00 AM - 12:00 PM">9:00 AM - 12:00 PM</option>
-          <option value="1:00 PM - 4:00 PM">1:00 PM - 4:00 PM</option>
-          <option value="5:00 PM - 8:00 PM">5:00 PM - 8:00 PM</option>
-          <option value="9:00 PM - 12:00 AM">9:00 PM - 12:00 AM</option>
-        </select>
-      </div> -->
-
       <br />
 
       <div class="alert alert-danger" role="alert" v-if="errorflag">
@@ -269,13 +230,13 @@
       <div class="error-message" v-if="fillfieldsflag">
         Please fill all fields
       </div>
-      <button type="button" class="movie-button-input" @click="movieinfo1()">
-        ADD
+      <button type="button" class="movie-button-input" @click="movieupdateinfo()">
+        UPDATE
       </button>
-      <!--  @click="movieinfo1()" -->
-      <button type="button" class="movie-button-input" @click="reset()">
+      <!--  @click="movieupdate1()" -->
+      <!-- <button type="button" class="movie-button-input" @click="reset()">
         RESET
-      </button>
+      </button> -->
     </form>
   </div>
 </template>
@@ -412,12 +373,12 @@ select:focus {
   }
   .movie-button-input {
     margin: 0.5em;
-    width: 30%;
+    width: 15%;
   }
 }
 
 </style>
 
 
-<script src="./scripts/AddMovieComponent.js">
+<script src="./scripts/UpdateMovieComponent.js">
 </script>

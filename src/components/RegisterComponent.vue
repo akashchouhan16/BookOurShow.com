@@ -77,7 +77,7 @@
   align-items: center;
 } */
 .error-message {
-  background-color: #f84464;
+  background-color: #D52344;
   font-size: small;
   color: white;
   padding: 0.4em;
@@ -126,7 +126,7 @@
 }
 .register-button {
   border: none;
-  background-color: #f84464;
+  background-color: #D52344;
   border-radius: 1em;
   width: 70px;
   text-align: center;
@@ -143,8 +143,8 @@
   font-weight: normal;
 }
 input:focus {
-  outline: 2px solid #f84464 !important;
-  /* border: 5px solid #f84464,!important; */
+  outline: 2px solid #D52344 !important;
+  /* border: 5px solid #D52344,!important; */
 }
 @media screen and (max-width: 900px) {
   .register-form {
@@ -156,25 +156,6 @@ input:focus {
     width: 60%;
   }
 }
-/* ********************************* */
-/* .user {
-  margin-left: 25%;
-  margin-right: 25%;
-  width: 50%;
-  background-color: rgb(239, 242, 245);
-}
-form {
-  margin: 10px;
-}
-input {
-  width: fit-content !important;
-}
-button {
-  margin: 5px;
-  background-color: rgb(25, 19, 58) !important;
-  color: white;
-  margin-bottom: 10px;
-} */
 </style>
 <script src="./scripts/RegisterComponent.js">
 </script>

@@ -7,6 +7,7 @@ import LoginComponent from '@/components/LoginComponent'
 import DeleteComponent from '@/components/DeleteComponent'
 import RegisterComponent from '@/components/RegisterComponent'
 import DateSlotCardComponent from '@/components/DateSlotCardComponent'
+import UpdateMovieComponent from '@/components/UpdateMovieComponent'
 
 export default {
     name: 'MainComponent',
@@ -19,6 +20,7 @@ export default {
      RegisterComponent,
      BookingComponent,
      SeatBookingComponent,
-     DateSlotCardComponent
+     DateSlotCardComponent,
+     UpdateMovieComponent
     }
   }

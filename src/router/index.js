@@ -15,6 +15,7 @@ import RegisterComponent from "../components/RegisterComponent";
 import NotFoundComponent from "@/components/NotFoundComponent";
 import AdminBookingHistoryComponent from "@/components/AdminBookingHistoryComponent.vue";
 import SeatBookingComponent from "@/components/SeatBookingComponent.vue";
+import UpdateMovieComponent from "../components/UpdateMovieComponent.vue";
 
 //Functions
 const userBookingCheck = (to, from, next) => {
@@ -62,10 +63,23 @@ const beforeBookTickets = (to, from, next) => {
     next();
   }
 };
+const beforeUpdateMovie = (to, from, next) => {
+  const role = localStorage.getItem("role");
+  if (
+    role === null ||
+    role === undefined ||
+    role.toLocaleLowerCase() === 'user') {
+    next({ path: "/*" });
+  }
+  else if (role == "admin") {
+    next();
+  }
+}
 
 const routes = [
   { path: "/", component: HomeComponent },
-  { path: "/addmovie", component: AddMovieComponent }, //existing component needs a major fix to incorporate slots and validations
+  { path: "/addmovie", component: AddMovieComponent, beforeEnter: beforeUpdateMovie }, //existing component needs a major fix to incorporate slots and validations
+  { path: "/updatemovie", component: UpdateMovieComponent, beforeEnter: beforeUpdateMovie }, //existing component needs a major fix to incorporate slots and validations
   {
     path: "/userbookings",
     component: UserBookings,

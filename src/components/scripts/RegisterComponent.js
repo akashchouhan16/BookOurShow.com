@@ -18,72 +18,71 @@ export default {
   },
   methods: {
     registerUser() {
-      console.log(this.CheckPassword(this.user.password))
-      
-
+      console.log(!this.CheckPassword(this.user.password))
+      console.log(this.phonenumber(this.user.phoneNumber))
+      console.log(this.CheckFirstLetterSpecial(this.user.name))
+      console.log((this.phonenumber(this.user.phoneNumber)) && (this.user.phoneNumber.length == 10))
+      console.log(this.CheckFirstLetterSpecial(this.user.name) && (this.user.name.length > 5))
       if (this.user.name == "" || this.user.password == "" || this.user.phoneNumber == "") {
         this.errorflag = true;
-        console.log("if");
-
+        console.log(this.errorflag)
       }
       else {
         this.errorflag = false;
-        console.log("else");
 
-        if ((this.CheckPassword(this.user.password))&&this.user.password.length>=8) {
-          this.passworderrorflag = true;
-          this.errorflag = true;
-          console.log("password");
-        }
-        else{
-          console.log("passwordfalse");
-          console.log(this.user.password.length);
-          this.errorflag = false;
-
+        if ((this.CheckPassword(this.user.password)) && this.user.password.length >= 8) {
           this.passworderrorflag = false;
+          this.errorflag = false;
         }
-        if ((this.phonenumber(this.user.phoneNumber))&&(this.user.phoneNumber.length == 10)) {
+        else {
+          console.log(this.user.password.length);
+          this.errorflag = true;
+
+          this.passworderrorflag = true;
+        }
+        if ((!this.phonenumber(this.user.phoneNumber)) && (this.user.phoneNumber.length == 10)) {
           this.phoneerrorflag = true;
           this.errorflag = true;
-          console.log("phone");
 
         }
-        else{
-          console.log("phonefasle");
+        else {
           this.errorflag = false;
 
           this.phoneerrorflag = false;
 
         }
-        if ((!this.CheckFirstLetterSpecial(this.user.name))&&(this.user.name.length>5)) {
-          this.nameerrorflag = true;
-          this.errorflag = true;
-          console.log("name");
-
-        }
-        else{
-          console.log("namefalse");
+        if ((this.CheckFirstLetterSpecial(this.user.name)) && (this.user.name.length > 3)) {
+          this.nameerrorflag = false;
           this.errorflag = false;
 
-          this.nameerrorflag = false;
+        }
+        else {
+          this.errorflag = true;
+
+          this.nameerrorflag = true;
+        }
       }
-    }
-    console.log(this.errorflag);
-      if(!this.errorflag)
-        {
-              console.log(this.user);
-              adduserlist({
-                success: (data) => {
-                  this.$router.push({ path: "/login" });
-                  console.log(data);
-                },
-                error: (err) => { console.log(err)},
-                payload: this.user,
-              });
+      console.log(this.errorflag);
+      if (this.errorflag == false) {
+        console.log(this.user);
+        adduserlist({
+          success: (data) => {
+            if (data.data == "Succesfully Register") {
+              alert(data.data);
+              this.$router.push({ path: "/login" });
             }
-            else{
-              this.errorflag=true;
-            }
+            else { this.errorflag = true }
+          },
+          error: (err) => {
+            console.log("NOT VAILD")
+            console.log(err)
+          },
+          payload: this.user,
+        });
+      }
+      else {
+        this.errorflag = true;
+      }
     },
     reset() {
       this.errorflag = false;
@@ -97,7 +96,7 @@ export default {
     },
     CheckPassword(inputtxt) {
       var decimal = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{8,15}$/;
-      console.log(decimal.test(inputtxt)+"cinsill");
+      console.log(decimal.test(inputtxt) + "cinsill");
       return decimal.test(inputtxt);
     },
     phonenumber(inputtxt) {

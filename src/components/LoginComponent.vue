@@ -1,9 +1,9 @@
 <template>
   <div class="login">
-    
-    <h2>Login</h2>
-    <br />
     <form class="login-form">
+      <h2>Login</h2>
+      <br />
+      <div class="error-message" v-if="nullflag"> Input fields are empty</div>
       <div class="error-message" role="alert" v-if="flag">
         Phone Number or Password is incorrect
       </div>
@@ -11,7 +11,7 @@
         <label for="username" class="input-label">Phone Number</label>
         <br />
         <input
-          type="phonenumber"
+          type="number"
           class="login-input"
           placeholder="Phone Number"
           v-model="user.phoneNumber"
@@ -27,8 +27,16 @@
           v-model="user.password"
         />
       </div>
-      <button type="button" class="login-button" @click="checkLogin()">Login</button><br/><br/>
-     <h6 class="login-register-text"> Don't have a user?<router-link to="./register" class="login-register-text">Click here to Register User</router-link></h6>
+      <button type="button" class="login-button" @click="checkLogin()">
+        Login</button
+      ><br /><br />
+      <h6 class="login-register-text">
+        Don't have a user?<router-link
+          to="./register"
+          class="login-register-text"
+          >Click here to Register User</router-link
+        >
+      </h6>
     </form>
   </div>
 </template>
@@ -47,12 +55,12 @@
   border: none;
   border-radius: 1em;
   color: black;
-  width:30%;
-  height:300px;
+  width: 30%;
+  height: 350px;
   display: block;
   margin: auto;
   background-color: whitesmoke;
-  padding:5px;
+  padding: 5px;
   transition: all 0.3s;
 }
 .login-input {
@@ -60,49 +68,47 @@
   border-radius: 1em;
   padding: 5px 20px;
   margin: 8px 0;
-  width: 90% ;
-  height:40px;
+  width: 90%;
+  height: 40px;
 }
 
 input:focus {
-  outline: 2px solid #f84464 !important;
+  outline: 2px solid #d52344 !important;
 }
 .login-input-div {
   margin: 10px;
 }
 .login-button {
-  border:none;
-  background-color: #f84464 !important;
+  border: none;
+  background-color: #d52344 !important;
   border-radius: 1em;
   width: 20%;
   text-align: center;
   height: 30px;
-  color:white;
+  color: white;
 }
-.login-button:hover{
+.login-button:hover {
   background-color: #fd0230 !important;
-
 }
-.login-register-text{
-  text-decoration:none;
-  color:black;
-  font-weight:normal;
+.login-register-text {
+  text-decoration: none;
+  color: black;
+  font-weight: normal;
 }
 /* .login-button:hover{
   box-shadow: 3px 3px 3px 2px #f996a8cc;
 } */
-@media screen and (max-width:900px) {
+@media screen and (max-width: 900px) {
   .login-form {
-    width:50%;
+    width: 50%;
   }
-  
 }
-@media screen and (max-width:400px) {
+@media screen and (max-width: 400px) {
   .login-form {
-    width:60%;
+    width: 60%;
   }
-  .login-button{
-    border-radius:.5em;
+  .login-button {
+    border-radius: 0.5em;
   }
 }
 </style>

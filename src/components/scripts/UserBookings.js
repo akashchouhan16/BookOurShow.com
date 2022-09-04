@@ -1,10 +1,17 @@
+import { mapGetters } from "vuex";
 export default {
     name: 'UserBookingsComponent',
     data(){
         return {
-            username: localStorage.getItem('name') || 'User'
+            username: localStorage.getItem('name') || 'User',
+            userId:localStorage.getItem('userId'),
+        
         }
     },
+    computed: {
+        ...mapGetters({
+            userdetails: "getUserBookingDetails",
+        })},
     methods:{
         GreetingMessage(){
             const hour = new Date().getHours();
@@ -15,5 +22,9 @@ export default {
             else
                 return "Good Evening";
         }
+    },
+    created(){
+        console.log(this.userId);
+        this.$store.dispatch("GET_USER_TICKETS",this.userId)
     }
 }
