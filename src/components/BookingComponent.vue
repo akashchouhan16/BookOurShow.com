@@ -3,14 +3,14 @@
     <div class="booking-banner">
       <div class="movie-details-main">
         <div class="title">
-          {{ movie.name ? movie.name : "Liger 2D - Movie" }}
+          {{ movie.name ? movie.name : "Liger 2D" }} 2D - Movie
         </div>
         <div class="movie-details">
           <div class="movie-genre">
             {{ movie.genre ? movie.genre : "Drama" }}
           </div>
           <div class="movie-duration">
-            {{ movie.duration ? movie.duration : "2h 10m" }}
+            {{ movie.duration | durationFilter }}
           </div>
           <div class="movie-rating">
             {{ movie.rating ? movie.rating : "U/A" }}
@@ -34,8 +34,10 @@
     <div class="booking-body">
       <div class="grid-container">
         <DateSlotCardComponent
-          v-for="(dateSlot, index) in dateSlots"
-          :key="index" :dateSlot="dateSlot"
+          v-for="(dateSlot, index) in noOfDays"
+          :key="index"
+          :dateSlot="dateSlots[index]"
+          :i="index"
         ></DateSlotCardComponent>
       </div>
     </div>
@@ -158,7 +160,7 @@
   border-radius: 0.5em;
   background-color: rgb(235, 235, 235);
   margin: 1.5em 0.5em;
-  padding: .3em;
+  padding: 0.3em;
   height: 65vh;
   width: 90vw;
   overflow: scroll;
@@ -167,15 +169,14 @@
   border-radius: 1em;
   display: grid;
   grid-template-columns: 1fr;
-  gap: .6em;
+  gap: 0.6em;
   padding: 5vh 5vh;
   scroll-behavior: smooth;
 }
 
-
 /* Media Queries */
-@media screen  and (max-width:900px){
-    .booking-banner{
+@media screen and (max-width: 900px) {
+  .booking-banner {
     height: 30vh;
     width: 100%;
     display: flex;
@@ -186,21 +187,35 @@
     align-items: center;
     flex-wrap: nowrap;
     align-content: center;
-    }
-    .movie-details-main, .movie-details-secondary{
-        width: 90vw;
-        margin: .2em;
-        margin-bottom: .5em;
-    }
+  }
+  .movie-details-main,
+  .movie-details-secondary {
+    width: 90vw;
+    margin: 0.2em;
+    margin-bottom: 0.5em;
+  }
 }
 
+@media screen and (max-width: 700px) {
+  .grid-container {
+    border-radius: 1em;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.6em;
+    padding: 5vh 3vh;
+    scroll-behavior: smooth;
+    font-size: x-small;
+  }
+  .movie-details-main{
+    font-size: small;
+  }
+}
 @media screen and (max-width: 450px) {
-    .movie-details-secondary .secondary-date {
-        font-size: small;
-    }
-    .secondary-slot{
-        font-size: xx-small !important
-    }
+  .movie-details-secondary .secondary-date {
+    font-size: small;
+  }
+  .secondary-slot {
+    font-size: xx-small !important;
+  }
 }
-
 </style>

@@ -2,14 +2,17 @@
   <div class="movie-card">
     <!-- <img :src="require(`@/assets/movie1.avif`)" alt="Image" /> -->
     <img :src="movie.imageUrl" alt="Image" />
-    <p class="movie-card-info">
-      {{ movie.name ? movie.name : "Thiruchitrambalam" }} <br /><span
-        class="movie-rating"
-        >4.5/5⭐ </span
-      ><span class="movie-id">
-        {{ movie.duration | durationFilter }} | {{ movie.genre | filterGenre }}
-      </span>
-    </p>
+    <div class="movie-card-info">
+      <p class="movie-card-info">
+        {{ movie.name ? movie.name : "Thiruchitrambalam" }} <br /><span
+          class="movie-rating"
+          >4.5/5⭐ </span
+        ><span class="movie-id">
+          {{ movie.duration | durationFilter }} |
+          {{ movie.genre | filterGenre }}
+        </span>
+      </p>
+    </div>
 
     <button class="view-movie-description-btn" @click="openMovieDescription()">
       View Movie
@@ -43,6 +46,9 @@
   cursor: pointer;
 }
 
+.movie-card-info{
+  margin-top: 1em;
+}
 .movie-card img {
   width: 60%;
   border-radius: 0.1em;
@@ -52,6 +58,7 @@
 .view-movie-description-btn {
   color: white;
   border: none;
+  margin-top: 1em;
   border-radius: 0.5em;
   padding: 0.5em;
   background-color: #f84464 !important;
@@ -132,8 +139,8 @@
 }
 
 /* For FOLD Devices */
-@media screen and (max-width: 350px){
-  .movie-card{
+@media screen and (max-width: 350px) {
+  .movie-card {
     font-size: x-small;
   }
   .movie-card button {

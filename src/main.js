@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import App from './App.vue'
 import { BootstrapVue } from 'bootstrap-vue'
-// import VueCarousel from 'vue-carousel';
+
 
 import router from './router/index'
 import store from "@/store";
@@ -20,17 +20,16 @@ Vue.filter('durationFilter', (durationInMinutes)=>{
       return roundedHours.toString() + 'hr';
     }else{
       const result =  (roundedHours).toString() + 'hr ' +  (minutes).toString() + 'm';
-      console.log(result);
       return result;
     }
     
 })
 Vue.filter('filterGenre', (genre)=>{
-    if(genre.length > 6 ){
-        return genre.substring(0,6) + '+';
+    if(genre.length > 7 ){
+        return genre.substring(0,7) + '+';
     }
     else{
-      return genre.substring(0,6);
+      return genre.substring(0,7);
     }
     
 })

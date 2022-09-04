@@ -1,9 +1,23 @@
 import {getAllMovies, getMovieByMovieId, searchMovieByName} from '@/service/MovieService.js'
 
+const countDays = (startDate, endDate)=>{
+    const date = new Date(startDate.getTime());
+
+    const dates = [];
+
+    while(date <= endDate){
+        dates.push(new Date(date));
+        date.setDate(date.getDate() + 1);
+    }
+
+    return dates.length;
+}
+
 export default {
     state: {
         movies: [],
         movie: {}, //current Movie when descp component is viewed.
+        noOfDays: 0,
         filteredMovieList: []
     },
     getters: {
@@ -15,6 +29,9 @@ export default {
         },
         getFilteredMovieList(state){
             return state.filteredMovieList;
+        },
+        getNoOfDays(state){
+            return state.noOfDays;
         }
     },
     mutations:{
@@ -26,6 +43,9 @@ export default {
         },
         setFilteredMovieList(state, newFilteredList){
             state.filteredMovieList = newFilteredList;
+        },
+        setNoOfDays(state, newNoOfDays){
+            state.noOfDays = newNoOfDays;
         }
     },
     actions:{
@@ -46,6 +66,9 @@ export default {
                 success: ({data})=>{
                     commit('setSpecificMovie', data);
                     console.log(data);
+
+                    //Logic to set no of days based on startDate and endDate:
+                    commit('setNoOfDays', countDays(new Date(data.startDate), new Date(data.endDate)));
                 },
                 error: (err)=>{
                     commit('setSpecificMovie', {});

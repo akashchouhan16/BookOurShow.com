@@ -1,17 +1,16 @@
+import { mapGetters } from "vuex";
+
 export default {
     name: 'SeatBookingComponent',
     data(){
         return {
-            movie: {
-                name: null,
-                duration: null,
-                genre: null,
-                rating: null,
-                startDate: null,
-                endDate: null
-            },
             seatNumbers: []
         }
+    },
+    computed:{
+        ...mapGetters({
+            movie: 'getSpecificMovie'
+        })
     },
     methods:{
         setSeats(seat){

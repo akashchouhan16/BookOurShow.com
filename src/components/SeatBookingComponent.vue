@@ -3,14 +3,14 @@
     <div class="booking-banner">
       <div class="movie-details-main">
         <div class="title">
-          {{ movie.name ? movie.name : "Liger 2D - movie" }}
+          {{ movie.name ? movie.name : "Liger 2D" }} 2D - Movie
         </div>
         <div class="movie-details">
           <div class="movie-genre">
             {{ movie.genre ? movie.genre : "Drama" }}
           </div>
           <div class="movie-duration">
-            {{ movie.duration ? movie.duration : "2h 10m" }}
+            {{ movie.duration | durationFilter }}
           </div>
           <div class="movie-rating">
             {{ movie.rating ? movie.rating : "U/A" }}
@@ -35,9 +35,13 @@
       <div class="seat-booking-title">Confirm Your Seat!</div>
       <div class="movie-hall-screen">Screen</div>
       <div class="movie-hall">
+        <div class="movie-hall-legend">
+          Seat 1-30: Normal, Seat 31-70: Executive, Seat 71-100: Premium
+        </div>
+
         <div class="seats-row" v-for="(seat, indexi) in 10" :key="indexi">
           <div class="seats-col" v-for="(seat, indexj) in 10" :key="indexj">
-            <span class="seat-number">{{ (indexi + 1) * (indexj + 1) }}</span>
+            <span class="seat-number">{{ indexi * 10 + indexj + 1 }}</span>
             <input
               :disabled="false"
               type="checkbox"
@@ -62,7 +66,7 @@
   padding: 0.1em;
 }
 .book-ticket-btn {
-  margin: .8em 1em;
+  margin: 0.8em 1em;
   padding: 0.5em 1em;
   background-color: #f84464 !important;
   border: none;
@@ -186,8 +190,8 @@
 .seating-body {
   border-radius: 0.5em;
   background-color: rgb(235, 235, 235);
-  margin: 1.5em 0.5em;
-  padding: 0.3em;
+  margin: 0.5em 0.5em;
+  padding: 0.5em .3em;
   height: 65vh;
   width: 90vw;
   display: flex;
@@ -231,6 +235,19 @@
   background-color: white;
   border-radius: 1em;
 }
+.movie-hall-legend {
+  font-size: xx-small;
+  color: black;
+  font-weight: bold;
+  padding: 1em;
+  margin-bottom: 1em;
+  border-radius: 1em;
+  background-color: whitesmoke;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
 /* Media Queries */
 @media screen and (max-width: 900px) {
@@ -260,6 +277,22 @@
   }
   .secondary-slot {
     font-size: xx-small !important;
+  }
+  .seating-body {
+    border-radius: 0.5em;
+    background-color: rgb(235, 235, 235);
+    margin: 1.5em 0.5em;
+    padding: 0.5em 0.5em;
+    height: 95vh;
+    width: 90vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: scroll;
+    flex-wrap: nowrap;
+    align-content: center;
+    font-size: small;
+    justify-content: flex-start;
   }
 }
 </style>
