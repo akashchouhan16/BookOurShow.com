@@ -3,13 +3,16 @@
     <!-- <img :src="require(`@/assets/movie1.avif`)" alt="Image" /> -->
     <img :src="movie.imageUrl" alt="Image">
     <p class="movie-card-info">
-        {{movie.name? movie.name : "Thiruchitrambalam"}} <br /><span class="movie-rating">4.5/5⭐</span
+        {{movie.name? movie.name : "Thiruchitrambalam"}} <br /><span class="movie-rating">4.5/5⭐ </span
       ><span class="movie-id"> {{ movie.duration | durationFilter }} | {{movie.genre | filterGenre }} </span>
     </p>
 
     <button class="view-movie-description-btn" @click="openMovieDescription()">
        View Movie
     </button>
+    <!-- <div class="no-data" v-if="movie.length">
+      No Data :(
+    </div> -->
   </div>
 </template>
 
@@ -18,6 +21,7 @@
 
 
 <style scoped>
+
 
 .movie-rating {
   font-size: small;

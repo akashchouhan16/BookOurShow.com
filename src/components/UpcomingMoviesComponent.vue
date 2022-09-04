@@ -15,19 +15,19 @@
       </div>
     </div>
     <div class="upcoming-movies-list">
-      <p class="movie-list-tag-1">New Releases</p>
+      <p class="movie-list-tag-1">Search For Your Favourite Movie!</p>
       <div class="grid-container">
         <MovieCardComponent
-          v-for="(movie, index) in 5"
-          :key="index"
+          v-for="(movie, index) in filteredMovies"
+          :key="index" :movie="movie"
         ></MovieCardComponent>
       </div>
 
       <p class="movie-list-tag-2">Upcoming Movies</p>
       <div class="grid-container">
         <MovieCardComponent
-          v-for="(movie, index) in 4"
-          :key="index"
+          v-for="(movie, index) in movies"
+          :key="index" :movie="movie"
         ></MovieCardComponent>
       </div>
     </div>

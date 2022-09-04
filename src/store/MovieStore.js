@@ -1,9 +1,10 @@
-import {getAllMovies, getMovieByMovieId} from '@/service/MovieService.js'
+import {getAllMovies, getMovieByMovieId, searchMovieByName} from '@/service/MovieService.js'
 
 export default {
     state: {
         movies: [],
-        movie: {} //current Movie when descp component is viewed.
+        movie: {}, //current Movie when descp component is viewed.
+        filteredMovieList: []
     },
     getters: {
         getAllMovies(state){
@@ -11,6 +12,9 @@ export default {
         },
         getSpecificMovie(state){
             return state.movie;
+        },
+        getFilteredMovieList(state){
+            return state.filteredMovieList;
         }
     },
     mutations:{
@@ -19,6 +23,9 @@ export default {
         },
         setSpecificMovie(state, newMovie){
             state.movie = newMovie;
+        },
+        setFilteredMovieList(state, newFilteredList){
+            state.filteredMovieList = newFilteredList;
         }
     },
     actions:{
@@ -45,6 +52,18 @@ export default {
                     console.warn(err);
                 },
                 movieId
+            })
+        },
+        SEARCH_MOVIE_BY_NAME({commit}, movieName){
+            searchMovieByName({
+                success : (data)=>{
+                    commit('setFilteredMovieList', data);
+                },
+                error: (err)=>{
+                    commit('setFilteredMovieList', []);
+                    console.warn(err);
+                },
+                movieName
             })
         }
     }
