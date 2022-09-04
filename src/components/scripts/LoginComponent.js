@@ -28,7 +28,14 @@ export default {
             }
             else {
                 this.nullflag = false;
-                this.$store.dispatch("LOGIN_USER", this.user);
+                this.$store.dispatch("LOGIN_USER", {
+                    success: ()=>{
+                        this.$router.push({path: '/'});
+                    },
+                    user: this.user
+                });
+                // location.reload();
+                // this.$router.push({path: '/'});
             }
             
         },

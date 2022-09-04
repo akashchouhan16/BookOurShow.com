@@ -1,18 +1,25 @@
-import {getUserBookingDetails} from '@/service/UserBookingComponentService.js'
+import {getUserBookingDetails, bookTicketforUser} from '@/service/UserBookingComponentService.js'
 export default{
     state:{
-        userdetails:[]
+        userdetails:[],
+        bookingStatus: {}
     },
     getters:{
         getUserBookingDetails(state)
         {
             return state.userdetails;
+        },
+        getBookingStatus(state){
+            return state.bookingStatus;
         }
     },
     mutations:{
         setUserBookingDetails(state,users)
         {
             state.userdetails = users
+        },
+        setBookingStatus(state, newStatus){
+            state.bookingStatus = newStatus;
         }
     },
     actions:{
@@ -29,6 +36,20 @@ export default{
                     // commit('setMovies', []);
                 },
                 userid
+            })
+        },
+
+        BOOK_TICKET_FOR_USER({commit}, ticketObject){
+            bookTicketforUser({
+                success: (data)=>{
+                    console.log(data);
+                    commit('setBookingStatus', data);
+                },
+                error: (err)=>{
+                    console.warn(err);
+                    commit('setBookingStatus', {});
+                },
+                ticketObject
             })
         }
     }

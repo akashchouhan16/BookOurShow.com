@@ -19,10 +19,10 @@
     </div>
 
     <div class="login-div">
-      <div class="logged-in-user" v-if="checkLoggedIn()">
+      <div class="logged-in-user" v-if="isLoggedIn">
         Logged in as {{ username }}
       </div>
-      <button @click="logIn()" class="login-btn" v-if="!checkLoggedIn()">
+      <button @click="logIn()" class="login-btn" v-if="!isLoggedIn">
         Login
       </button>
       <button @click="logOut()" class="login-btn" v-else>Logout</button>

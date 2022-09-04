@@ -16,6 +16,7 @@ import NotFoundComponent from "@/components/NotFoundComponent";
 import AdminBookingHistoryComponent from "@/components/AdminBookingHistoryComponent.vue";
 import SeatBookingComponent from "@/components/SeatBookingComponent.vue";
 import UpdateMovieComponent from "../components/UpdateMovieComponent.vue";
+import ConfirmBookingComponent from "@/components/ConfirmBookingComponent.vue";
 
 //Functions
 const userBookingCheck = (to, from, next) => {
@@ -76,6 +77,24 @@ const beforeUpdateMovie = (to, from, next) => {
   }
 }
 
+const checkForBookingSteps = (to, form, next)=>{
+  const role = localStorage.getItem('role');
+  const userId = localStorage.getItem('userId');
+  const date  = localStorage.getItem('date');
+  const slot = localStorage.getItem('slot');
+  const username = localStorage.getItem('name');
+
+  if(role === undefined || role === null || role !== 'user'){
+    next({path: '/login'})
+  }else if((userId === undefined || userId === null || userId === '') ||
+           (date === undefined || date === null || date === '') ||
+           (slot === undefined || slot === null || slot === '') || 
+           (username === undefined || username === null || username === '')){
+            next({path: '/login'})
+  }else
+    next();
+}
+
 const routes = [
   { path: "/", component: HomeComponent },
   { path: "/addmovie", component: AddMovieComponent, beforeEnter: beforeUpdateMovie }, //existing component needs a major fix to incorporate slots and validations
@@ -101,6 +120,11 @@ const routes = [
     path: '/booking/seats',
     component: SeatBookingComponent,
     beforeEnter: beforeBookTickets
+  },
+  {
+    path: '/booking/confirmation',
+    component: ConfirmBookingComponent,
+    beforeEnter: checkForBookingSteps
   },
   { path: "/bookedDetails", component: BookedDetailsComponent }, //
   { path: "/login", component: LoginComponent }, //admin or user loggin (SSO) while updating movies or while user books a ticket.
