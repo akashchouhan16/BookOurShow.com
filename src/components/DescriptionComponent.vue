@@ -13,28 +13,35 @@
       </div>
       <div class="movie-meta">
         <!-- <h1>{{ movie.name ? movie.name : "Liger (New Release)" }}</h1> -->
-        <h1>{{movie.name}}</h1>
+        <h1>{{ movie.name }}</h1>
         <div class="movie-meta-additional">
-          <p class="movie-meta-durations">{{ movie.duration | durationFilter}}</p>
+          <p class="movie-meta-durations">
+            {{ movie.duration | durationFilter }}
+          </p>
           <p class="movie-meta-genre">{{ movie.genre | filterGenre }}</p>
-          <p class="movie-meta-rating">{{movie.rating? movie.rating : 'U/A'}}</p>
+          <p class="movie-meta-rating">
+            {{ movie.rating ? movie.rating : "U/A" }}
+          </p>
         </div>
         <button class="book-ticket" @click="bookTickets()">Book Tickets</button>
       </div>
     </div>
     <div class="description-body">
       <h3 class="description-body-header">About the movie</h3>
-      <p class="description-body-para"> 
+      <p class="description-body-para">
         <!-- Data must come from Backend using GET: /movies/:movieId -->
-        {{movie.description}}       
+        {{ movie.description }}
       </p>
       <p class="description-body-additional-para">
-        Copyright BookOurShow 2022 &copy;<br>
+        Copyright BookOurShow 2022 &copy;<br />
         <!-- Static Data for Demo purpose -->
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore enim,
-        beatae et quisquam ipsam, quos at similique veniam nam accusantium rem excepturi veritatis,
-        odio illo. Mollitia est odit voluptas ratione.
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab, quibusdam quisquam optio laborum, nihil distinctio expedita officia voluptate dolore, suscipit doloremque saepe iste! Aliquid nemo iusto rerum minus quibusdam. Assumenda.
+        beatae et quisquam ipsam, quos at similique veniam nam accusantium rem
+        excepturi veritatis, odio illo. Mollitia est odit voluptas ratione.
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab, quibusdam
+        quisquam optio laborum, nihil distinctio expedita officia voluptate
+        dolore, suscipit doloremque saepe iste! Aliquid nemo iusto rerum minus
+        quibusdam. Assumenda.
       </p>
     </div>
   </div>
@@ -57,6 +64,10 @@
   width: 100%;
   display: flex;
   background-color: black;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-content: center;
+  justify-content: space-around;
 }
 
 .banner iframe {
@@ -67,6 +78,7 @@
 }
 
 .banner .movie-meta {
+  width: 60%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -82,7 +94,7 @@
 .banner .movie-meta-additional {
   margin-top: 0em;
   padding: 0.5em;
-  width: 100%;
+  width: 65%;
   border-radius: 0.3em;
   color: white !important;
   display: flex;
@@ -128,7 +140,7 @@
 
 .description-body .description-body-para {
   font-size: medium;
-  margin: .5em 1em;
+  margin: 0.5em 1em;
   padding: 1em;
   width: 90vw;
   text-align: justify;
@@ -136,10 +148,10 @@
   border-radius: 1em;
   overflow: scroll;
 }
-.description-body .description-body-additional-para{
+.description-body .description-body-additional-para {
   font-size: small;
   color: gray;
-  margin: .5em 1em;
+  margin: 0.5em 1em;
   padding: 1em;
   width: 95%;
   text-align: justify;
@@ -149,7 +161,7 @@
   border-radius: 0.5em;
   background-color: #f84464 !important;
   color: white;
-  padding: 0.3em 1em;
+  padding: 0.5em 1em;
   transition: all 0.2s;
 }
 .book-ticket:hover {
@@ -207,7 +219,8 @@
     font-size: x-small !important;
   }
 
-  .description-body .description-body-para, .description-body .description-body-additional-para{
+  .description-body .description-body-para,
+  .description-body .description-body-additional-para {
     font-size: small !important;
   }
 }
