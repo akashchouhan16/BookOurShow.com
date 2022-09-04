@@ -200,7 +200,7 @@
     font-size: xx-small !important;
   }
   .brand {
-    font-size: small;
+    font-size: x-small !important;
   }
   .nav-bar {
     overflow: hidden;
@@ -226,6 +226,9 @@
     align-content: center;
     justify-content: center;
     align-items: center;
+  }
+  .logged-in-user{
+    display: none;
   }
   .login-btn {
     margin: 0.1em 0.3em;

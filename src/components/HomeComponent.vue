@@ -7,7 +7,8 @@
       <div class="grid-container">
         <MovieCardComponent
           v-for="(movie, index) in movies"
-          :key="index" :movie="movie"
+          :key="index"
+          :movie="movie"
         ></MovieCardComponent>
       </div>
     </div>
@@ -17,8 +18,8 @@
 <script src="./scripts/HomeComponent.js"></script>
 
 <style scoped>
-.highlighted{
-  color: #F84464 !important;
+.highlighted {
+  color: #f84464 !important;
 }
 .home-container {
   height: 150vh;
@@ -33,7 +34,6 @@
   align-content: center;
 }
 .home-banner {
-  
   background-color: #151928;
   color: white;
   border-radius: 0.5em;
@@ -77,5 +77,15 @@
   .grid-container {
     grid-template-columns: 2fr;
   }
+  .view-movie-description-btn {
+    font-size: small;
+    margin-top: 1em;
+    width: 18vw;
+    height: 5vh !important;
+  }
+  .movie-card img {
+    width: 40vw !important;
+  }
 }
+
 </style>

@@ -1,14 +1,18 @@
 <template>
-    <div class="movie-card">
+  <div class="movie-card">
     <!-- <img :src="require(`@/assets/movie1.avif`)" alt="Image" /> -->
-    <img :src="movie.imageUrl" alt="Image">
+    <img :src="movie.imageUrl" alt="Image" />
     <p class="movie-card-info">
-        {{movie.name? movie.name : "Thiruchitrambalam"}} <br /><span class="movie-rating">4.5/5⭐ </span
-      ><span class="movie-id"> {{ movie.duration | durationFilter }} | {{movie.genre | filterGenre }} </span>
+      {{ movie.name ? movie.name : "Thiruchitrambalam" }} <br /><span
+        class="movie-rating"
+        >4.5/5⭐ </span
+      ><span class="movie-id">
+        {{ movie.duration | durationFilter }} | {{ movie.genre | filterGenre }}
+      </span>
     </p>
 
     <button class="view-movie-description-btn" @click="openMovieDescription()">
-       View Movie
+      View Movie
     </button>
     <!-- <div class="no-data" v-if="movie.length">
       No Data :(
@@ -21,20 +25,18 @@
 
 
 <style scoped>
-
-
 .movie-rating {
   font-size: small;
   font-weight: bold;
   color: gray;
   margin: 0.5em;
 }
-.movie-rating:hover{
-    color: black;
+.movie-rating:hover {
+  color: black;
 }
-.movie-id{
+.movie-id {
   font-weight: bold;
-  color: #F84464;
+  color: #f84464;
 }
 .movie-id:hover {
   text-decoration: underline;
@@ -42,21 +44,21 @@
 }
 
 .movie-card img {
-  max-width: 60%;
-  border-radius: .1em;
+  width: 60%;
+  border-radius: 0.1em;
   border: 1px solid #bababa;
   margin-bottom: 0.4em;
 }
 .view-movie-description-btn {
   color: white;
   border: none;
-  border-radius: .5em;
-  padding: .5em;
-  background-color: #F84464 !important;
+  border-radius: 0.5em;
+  padding: 0.5em;
+  background-color: #f84464 !important;
 }
-.view-movie-description-btn:hover{
+.view-movie-description-btn:hover {
   cursor: pointer;
-  background-color: #D52344 !important;
+  background-color: #d52344 !important;
 }
 
 @media screen and (min-width: 950px) {
@@ -77,7 +79,7 @@
   flex-direction: column;
   flex-wrap: nowrap;
   align-content: center;
-  justify-content: flex-end;
+  justify-content: center;
   align-items: center;
 }
 .movie-card:hover {
@@ -86,14 +88,13 @@
   cursor: pointer;
 }
 
-.movie-card-info{
+.movie-card-info {
   font-size: small;
 }
 @media screen and (max-width: 950px) {
   img {
     width: 100%;
   }
-
 }
 @media screen and (min-width: 700px) {
   div.container {
@@ -101,17 +102,18 @@
   }
 }
 @media screen and (max-width: 700px) {
-
   img {
     width: 18vw;
   }
   .movie-card {
-    height: max-content;
+    /* height: max-content; */
+    height: 40vh;
   }
   .movie-card button {
+    margin-top: 1em;
     font-size: small;
-    width: 35vw;
-    height: 6vh !important;
+    width: 30vw;
+    height: 5vh !important;
   }
   .sidebar {
     font-size: 5px !important;
@@ -123,8 +125,20 @@
   }
   .movie-card button {
     font-size: small;
-    width: 40vw;
-    height: 5vh !important;
+    width: 22vw;
+    height: 4vh !important;
+    margin-top: 1em;
+  }
+}
+
+/* For FOLD Devices */
+@media screen and (max-width: 350px){
+  .movie-card{
+    font-size: x-small;
+  }
+  .movie-card button {
+    font-size: x-small !important;
+    width: 30vw;
   }
 }
 </style>
