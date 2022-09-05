@@ -3,6 +3,7 @@ export default {
   state: {
     user: [],
     isLoggedIn: false,
+    isAdmin: false
   },
   getters: {
     getuser(state) {
@@ -11,6 +12,9 @@ export default {
     getIsLoggedIn(state) {
       return state.isLoggedIn;
     },
+    getAdminStatus(state){
+      return state.isAdmin;
+    }
   },
   mutations: {
     setuser(state, value) {
@@ -20,6 +24,9 @@ export default {
     setIsLoggedIn(state, status) {
       state.isLoggedIn = status;
     },
+    setAdminStatus(state, status){
+      state.isAdmin = status
+    }
   },
   actions: {
     LOGIN_USER({ commit }, { success, user }) {
@@ -35,6 +42,9 @@ export default {
             localStorage.setItem("userId", data.userId);
             localStorage.setItem("name", data.name);
             localStorage.setItem('loggedIn', true);
+            if(data.role === 'admin'){
+              commit('setAdminStatus', true);
+            }
             success();
           }
         },
@@ -45,6 +55,7 @@ export default {
           localStorage.removeItem("userId");
           localStorage.removeItem("name");
           localStorage.removeItem('loggedIn');
+          commit('setAdminStatus', false);
         },
         user,
       });

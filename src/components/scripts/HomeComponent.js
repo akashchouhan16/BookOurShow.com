@@ -4,17 +4,21 @@ import MovieCardComponent from "@/components/MovieCardComponent";
 export default {
   name: "HomeComponent",
   data() {
-    return {};
+    return {
+    };
   },
   components: {
     MovieCardComponent,
   },
+  created() {
+    this.$store.dispatch("GET_ALL_MOVIES");
+  },
   computed: {
     ...mapGetters({
       movies: "getAllMovies",
+      isAdmin: 'getAdminStatus'
     }),
   },
-
   methods: {
     viewdetails(id, name) {
       console.log("movielist", id);
@@ -23,9 +27,12 @@ export default {
         query: { movieid: id, moviename: name },
       });
     },
-  },
-
-  created() {
-    this.$store.dispatch("GET_ALL_MOVIES");
-  },
+    addMovie() {
+        this.$router.push({path: '/addmovie'});
+    },
+    isCurrentRoleAdmin(){
+        const role = localStorage.getItem('role');
+        return (role === 'admin');
+    }
+  }
 };

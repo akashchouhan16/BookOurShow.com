@@ -2,12 +2,15 @@
   <div class="home-container">
     <div class="home-banner">
       <h2>Book<span class="highlighted">Our</span>Show.com</h2>
+      <button class="add-movie-btn" @click="addMovie()" v-if="isCurrentRoleAdmin() || isAdmin">Add+</button>
     </div>
+
     <div class="movie-container">
       <div class="grid-container">
         <MovieCardComponent
           v-for="(movie, index) in movies"
-          :key="index" :movie="movie"
+          :key="index"
+          :movie="movie"
         ></MovieCardComponent>
       </div>
     </div>
@@ -17,20 +20,29 @@
 <script src="./scripts/HomeComponent.js"></script>
 
 <style scoped>
+.add-movie-btn {
+  color: white;
+  border: none;
+  border-radius: 0.5em;
+  padding: 0.5em;
+  margin: .5em;
+  background-color: #f84464;
+  float: right;
+}
 .view-movie-description-btn {
   color: white;
   border: none;
-  border-radius: .5em;
-  padding: .5em;
-  background-color: #F84464 !important;
-  float:right;
+  border-radius: 0.5em;
+  padding: 0.5em;
+  background-color: #f84464 !important;
+  float: right;
 }
-.view-movie-description-btn:hover{
+.view-movie-description-btn:hover {
   cursor: pointer;
-  background-color: #D52344 !important;
+  background-color: #d52344 !important;
 }
-.highlighted{
-  color: #F84464 !important;
+.highlighted {
+  color: #f84464 !important;
 }
 .home-container {
   height: 150vh;
@@ -45,7 +57,6 @@
   align-content: center;
 }
 .home-banner {
-  
   background-color: #151928;
   color: white;
   border-radius: 0.5em;
@@ -54,8 +65,11 @@
   margin-top: 2em !important;
   padding: 1em;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
+  flex-wrap: nowrap;
+  align-content: center;
 }
 .home-banner img {
   max-width: 50vw;

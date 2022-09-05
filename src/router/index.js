@@ -69,36 +69,53 @@ const beforeUpdateMovie = (to, from, next) => {
   if (
     role === null ||
     role === undefined ||
-    role.toLocaleLowerCase() === 'user') {
+    role.toLocaleLowerCase() === "user"
+  ) {
     next({ path: "/*" });
-  }
-  else if (role == "admin") {
+  } else if (role == "admin") {
     next();
   }
-}
+};
 
-const checkForBookingSteps = (to, form, next)=>{
-  const role = localStorage.getItem('role');
-  const userId = localStorage.getItem('userId');
-  const date  = localStorage.getItem('date');
-  const slot = localStorage.getItem('slot');
-  const username = localStorage.getItem('name');
+const checkForBookingSteps = (to, form, next) => {
+  const role = localStorage.getItem("role");
+  const userId = localStorage.getItem("userId");
+  const date = localStorage.getItem("date");
+  const slot = localStorage.getItem("slot");
+  const username = localStorage.getItem("name");
 
-  if(role === undefined || role === null || role !== 'user'){
-    next({path: '/login'})
-  }else if((userId === undefined || userId === null || userId === '') ||
-           (date === undefined || date === null || date === '') ||
-           (slot === undefined || slot === null || slot === '') || 
-           (username === undefined || username === null || username === '')){
-            next({path: '/login'})
-  }else
-    next();
-}
+  if (role === undefined || role === null || role !== "user") {
+    next({ path: "/login" });
+  } else if (
+    userId === undefined ||
+    userId === null ||
+    userId === "" ||
+    date === undefined ||
+    date === null ||
+    date === "" ||
+    slot === undefined ||
+    slot === null ||
+    slot === "" ||
+    username === undefined ||
+    username === null ||
+    username === ""
+  ) {
+    next({ path: "/login" });
+  } else next();
+};
 
 const routes = [
   { path: "/", component: HomeComponent },
-  { path: "/addmovie", component: AddMovieComponent, beforeEnter: beforeUpdateMovie }, //existing component needs a major fix to incorporate slots and validations
-  { path: "/updatemovie", component: UpdateMovieComponent, beforeEnter: beforeUpdateMovie }, //existing component needs a major fix to incorporate slots and validations
+  {
+    path: "/addmovie",
+    component: AddMovieComponent,
+    beforeEnter: beforeUpdateMovie,
+  }, //existing component needs a major fix to incorporate slots and validations
+  {
+    path: "/updatemovie",
+    component: UpdateMovieComponent,
+    beforeEnter: beforeUpdateMovie,
+  }, //existing component needs a major fix to incorporate slots and validations
   {
     path: "/userbookings",
     component: UserBookings,
@@ -114,20 +131,31 @@ const routes = [
   {
     path: "/booking",
     component: BookingComponent,
-    beforeEnter: beforeBookTickets
+    beforeEnter: beforeBookTickets,
   },
   {
-    path: '/booking/seats',
+    path: "/booking/seats",
     component: SeatBookingComponent,
-    beforeEnter: beforeBookTickets
+    beforeEnter: beforeBookTickets,
   },
   {
-    path: '/booking/confirmation',
+    path: "/booking/confirmation",
     component: ConfirmBookingComponent,
-    beforeEnter: checkForBookingSteps
+    beforeEnter: checkForBookingSteps,
   },
   { path: "/bookedDetails", component: BookedDetailsComponent }, //
-  { path: "/login", component: LoginComponent }, //admin or user loggin (SSO) while updating movies or while user books a ticket.
+  {
+    path: "/login",
+    component: LoginComponent,
+    beforeEnter: (to, from, next) => {
+      const loggedIn = localStorage.getItem("loggedIn");
+      if (loggedIn !== null && loggedIn !== undefined && loggedIn === "true") {
+        next({ path: "/" });
+      } else {
+        next();
+      }
+    },
+  }, //admin or user loggin (SSO) while updating movies or while user books a ticket.
   { path: "/delete", component: DeleteComponent }, //instead, we can have an update movie component
   { path: "/register", component: RegisterComponent }, // register new user if user doesn't have credentials
   { path: "/notfound", component: NotFoundComponent },

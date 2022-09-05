@@ -19,9 +19,9 @@
     </div>
 
     <div class="login-div">
-      <div class="logged-in-user" v-if="isUserLoggedIn() || isLoggedIn">
+      <!-- <div class="logged-in-user" v-if="isUserLoggedIn() || isLoggedIn">
         Logged in
-      </div>
+      </div> -->
       <button @click="logIn()" class="login-btn" v-if="!isUserLoggedIn() && !isLoggedIn">
         Login
       </button>
