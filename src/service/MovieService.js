@@ -38,7 +38,7 @@ export const searchMovieByName = ({ success, error, movieName}) =>{
 }
 
 export const getMovieHallStatus = ({success, error, showDetails}) =>{
-  axios.put(MOVIE_HALL_STATUS_API, showDetails)
+  axios.post(MOVIE_HALL_STATUS_API, showDetails)
       .then(({data})=>{
           success && success(data);
       })

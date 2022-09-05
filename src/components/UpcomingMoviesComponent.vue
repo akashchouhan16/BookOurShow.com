@@ -10,16 +10,18 @@
           class="search-bar"
           placeholder="search"
           v-model="searchKey"
+          @keyup.enter="searchMovie()"
         />
         <button class="search-btn" @click="searchMovie()">Search</button>
       </div>
     </div>
     <div class="upcoming-movies-list">
-      <p class="movie-list-tag-1">Search For Your Favourite Movie!</p>
-      <div class="grid-container">
+      <p class="movie-list-tag-1" v-if="filteredMovies.length !==0">Your Search Results</p>
+      <div class="grid-container" v-if="filteredMovies.length !==0">
         <MovieCardComponent
           v-for="(movie, index) in filteredMovies"
-          :key="index" :movie="movie"
+          :key="index"
+          :movie="movie"
         ></MovieCardComponent>
       </div>
 
@@ -27,7 +29,8 @@
       <div class="grid-container">
         <MovieCardComponent
           v-for="(movie, index) in movies"
-          :key="index" :movie="movie"
+          :key="index"
+          :movie="movie"
         ></MovieCardComponent>
       </div>
     </div>
@@ -140,7 +143,7 @@
   .grid-container {
     grid-template-columns: 2fr;
   }
-  .search-div{
+  .search-div {
     margin: 0.3em;
     width: 44vw;
     display: flex;
@@ -157,29 +160,29 @@
   }
 }
 
-@media screen and (max-width: 450px){
-    .upcoming-movies-banner-title{
-      font-size: large;
-    }
-    .search-div{
-      width: 55vw;
-      height: 3vh;
-    }
-    .search-bar {
-      height: 2vh !important;
-    }
-    .search-btn{
-      height: 2.5vh !important;
-      padding: .3em .3em !important;
-    }
+@media screen and (max-width: 450px) {
+  .upcoming-movies-banner-title {
+    font-size: large;
+  }
+  .search-div {
+    width: 55vw;
+    height: 3.5vh;
+  }
+  .search-bar {
+    height: 3vh !important;
+  }
+  .search-btn {
+    height: 3vh !important;
+    padding: 0.3em 0.3em !important;
+  }
 }
 
-@media screen  and (max-width: 300px){
-  .search-div{
+@media screen and (max-width: 300px) {
+  .search-div {
     width: 65vw;
     height: 3vh;
   }
-  .search-bar{
+  .search-bar {
     height: 2.5vh !important;
     width: 43vw !important;
   }
@@ -187,10 +190,9 @@
     height: 2.7vh !important;
     padding: 0em 0.3em !important;
   }
-  .upcoming-movies-banner-title{
+  .upcoming-movies-banner-title {
     font-size: small;
     text-align: center;
   }
-
 }
 </style>
