@@ -1,15 +1,16 @@
 <template>
   <div class="description-container">
     <div class="banner">
-      <div class="video">
-        <iframe
+      <div class="thumbnail">
+        <img :src="movie.imageUrl" :alt="movie.name" />
+        <!-- <iframe
           src="https://www.youtube.com/embed/ehIWwKu2rw8"
           title="Hotstar Specials Dahan | Official Trailer | 16th September | DisneyPlus Hotstar"
           frameborder="0"
           allow="accelerometer; 
           autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           allowfullscreen
-        ></iframe>
+        ></iframe> -->
       </div>
       <div class="movie-meta">
         <!-- <h1>{{ movie.name ? movie.name : "Liger (New Release)" }}</h1> -->
@@ -63,16 +64,22 @@
   height: 50vh;
   width: 100%;
   display: flex;
-  background-color: black;
+  /* background-color: black; */
+  background-image: url("@/assets/description-banner-bg.jpg");
+  background-repeat: no-repeat;
   flex-direction: row;
   flex-wrap: nowrap;
   align-content: center;
   justify-content: space-around;
 }
-
-.banner iframe {
-  height: 90%;
-  width: 60%;
+.thumbnail {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.banner img {
+  height: 80%;
+  width: 90%;
   border-radius: 1em;
   margin: 1em 3em;
 }
@@ -129,7 +136,7 @@
   border-radius: 1em;
   background-color: whitesmoke;
   width: 95%;
-  height: 40vh;
+  height: 35vh;
   overflow: scroll;
 }
 
@@ -171,9 +178,6 @@
 .img-fluid {
   margin-left: 20%;
 }
-.banner img {
-  height: 200px;
-}
 
 .button1 {
   margin-left: 90px;
@@ -193,11 +197,31 @@
   margin-left: 18px;
 }
 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 700px) {
   .banner .movie-meta-additional {
     margin-top: 0em;
-    padding: 2.5em;
-    width: 128%;
+    padding: 0.5em;
+    width: 90%;
+    border-radius: 0.3em;
+    color: white !important;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-content: center;
+    justify-content: center;
+    align-items: flex-start;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .banner{
+    height: 75vh;
+    width: 100%;
+  }
+  .banner .movie-meta-additional {
+    margin-top: 0em;
+    padding: 0.5em;
+    width: 100%;
     border-radius: 0.3em;
     color: white !important;
     display: flex;
@@ -223,5 +247,30 @@
   .description-body .description-body-additional-para {
     font-size: small !important;
   }
+}
+
+@media screen and (max-width: 450px){
+  .banner{
+    /* height: 50vh; */
+    /* width: 100%; */
+    display: flex;
+    background-image: url(http://localhost:8081/img/description-banner-bg.4a64f484.jpg);
+    background-repeat: no-repeat;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+  }
+  .banner img {
+    height: 61%;
+    width: 60%;
+    border-radius: 1em;
+    margin: 3em 2em 1em 2em;
+  }
+  .banner .movie-meta{
+    width: 90%;
+  }
+
 }
 </style>
