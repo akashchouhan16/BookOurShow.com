@@ -4,7 +4,7 @@
     <br /><br />
     <form class="register-form">
       <div class="error-message" role="alert" v-if="errorflag">
-        Check! all the fields are not filled
+        Please check all the fields! 
       </div>
       <div class="success-message" role="alert" v-if="successflag">
         Successfully added

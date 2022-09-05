@@ -18,48 +18,56 @@ export default {
   },
   methods: {
     registerUser() {
-      console.log(!this.CheckPassword(this.user.password))
-      console.log(this.phonenumber(this.user.phoneNumber))
-      console.log(this.CheckFirstLetterSpecial(this.user.name))
-      console.log((this.phonenumber(this.user.phoneNumber)) && (this.user.phoneNumber.length == 10))
-      console.log(this.CheckFirstLetterSpecial(this.user.name) && (this.user.name.length > 5))
-      if (this.user.name == "" || this.user.password == "" || this.user.phoneNumber == "") {
+      console.log(!this.CheckPassword(this.user.password));
+      console.log(this.phonenumber(this.user.phoneNumber));
+      console.log(this.CheckFirstLetterSpecial(this.user.name));
+      console.log(
+        this.phonenumber(this.user.phoneNumber) &&
+          this.user.phoneNumber.length == 10
+      );
+      console.log(
+        this.CheckFirstLetterSpecial(this.user.name) &&
+          this.user.name.length > 5
+      );
+      if (
+        this.user.name == "" ||
+        this.user.password == "" ||
+        this.user.phoneNumber == ""
+      ) {
         this.errorflag = true;
-        console.log(this.errorflag)
-      }
-      else {
+        console.log(this.errorflag);
+      } else {
         this.errorflag = false;
 
-        if ((this.CheckPassword(this.user.password)) && this.user.password.length >= 8) {
+        if (
+          this.CheckPassword(this.user.password) &&
+          this.user.password.length >= 8
+        ) {
           this.passworderrorflag = false;
-          this.errorflag = false;
-        }
-        else {
+        } else {
           console.log(this.user.password.length);
-          this.errorflag = true;
 
           this.passworderrorflag = true;
         }
-        if ((!this.phonenumber(this.user.phoneNumber)) && (this.user.phoneNumber.length == 10)) {
+        if ((!this.phonenumber(this.user.phoneNumber)) ||(this.user.phoneNumber.length < 10)||(this.user.phoneNumber.length > 10)||(this.user.phoneNumber < 0)
+        ) {
           this.phoneerrorflag = true;
-          this.errorflag = true;
-
-        }
-        else {
-          this.errorflag = false;
-
+        } else {
           this.phoneerrorflag = false;
-
         }
-        if ((this.CheckFirstLetterSpecial(this.user.name)) && (this.user.name.length > 3)) {
+        if (
+          this.CheckFirstLetterSpecial(this.user.name) &&
+          this.user.name.length > 3
+        ) {
           this.nameerrorflag = false;
-          this.errorflag = false;
-
-        }
-        else {
-          this.errorflag = true;
-
+        } else {
           this.nameerrorflag = true;
+        }
+        if (this.passworderrorflag == false &&this.nameerrorflag == false &&this.phoneerrorflag == false
+         ) {
+          this.errorflag = false;
+        } else {
+          this.errorflag = true;
         }
       }
       console.log(this.errorflag);
@@ -68,19 +76,21 @@ export default {
         adduserlist({
           success: (data) => {
             if (data.data == "Succesfully Register") {
-              alert(data.data);
+              // alert(data.data);
               this.$router.push({ path: "/login" });
+            } else {
+              this.errorflag = true;
             }
-            else { this.errorflag = true }
+            alert(data.data);
           },
           error: (err) => {
-            console.log("NOT VAILD")
-            console.log(err)
+            console.log("NOT VAILD");
+            console.log(err);
+            // alert(err.data);
           },
           payload: this.user,
         });
-      }
-      else {
+      } else {
         this.errorflag = true;
       }
     },
@@ -88,14 +98,14 @@ export default {
       this.errorflag = false;
       this.successflag = false;
       this.passworderrorflag = false;
-      this.nameerrorflag = false,
-        this.phoneerrorflag = false
+      (this.nameerrorflag = false), (this.phoneerrorflag = false);
       for (let field in this.user) {
         this.user[field] = null;
       }
     },
     CheckPassword(inputtxt) {
-      var decimal = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{8,15}$/;
+      var decimal =
+        /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{8,15}$/;
       console.log(decimal.test(inputtxt) + "cinsill");
       return decimal.test(inputtxt);
     },
@@ -104,9 +114,9 @@ export default {
       return phoneno.test(inputtxt);
     },
     CheckFirstLetterSpecial(inputtxt) {
-      var regex = /^[A-Za-z0-9 ]+$/
+      var regex = /^[A-Za-z0-9 ]+$/;
       // console.log(regex.test(inputtxt))
       return regex.test(inputtxt);
-    }
-  }
-}
+    },
+  },
+};

@@ -5,14 +5,14 @@
       <div class="invoice-header">Ticket Invoice</div>
       <div class="display-userId">
         <div class="userid-tag">UserId: </div>
-        <div class="userid-id"> {{userId}}</div>
+        <div class="userid-id"> {{userId | filterUserId }}</div>
       </div>
       <div class="display-movie">
         <div class="movie-tag">Movie: </div>
         <div class="movie-movie">{{movie.name}}</div>
       </div>
       <div class="display-name">
-        <div class="name-tag">User: </div>
+        <div class="name-tag">Name: </div>
         <div class="name-username">{{username}}</div>
       </div>
       <div class="display-ticket-meta">
@@ -37,10 +37,10 @@
         </div>
       </div>
       <!-- Outside meta -->
-      <div class="display-price">
+      <!-- <div class="display-price">
         <div class="price-tag">Subtotal: </div>
         <div class="price-price">Rs 890 /-</div>
-      </div>
+      </div> -->
       <div class="save-btn">
         <button class="save-ticket-invoice-btn" @click="saveTicket()">Save Ticket Invoice</button>
       </div>

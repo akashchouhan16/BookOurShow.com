@@ -13,6 +13,17 @@ const countDays = (startDate, endDate)=>{
     return dates.length;
 }
 
+function updateDateFormat(date){
+    //DD-MM-YY from -> YYYY-MM-DD to
+    let dd = date.substring(0,2);
+    let mm = date.substring(3,5);
+    let yy = date.substring(6);
+
+    const result = (yy + '-' + mm + '-' + dd);
+    console.warn(result);
+    return result;
+}
+
 export default {
     state: {
         movies: [],
@@ -114,13 +125,3 @@ export default {
 }
 
 
-function updateDateFormat(date){
-    //DD-MM-YY from -> YYYY-MM-DD to
-    let dd = date.substring(0,2);
-    let mm = date.substring(3,5);
-    let yy = date.substring(6);
-
-    const result = (yy + '-' + mm + '-' + dd);
-    console.warn(result);
-    return result;
-}

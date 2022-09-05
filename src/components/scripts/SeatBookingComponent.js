@@ -4,7 +4,8 @@ export default {
     name: 'SeatBookingComponent',
     data(){
         return {
-            seatNumbers: []
+            seatNumbers: [],
+            errorFlag: false
         }
     },
     computed:{
@@ -40,9 +41,18 @@ export default {
                 slot: localStorage.getItem('slot'),
                 seats: this.seatNumbers
             }
-            this.$store.dispatch('BOOK_TICKET_FOR_USER', ticketObject);
+
+            if(this.seatNumbers !== undefined && this.seatNumbers.length !== 0){
+                this.$store.dispatch('BOOK_TICKET_FOR_USER', ticketObject);
+                this.$router.push({path: '/booking/confirmation'});
+            }else{
+                this.errorFlag = true;
+                setTimeout(()=>{
+                    this.errorFlag = false;
+                },1500);
+            }
+                
             
-            this.$router.push({path: '/booking/confirmation'});
         }
     }
 }

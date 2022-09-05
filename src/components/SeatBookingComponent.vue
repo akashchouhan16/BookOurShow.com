@@ -32,7 +32,8 @@
       </div>
     </div>
     <div class="seating-body">
-      <div class="seat-booking-title">Confirm Your Seat!</div>
+      <div class="error-message" v-if="errorFlag">Please Select Seats!</div>
+      <div class="seat-booking-title" v-else>Confirm Your Seats!</div>
       <div class="movie-hall-screen">Screen</div>
       <div class="movie-hall">
         <div class="movie-hall-legend">
@@ -46,7 +47,7 @@
               :disabled="false"
               type="checkbox"
               :value="indexi + 1 * indexj + 1"
-              @click="setSeats((indexi * 10) + indexj + 1)"
+              @click="setSeats(indexi * 10 + indexj + 1)"
             />
           </div>
         </div>
@@ -60,6 +61,15 @@
 <script src="./scripts/SeatBookingComponent.js"></script>
 
 <style scoped>
+.error-message {
+  background-color: #d52344;
+  padding: 0.5em;
+  border-radius: 1em;
+  width: 80%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .seat-number {
   color: gray;
   font-size: xx-small;
@@ -91,6 +101,7 @@
 .booking-banner {
   height: 20vh;
   width: 100%;
+  margin-bottom: 4vh;
   display: flex;
   background-color: #222434;
   display: flex;
@@ -191,8 +202,8 @@
   border-radius: 0.5em;
   background-color: rgb(235, 235, 235);
   margin: 0.5em 0.5em;
-  padding: 0.5em .3em;
-  height: 65vh;
+  padding: 0.5em 0.3em;
+  /* height: 65vh; */
   width: 90vw;
   display: flex;
   flex-direction: column;

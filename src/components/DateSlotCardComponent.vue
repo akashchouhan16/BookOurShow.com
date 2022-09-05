@@ -43,6 +43,11 @@ export default {
   },
   methods: {
     currentDate: (i) => {
+      // let dateArray = this.dateSlot.startDate.split('-');
+      // let date = new Date(parseInt(dateArray[0]), parseInt(dateArray[1]), parseInt(dateArray[2]));
+   
+      // let date = this.dataSlot.startDate; -> "YY-MM-DD"
+
       let date = new Date();
       date.setDate(date.getDate() + i);
       return moment(date).format("DD-MM-YYYY");

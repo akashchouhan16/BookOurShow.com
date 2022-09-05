@@ -34,6 +34,10 @@ Vue.filter('filterGenre', (genre)=>{
     
 })
 
+Vue.filter('filterUserId', (id)=>{
+    return id.substring(0,7);
+})
+
 new Vue({
   router,
   store,

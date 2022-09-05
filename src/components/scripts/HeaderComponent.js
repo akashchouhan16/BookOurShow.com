@@ -11,7 +11,7 @@ export default {
     computed:{
         ...mapGetters({
             isLoggedIn: 'getIsLoggedIn'
-        })
+        }),
     },
     methods:{
         logIn(){
