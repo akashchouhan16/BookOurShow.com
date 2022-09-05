@@ -149,7 +149,7 @@
   font-size: medium;
   margin: 0.5em 1em;
   padding: 1em;
-  width: 90vw;
+  /* width: 90vw; */
   text-align: justify;
   background-color: white;
   border-radius: 1em;
@@ -214,7 +214,7 @@
 }
 
 @media screen and (max-width: 500px) {
-  .banner{
+  .banner {
     height: 75vh;
     width: 100%;
   }
@@ -245,12 +245,17 @@
 
   .description-body .description-body-para,
   .description-body .description-body-additional-para {
-    font-size: small !important;
+    font-size: x-small !important;
+    color: gray;
+    margin: 0.5em 1em;
+    padding: 1em;
+    width: 90%;
+    text-align: justify;
   }
 }
 
-@media screen and (max-width: 450px){
-  .banner{
+@media screen and (max-width: 450px) {
+  .banner {
     /* height: 50vh; */
     /* width: 100%; */
     display: flex;
@@ -268,9 +273,8 @@
     border-radius: 1em;
     margin: 3em 2em 1em 2em;
   }
-  .banner .movie-meta{
+  .banner .movie-meta {
     width: 90%;
   }
-
 }
 </style>

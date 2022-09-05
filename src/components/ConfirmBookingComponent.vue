@@ -30,7 +30,7 @@
                 Seats:
             </div>
             <div class="seats-seats">
-                <p v-for="(seat, index) in seats" :key="index">
+                <p class="seat-number" v-for="(seat, index) in seats" :key="index">
                     {{seat.seatNumber}}
                 </p>
             </div>
@@ -159,6 +159,12 @@
     padding: 1em;
 }
 
+.seats-seats{
+  display: inherit;
+}
+.seat-number{
+  padding: .2em;
+}
 .save-btn{
     margin-top: 2em;
     width: 100%;
@@ -177,5 +183,24 @@
     justify-content: center;
     align-items: center;
     }
+}
+
+@media screen  and (max-width: 750px){
+  .booking-details-container{
+    background-color: #151928;
+    color: white;
+    border-radius: 0.5em;
+    height: auto;
+    width: 98%;
+    margin: 1em;
+    margin-top: 2em !important;
+    padding: 1.5em;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: flex-start;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-content: center;
+  }
 }
 </style>
