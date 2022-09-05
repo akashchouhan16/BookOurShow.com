@@ -2,7 +2,12 @@
   <div class="home-container">
     <div class="home-banner">
       <h2>Book<span class="highlighted">Our</span>Show.com</h2>
-      <button class="add-movie-btn" @click="addMovie()" v-if="isCurrentRoleAdmin() || isAdmin">Add+</button>
+      <button
+        class="add-movie-btn"
+        @click="addMovie()"
+        v-if="isCurrentRoleAdmin() || isAdmin">
+        Add+
+      </button>
     </div>
 
     <div class="movie-container">
@@ -25,7 +30,7 @@
   border: none;
   border-radius: 0.5em;
   padding: 0.5em;
-  margin: .5em;
+  margin: 0.5em;
   background-color: #f84464;
   float: right;
 }

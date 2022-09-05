@@ -27,7 +27,7 @@ export default {
             if(role === null || username === null || role === undefined || username === undefined){
                 this.$router.push({path: '/login'}); //then again redirect back to the TicketBookingCompnent
             }else{
-                this.$router.push({path: '/booking'});
+                this.$router.push({path: '/booking', query: {movieId: this.movie.movieId}});
             }
         }
     }

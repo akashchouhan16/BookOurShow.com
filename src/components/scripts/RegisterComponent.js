@@ -49,7 +49,7 @@ export default {
 
           this.passworderrorflag = true;
         }
-        if ((!this.phonenumber(this.user.phoneNumber)) ||(this.user.phoneNumber.length < 10)||(this.user.phoneNumber.length > 10)||(this.user.phoneNumber < 0)
+        if ((!this.phonenumber(this.user.phoneNumber)) &&(this.user.phoneNumber.length < 10)&&(this.user.phoneNumber.length > 10)&&(this.user.phoneNumber < 0)
         ) {
           this.phoneerrorflag = true;
         } else {
@@ -81,7 +81,7 @@ export default {
             } else {
               this.errorflag = true;
             }
-            alert(data.data);
+            // alert(data.data);
           },
           error: (err) => {
             console.log("NOT VAILD");

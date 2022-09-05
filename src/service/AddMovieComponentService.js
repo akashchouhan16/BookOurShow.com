@@ -8,7 +8,7 @@ then((response)=>{
     success && success(response)
    if(response.status==200)
    {
-      alert("Movie is inserted");
+      console.info("Movie is inserted");
    }
    }).
  catch((err) => {

@@ -10,9 +10,9 @@ export default {
     components:{
         MovieCardComponent
     },
-    // created(){
-    //     this.$store.dispatch('GET_ALL_MOVIES');
-    // },
+    created(){
+        this.$store.dispatch('GET_ALL_MOVIES');
+    },
     computed:{
         ...mapGetters({
             movies: 'getAllMovies',

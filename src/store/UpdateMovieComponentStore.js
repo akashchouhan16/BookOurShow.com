@@ -21,7 +21,7 @@ export default {
                 success: ({data})=>{
                     console.log("store success")
                     this.commit('setupdateSpecificMovie', data);
-                    alert(data);
+                    // alert(data);
                     console.log(state.movie);
                     
 
@@ -30,7 +30,7 @@ export default {
                     console.log("store error")
 
                     this.commit('setupdateSpecificMovie', {});
-                    alert(err);
+                    console.warn(err);
                     console.log("this is an error")
                 },
                 data:movieId
