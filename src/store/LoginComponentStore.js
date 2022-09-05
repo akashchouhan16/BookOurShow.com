@@ -34,6 +34,7 @@ export default {
             localStorage.setItem("role", data.role);
             localStorage.setItem("userId", data.userId);
             localStorage.setItem("name", data.name);
+            localStorage.setItem('loggedIn', true);
             success();
           }
         },
@@ -43,6 +44,7 @@ export default {
           localStorage.removeItem("role");
           localStorage.removeItem("userId");
           localStorage.removeItem("name");
+          localStorage.removeItem('loggedIn');
         },
         user,
       });

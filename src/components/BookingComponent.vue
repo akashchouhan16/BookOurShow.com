@@ -3,7 +3,7 @@
     <div class="booking-banner">
       <div class="movie-details-main">
         <div class="title">
-          {{ movie.name ? movie.name : "Liger 2D" }} 2D - Movie
+          {{ movie.name ? movie.name : "Liger 2D" }} 
         </div>
         <div class="movie-details">
           <div class="movie-genre">

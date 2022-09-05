@@ -1,4 +1,4 @@
-import {getAllMovies, getMovieByMovieId, searchMovieByName} from '@/service/MovieService.js'
+import {getAllMovies, getMovieByMovieId, searchMovieByName, getMovieHallStatus} from '@/service/MovieService.js'
 
 const countDays = (startDate, endDate)=>{
     const date = new Date(startDate.getTime());
@@ -18,7 +18,8 @@ export default {
         movies: [],
         movie: {}, //current Movie when descp component is viewed.
         noOfDays: 0,
-        filteredMovieList: []
+        filteredMovieList: [],
+        movieHall: {}
     },
     getters: {
         getAllMovies(state){
@@ -32,6 +33,9 @@ export default {
         },
         getNoOfDays(state){
             return state.noOfDays;
+        },
+        getMovieHallStatus(state){
+            return state.movieHall;
         }
     },
     mutations:{
@@ -46,6 +50,9 @@ export default {
         },
         setNoOfDays(state, newNoOfDays){
             state.noOfDays = newNoOfDays;
+        },
+        setMovieHallStatus(state, newMovieHall){
+            state.movieHall = newMovieHall;
         }
     },
     actions:{
@@ -88,6 +95,32 @@ export default {
                 },
                 movieName
             })
+        },
+
+        UPDATE_MOVIE_HALL_STATUS({commit}, showDetails){
+            showDetails.date = updateDateFormat(showDetails.date)
+            getMovieHallStatus({
+                success: (data)=>{
+                    commit('setMovieHallStatus', data.seats)
+                },
+                error: (err)=>{
+                    commit('setMovieHallStatus', {})
+                    console.warn(err);
+                },
+                showDetails
+            })
         }
     }
+}
+
+
+function updateDateFormat(date){
+    //DD-MM-YY from -> YYYY-MM-DD to
+    let dd = date.substring(0,2);
+    let mm = date.substring(3,5);
+    let yy = date.substring(6);
+
+    const result = (yy + '-' + mm + '-' + dd);
+    console.warn(result);
+    return result;
 }

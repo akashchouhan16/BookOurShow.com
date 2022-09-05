@@ -5,31 +5,35 @@
       <div class="invoice-header">Ticket Invoice</div>
       <div class="display-userId">
         <div class="userid-tag">UserId: </div>
-        <div class="userid-id"> 5e45414c-8246-4458-b5ee-005d13e8a61b</div>
+        <div class="userid-id"> {{userId}}</div>
       </div>
       <div class="display-movie">
         <div class="movie-tag">Movie: </div>
-        <div class="movie-movie">SpiderMan Far From Home</div>
+        <div class="movie-movie">{{movie.name}}</div>
       </div>
       <div class="display-name">
         <div class="name-tag">User: </div>
-        <div class="name-username">Akash</div>
+        <div class="name-username">{{username}}</div>
       </div>
       <div class="display-ticket-meta">
         <div class="display-date">
             <div class="date-tag">Show Date: </div>
-            <div class="date-date">05-09-2022</div>
+            <div class="date-date">{{date}}</div>
         </div>
         <div class="display-slot">
             <div class="slot-tag">Slot: </div>
-            <div class="slot-slot">9:00AM - 12:00PM</div>
+            <div class="slot-slot">{{slot}}</div>
         </div>
         <div class="display-status">Confimed!</div>
         <div class="display-seats">
             <div class="seats-tag">
                 Seats:
             </div>
-            <div class="seats-seats">13,14</div>
+            <div class="seats-seats">
+                <p v-for="(seat, index) in seats" :key="index">
+                    {{seat.seatNumber}}
+                </p>
+            </div>
         </div>
       </div>
       <!-- Outside meta -->

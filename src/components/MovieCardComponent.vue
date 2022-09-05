@@ -110,7 +110,7 @@
 }
 @media screen and (max-width: 700px) {
   img {
-    width: 18vw;
+    width: 18vw !important;
   }
   .movie-card {
     /* height: max-content; */

@@ -9,7 +9,15 @@ export default {
     },
     computed:{
         ...mapGetters({
-            movie: 'getSpecificMovie'
+            movie: 'getSpecificMovie',
+            movieHallStatus: 'getMovieHallStatus' //all the seat bookings for the current [date,slot,show]
+        })
+    },
+    created(){
+        this.$store.dispatch('UPDATE_MOVIE_HALL_STATUS', {
+            name: this.$store.getters.getSpecificMovie.name, //DD-MM-YY format used here.
+            date: localStorage.getItem('date'),
+            slot: localStorage.getItem('slot')
         })
     },
     methods:{
@@ -18,6 +26,7 @@ export default {
                 seatNumber: seat,
                 userId: localStorage.getItem('userId')
             });
+            localStorage.setItem('seats', JSON.stringify(this.seatNumbers));
             console.log(this.seatNumbers);
         },
 
@@ -32,6 +41,8 @@ export default {
                 seats: this.seatNumbers
             }
             this.$store.dispatch('BOOK_TICKET_FOR_USER', ticketObject);
+            
+            this.$router.push({path: '/booking/confirmation'});
         }
     }
 }

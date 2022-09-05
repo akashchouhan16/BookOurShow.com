@@ -18,17 +18,27 @@
             SEAT NUMBERS:{{tickets.seats}}</div>
             <div class="booked-tickets-right">Paid<br><span>{{tickets.totalAmount}}</span></div>
           </div> -->
-           <div v-for="(tickets, index) in  userdetails" :key="index" :tickets="tickets" class="booked-tickets">
-          <div class="booked-tickets-left"><h1 id="movieName">{{tickets.movieName}}</h1><br />
-          <div class="left-container">
-          Date:&nbsp;{{tickets.date}}<br/>
-          <br/>Slot:&nbsp;{{tickets.slot}}
-          </div>
+        <div
+          v-for="(tickets, index) in userdetails"
+          :key="index"
+          :tickets="tickets"
+          class="booked-tickets"
+        >
+          <div class="booked-tickets-left">
+            <h1 id="movieName">{{ tickets.movieName }}</h1>
+            <br />
+            <div class="left-container">
+              Date:&nbsp;{{ tickets.date }}<br />
+              <br />Slot:&nbsp;{{ tickets.slot }}
+            </div>
           </div>
           <div class="booked-tickets-middle left-container">
-            SEAT NUMBERS: {{tickets.seats}}</div>
-            <div class="booked-tickets-right">Paid<br><span>{{tickets.totalAmount}}</span></div>
+            SEAT NUMBERS: {{ tickets.seats }}
           </div>
+          <div class="booked-tickets-right">
+            Paid<br /><span>{{ tickets.totalAmount }}</span>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -37,30 +47,29 @@
 <script src="./scripts/UserBookings.js"></script>
 
 <style scoped>
-.left-container{
+.left-container {
   font-size: 13px;
   font-weight: 400;
 }
-#movieName{
+#movieName {
   color: #f84464;
   size: 20px;
   font-weight: 700;
   padding: 0;
 }
-.booked-tickets-middle{
+.booked-tickets-middle {
   margin: 5px 0px;
   width: fit-content;
 }
-span{
+span {
   color: green;
   font-size: 30px;
   font-weight: 700;
 }
 .booked-tickets {
   padding: 20px;
-background: #ffffff;
-box-shadow:  20px 20px 60px #d9d9d9,
-             -20px -20px 60px #ffffff;
+  background: #ffffff;
+  box-shadow: 20px 20px 60px #d9d9d9, -20px -20px 60px #ffffff;
   height: 20vh;
   width: 70%;
   border-radius: 1em;
@@ -68,21 +77,21 @@ box-shadow:  20px 20px 60px #d9d9d9,
   flex-direction: row;
   justify-content: space-evenly;
   align-items: center;
-  font-size:medium;
-  margin:10px;
+  font-size: medium;
+  margin: 10px;
 }
 .booked-tickets-right {
   width: fit-content;
-  padding:7px;
+  padding: 7px;
   font-size: 1em;
 }
 .booked-tickets-rightContainer {
   width: 50%;
-  padding:7px;
-  display:flex;
+  padding: 7px;
+  display: flex;
   flex-direction: row;
   justify-content: space-between;
-  margin-right:10px;
+  margin-right: 10px;
   /* font-size: 0.75em; */
 }
 .highlighted {
@@ -141,6 +150,7 @@ box-shadow:  20px 20px 60px #d9d9d9,
   border-radius: 1em;
   background-color: #e1dede;
   margin: 1em;
+  margin-top: 7em;
   height: 80vh;
   width: 95%;
   display: flex;
@@ -157,21 +167,20 @@ box-shadow:  20px 20px 60px #d9d9d9,
     font-size: x-small;
   }
 }
-@media screen and (max-width: 1500px){
-  .booked-tickets{
-    height:fit-content;
+@media screen and (max-width: 1500px) {
+  .booked-tickets {
+    height: fit-content;
     /* font-size:10px; */
-    width:90%;
-
+    width: 90%;
   }
 }
-@media screen and (max-width: 700px){
-  .booked-tickets{
+@media screen and (max-width: 700px) {
+  .booked-tickets {
     flex-direction: column;
     transition-duration: 1s;
     justify-content: center;
     text-align: center;
-    width:90%;
+    width: 90%;
   }
 }
 </style>

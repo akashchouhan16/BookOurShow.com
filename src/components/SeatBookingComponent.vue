@@ -3,7 +3,7 @@
     <div class="booking-banner">
       <div class="movie-details-main">
         <div class="title">
-          {{ movie.name ? movie.name : "Liger 2D" }} 2D - Movie
+          {{ movie.name ? movie.name : "Liger 2D" }}
         </div>
         <div class="movie-details">
           <div class="movie-genre">
@@ -46,12 +46,12 @@
               :disabled="false"
               type="checkbox"
               :value="indexi + 1 * indexj + 1"
-              @click="setSeats((1 + indexi) * (1 + indexj))"
+              @click="setSeats((indexi * 10) + indexj + 1)"
             />
           </div>
         </div>
       </div>
-      <button class="book-ticket-btn">Book</button>
+      <button class="book-ticket-btn" @click="bookTicket()">Book</button>
     </div>
   </div>
 </template>

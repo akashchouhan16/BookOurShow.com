@@ -8,7 +8,7 @@
         <button
           class="slot-btn"
           :value="slot"
-          @click="setSlotAndRedirect(slot)"
+          @click="setSlotAndRedirect(slot, i)"
         >
           {{ slot }}
         </button>
@@ -52,9 +52,9 @@ export default {
       console.log(this.dataSlot);
       console.warn(slot);
     },
-    setSlotAndRedirect(slot) {
+    setSlotAndRedirect(slot, i) {
       localStorage.setItem("slot", slot);
-      localStorage.setItem("date", this.dateSlot.startDate);
+      localStorage.setItem("date", this.currentDate(i));
       console.log(
         "Selected Slot: " + slot + " | Date: " + this.dateSlot.startDate
       );

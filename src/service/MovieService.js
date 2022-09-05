@@ -2,7 +2,8 @@ import axios from "axios";
 
 const GET_ALL_MOVIE_API = "http://10.30.1.35:8083/movies";
 const GET_MOVIE_BY_ID_API = "http://10.30.1.35:8083/movie/";
-const SEARCH_API = 'http://10.30.1.35:8083/movieByName/'
+const SEARCH_API = 'http://10.30.1.35:8083/movieByName/';
+const MOVIE_HALL_STATUS_API = 'http://10.30.1.35:8000/getSlotDetails';
 
 export const getAllMovies = ({ success, error }) => {
   axios
@@ -36,4 +37,13 @@ export const searchMovieByName = ({ success, error, movieName}) =>{
       })
 }
 
+export const getMovieHallStatus = ({success, error, showDetails}) =>{
+  axios.put(MOVIE_HALL_STATUS_API, showDetails)
+      .then(({data})=>{
+          success && success(data);
+      })
+      .catch(err=>{
+        error && error(err);
+      })
+}
 

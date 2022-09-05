@@ -24,15 +24,16 @@ export default {
             localStorage.removeItem('date');
             localStorage.removeItem('slot');
             localStorage.removeItem('seat');
+            localStorage.removeItem('loggedIn');
             // this.$router.push({path: '/login'});
             location.reload();
+        },
+        isUserLoggedIn(){
+            const loggedIn = localStorage.getItem('loggedIn');
+            if(loggedIn === undefined || loggedIn === null || loggedIn === '')
+                return false;
+            return true;
         }
-        // checkLoggedIn(){
-        //     const user = localStorage.getItem('userId');
-        //     if(user === null || user === undefined || user === '')
-        //         return false;
-        //     else    
-        //         return true;
-        // }
+
     }
 }
