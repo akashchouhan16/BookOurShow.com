@@ -32,12 +32,12 @@
       </div>
     </div>
     <div class="seating-body">
-      <div class="error-message" v-if="errorFlag">Please Select Seats!</div>
+      <div class="error" v-if="errorFlag">Please Select Seats!</div>
       <div class="seat-booking-title" v-else>Confirm Your Seats!</div>
       <div class="movie-hall-screen">Screen</div>
       <div class="movie-hall">
         <div class="movie-hall-legend">
-          Seat 1-30: Normal, Seat 31-70: Executive, Seat 71-100: Premium
+          Seat 1-30: Normal, Seat 31-70: Executive, Seat 71-100: Premium 
         </div>
 
         <div class="seats-row" v-for="(seat, indexi) in 10" :key="indexi">
@@ -48,7 +48,11 @@
           </div>
         </div>
       </div>
-      <button class="book-ticket-btn" @click="bookTicket()">Book</button>
+      <div class="hall-btns">
+        <button class="book-ticket-btn" @click="bookTicket()">Book</button>
+        <button class="book-ticket-btn" @click="refresh()">Reset</button>
+      </div>
+      
     </div>
   </div>
 </template>
@@ -57,22 +61,28 @@
 <script src="./scripts/SeatBookingComponent.js"></script>
 
 <style scoped>
+.hall-btns{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .seat{
   width: 15%;
-  padding: .4em;
-  /* background-color: rgb(28, 27, 27); */
+  padding: .5em;
+  background-color: rgb(187, 238, 188);
   border: .5px solid black;
   border-radius: .1em;
 }
 .booked-seat{
   width: 15%;
-  padding: .4em;
+  padding: .5em;
   background-color: #d52344;
   border: .5px solid black;
   border-radius: .1em;
 }
-.error-message {
-  background-color: #d52344;
+.error{
+  color: #d52344 !important;
+  font-weight: bold;
   padding: 0.5em;
   border-radius: 1em;
   width: 80%;
@@ -80,6 +90,7 @@
   justify-content: center;
   align-items: center;
 }
+
 .seat-number {
   color: gray;
   font-size: xx-small;

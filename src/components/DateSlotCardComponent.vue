@@ -58,6 +58,7 @@ export default {
     setSlotAndRedirect(slot, i) {
       localStorage.setItem("slot", slot);
       localStorage.setItem("date", this.currentDate(i));
+      localStorage.setItem('movieName', this.movie.name);
       console.log(
         "Selected Slot: " + slot + " | Date: " + this.dateSlot.startDate
       );
