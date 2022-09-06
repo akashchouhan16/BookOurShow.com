@@ -12,7 +12,7 @@
           v-model="searchKey"
           @keyup.enter="searchMovie()"
         />
-        <button class="search-btn" @click="searchMovie()">Search</button>
+        <button class="search-btn" :class="[(searchKey===undefined || searchKey === '')? 'disabled' : '']" @click="searchMovie()" :disabled="(searchKey===undefined || searchKey === '')">Search</button>
       </div>
     </div>
     <div class="upcoming-movies-list">
@@ -26,9 +26,9 @@
       </div>
 
       <p class="movie-list-tag-2">Upcoming Movies</p>
-      <div class="grid-container" v-if="movies && movies.length">
+      <div class="grid-container" v-if="upcomingMovies && upcomingMovies.length">
         <MovieCardComponent
-          v-for="(movie, index) in movies"
+          v-for="(movie, index) in upcomingMovies"
           :key="index"
           :movie="movie"
         ></MovieCardComponent>
@@ -46,7 +46,10 @@
 <script src="./scripts/UpcomingMoviesComponent.js"></script>
 
 <style scoped>
-
+.disabled{
+  background-color: gray !important;
+  color: black !important;
+}
 .no-movie-card{
   height: 40vh;
   width: 100%;
@@ -58,6 +61,7 @@
   align-items: center;
   font-size: medium;
 }
+
 .upcoming-movies-container {
   height: 150vh;
   width: 100vw;
@@ -118,13 +122,13 @@
   height: 3.5vh !important;
 }
 .search-bar:focus {
-  outline: none;
-  border: 1px solid rgb(171, 169, 169);
+  outline: none !important;
+  /* border: 1px solid rgb(171, 169, 169); */
 }
 .search-btn {
   margin: 0em 0em 0em 0.2em;
   padding: 0.5em 0.6em;
-  background-color: #f84464 !important;
+  background-color: #f84464;
   border: none;
   border-radius: 0.5em;
   color: white;

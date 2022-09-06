@@ -23,7 +23,7 @@ export default {
         this.$store.dispatch('GET_MOVIE_BY_ID', this.$route.query.movieId);
     },
     mounted(){
-        console.log(this.dateSlots);
+        // console.log(this.dateSlots);
     },
 
 }

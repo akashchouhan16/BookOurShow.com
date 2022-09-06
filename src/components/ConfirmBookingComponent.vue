@@ -36,11 +36,6 @@
             </div>
         </div>
       </div>
-      <!-- Outside meta -->
-      <!-- <div class="display-price">
-        <div class="price-tag">Subtotal: </div>
-        <div class="price-price">Rs 890 /-</div>
-      </div> -->
       <div class="save-btn">
         <button class="save-ticket-invoice-btn" @click="saveTicket()">Save Ticket Invoice</button>
       </div>

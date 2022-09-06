@@ -11,12 +11,13 @@ export default {
         MovieCardComponent
     },
     created(){
-        this.$store.dispatch('GET_ALL_MOVIES');
+        this.$store.dispatch('GET_UPCOMING_MOVIES');
     },
     computed:{
         ...mapGetters({
             movies: 'getAllMovies',
-            filteredMovies: 'getFilteredMovieList'
+            filteredMovies: 'getFilteredMovieList',
+            upcomingMovies: 'getUpcomingMovies'
         })
     },
     methods:{

@@ -1,4 +1,4 @@
-import {getAllMovies, getMovieByMovieId, searchMovieByName, getMovieHallStatus} from '@/service/MovieService.js'
+import {getAllMovies, getMovieByMovieId, searchMovieByName, getMovieHallStatus, getUpcomingMovies} from '@/service/MovieService.js'
 
 // Utility:
 import { countDays } from '@/Utils';
@@ -10,11 +10,15 @@ export default {
         dateSlot: {},
         noOfDays: 0,
         filteredMovieList: [],
+        upcomingMovies: [],
         movieHall: {}
     },
     getters: {
         getAllMovies(state){
             return state.movies;
+        },
+        getUpcomingMovies(state){
+            return state.upcomingMovies;
         },
         getSpecificMovie(state){
             return state.movie;
@@ -35,6 +39,9 @@ export default {
     mutations:{
         setMovies(state, newMovies){
             state.movies = newMovies;
+        },
+        setUpcomingMovies(state, newMovies){
+            state.upcomingMovies = newMovies;
         },
         setSpecificMovie(state, newMovie){
             state.movie = newMovie;
@@ -62,6 +69,17 @@ export default {
                 error: (err)=>{
                     console.warn(err);
                     commit('setMovies', []);
+                }
+            })
+        },
+        GET_UPCOMING_MOVIES({commit}){
+            getUpcomingMovies({
+                success: (data)=>{
+                    commit('setUpcomingMovies', data);
+                },
+                error: (err)=>{
+                    commit('setUpcomingMovies', []);
+                    console.warn(err);
                 }
             })
         },
