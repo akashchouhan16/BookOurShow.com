@@ -23,7 +23,7 @@ export default{
     {
         ADD_MOVIE({state}, movie)
         {
-          console.log(state.movie);
+          console.log(state);
             addmovieinlist({
               
               success:({data})=>{

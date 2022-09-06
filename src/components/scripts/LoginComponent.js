@@ -4,12 +4,14 @@ export default {
   data() {
     return {
       nullflag: false,
+      flag: false,
       user: {
         phoneNumber: "",
         password: "",
         name: "",
+        message:''
       },
-      flag: false,
+
     };
   },
   computed: {
@@ -17,29 +19,42 @@ export default {
       users: "getuser",
     }),
   },
+  watch: {
+    user: {
+      phoneNumber(value) {
+        if ((parseInt(value) < 0) || value != 10) {
+          this.flag = true;
+        } else {
+          // this.nullflag = false;
+          this.flag = false;
+        }
+      }
+    },
+  },
   methods: {
     checkLogin() {
-      console.log(localStorage);
-      localStorage.clear();
-      console.log(localStorage);
-
-      console.log(this.user);
-      if (this.user.password == "" || this.user.password == "") {
+      if (this.user.phoneNumber == "" || this.user.password == "") {
         this.nullflag = true;
-      } else if (this.user.phoneNumber < 0) {
+      }
+      if ((parseInt(this.user.phoneNumber) < 0) || this.user.phoneNumber.length != 10) {
         this.flag = true;
       } else {
         this.nullflag = false;
+        this.flag = false;
         this.$store.dispatch("LOGIN_USER", {
           success: () => {
+
             // this.$router.push({ path: "/" });
               this.$router.push(this.$route.query.redirect || '/');
+
+
           },
-          user: this.user,
+          user: this.user
         });
         // location.reload();
         // this.$router.push({path: '/'});
       }
+
     },
-  },
+  }
 };

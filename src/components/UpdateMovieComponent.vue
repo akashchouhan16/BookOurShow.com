@@ -6,9 +6,14 @@
       <div class="error-message" v-if="fillfieldsflag">
         Please fill all Required fields
       </div>
+      {{movieinfo.message}}
       <div class="movie-tag-div">
-        <label for="movieName" class="addmovie-tag"
-          >Movie Name <span>*</span></label
+        <div for="movieName" class="addmovie-tag"
+          >Movie Name <span>*</span>
+          <div class="error-message-text" v-if="movieflag">
+            Please enter a valid duration
+          </div>
+          </div
         >
         <br />
         <input
@@ -22,7 +27,7 @@
       </div>
       <div class="flex-row">
         <div class="movie-tag-flex">
-          <label for="genre" class="addmovie-tag">Genre</label>
+          <div for="genre" class="addmovie-tag">Genre</div>
           <input
             type="text"
             class="add-movie-input"
@@ -32,9 +37,9 @@
           />
         </div>
         <div class="movie-tag-flex">
-          <label for="movie-slots" class="addmovie-tag"
+          <div for="movie-slots" class="addmovie-tag"
             >Time slot
-          </label>
+          </div>
           <div class="movie-input-row-flex">
             <table class="table">
               <tr class="table">
@@ -80,12 +85,12 @@
         </div>
       </div>
       <div class="movie-tag-div">
-        <label for="movie-description" class="addmovie-tag"
-          >Description<span>*</span> </label
-        ><br />
-        <div class="error-message" v-if="descriptionerror">
+        <div for="movie-description" class="addmovie-tag"
+          >Description<span>*</span> <br />
+        <div class="error-message-text" v-if="descriptionerror">
           Please enter a valid description
-        </div>
+        </div></div
+        >
         <textarea
           class="add-movie-input description"
           placeholder="Movie Description"
@@ -99,12 +104,12 @@
       </div>
       <div class="flex-row">
         <div class="movie-tag-flex">
-          <label for="duration" class="addmovie-tag"
-            >Duration(in minutes)<span>*</span></label
-          >
-          <div class="error-message" v-if="durationerror">
+          <div for="duration" class="addmovie-tag"
+            >Duration(in minutes)<span>*</span>
+          <div class="error-message-text" v-if="durationerror">
             Please enter a valid duration
-          </div>
+          </div></div
+          >
           <input
             type="number"
             class="add-movie-input"
@@ -115,7 +120,7 @@
           />
         </div>
         <div class="movie-tag-flex">
-          <label for="rating" class="addmovie-tag">Rating</label>
+          <div for="rating" class="addmovie-tag">Rating</div>
           <input
             type="text"
             class="add-movie-input"
@@ -127,8 +132,8 @@
       </div>
       <div class="flex-row">
         <div class="movie-tag-flex">
-          <label for="start-date" class="addmovie-tag"
-            >Start Date</label
+          <div for="start-date" class="addmovie-tag"
+            >Start Date</div
           >
           <input
             type="date"
@@ -139,8 +144,8 @@
           />
         </div>
         <div class="movie-tag-flex">
-          <label for="end-date" class="addmovie-tag"
-            >End Date</label
+          <div for="end-date" class="addmovie-tag"
+            >End Date</div
           >
           <input
             type="date"
@@ -153,20 +158,20 @@
       </div>
 
       <div class="movie-tag-div">
-        <label for="movie-price" class="addmovie-tag">Price per ticket</label
+        <div for="movie-price" class="addmovie-tag">Price per ticket</div
         ><br /><br />
-        <div class="error-message" v-if="priceerror">
+        <div class="error-message-text" v-if="priceerror">
           Please enter a valid Price
         </div>
         <div class="flex-row-tag">
-          <label for="movie-price" class="addmovie-tag"
-            >Normal<span>*</span></label
+          <div for="movie-price" class="addmovie-tag"
+            >Normal<span>*</span></div
           >
-          <label for="movie-price" class="addmovie-tag"
-            >Executive<span>*</span></label
+          <div for="movie-price" class="addmovie-tag"
+            >Executive<span>*</span></div
           >
-          <label for="movie-price" class="addmovie-tag"
-            >Premium<span>*</span></label
+          <div for="movie-price" class="addmovie-tag"
+            >Premium<span>*</span></div
           >
         </div>
         <div class="flex-row">
@@ -195,8 +200,8 @@
       </div>
 
       <div class="movie-tag-div">
-        <label for="movie-video" class="addmovie-tag"
-          >Trailer Video</label
+        <div for="movie-video" class="addmovie-tag"
+          >Trailer Video</div
         ><br />
         <input
           type="text"
@@ -207,8 +212,8 @@
       </div>
 
       <div class="movie-tag-div">
-        <label for="movie-image" class="addmovie-tag"
-          >Movie Image <span>*</span></label
+        <div for="movie-image" class="addmovie-tag"
+          >Movie Image <span>*</span></div
         ><br />
         <input
           type="text"
@@ -227,7 +232,7 @@
       <div class="alert alert-success" role="alert" v-if="success">
         Successfully added
       </div>
-      <div class="error-message" v-if="fillfieldsflag">
+      <div class="error-message-text" v-if="fillfieldsflag">
         Please fill all fields
       </div>
       <button type="button" class="movie-button-input" @click="movieupdateinfo()">
@@ -259,7 +264,11 @@ span {
   margin: auto;
   border-radius: 1em;
 }
-
+.error-message-text{
+color:#ff0000;
+font-size:x-small;
+text-align: left;
+}
 .add-movie {
   height: 100vh;
   display: flex;
@@ -317,7 +326,7 @@ span {
   border: none;
   border-radius: 1em;
   height: 30px;
-  margin: 5px;
+  /* margin: 5px; */
   padding: 5px;
 }
 .table{

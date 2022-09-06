@@ -8,90 +8,80 @@ export default {
       passworderrorflag: false,
       nameerrorflag: false,
       phoneerrorflag: false,
+      confirmflag: false,
+      errormessage:'',
       // passwordsuccessflag:false,
       user: {
         name: "",
         password: "",
+        confirmpassword: "",
         phoneNumber: "",
       },
     };
   },
+  computed: {
+    confirming() {
+      return ((this.user.password) == (this.user.confirmpassword) ? true : false)
+    }
+  },
   methods: {
     registerUser() {
-      console.log(!this.CheckPassword(this.user.password));
-      console.log(this.phonenumber(this.user.phoneNumber));
-      console.log(this.CheckFirstLetterSpecial(this.user.name));
-      console.log(
-        this.phonenumber(this.user.phoneNumber) &&
-          this.user.phoneNumber.length == 10
-      );
-      console.log(
-        this.CheckFirstLetterSpecial(this.user.name) &&
-          this.user.name.length > 5
-      );
-      if (
-        this.user.name == "" ||
-        this.user.password == "" ||
-        this.user.phoneNumber == ""
-      ) {
+      
+      if (this.user.name == "" || this.user.password == "" || this.user.phoneNumber == "" || this.user.confirmpassword == "") {
         this.errorflag = true;
-        console.log(this.errorflag);
-      } else {
+      }
+      else {
         this.errorflag = false;
-
-        if (
-          this.CheckPassword(this.user.password) &&
-          this.user.password.length >= 8
-        ) {
-          this.passworderrorflag = false;
-        } else {
-          console.log(this.user.password.length);
-
-          this.passworderrorflag = true;
+        if (!this.CheckFirstLetterSpecial(this.user.name) || this.user.name.length < 3) {
+          this.nameerrorflag = true;
+          this.errorflag = true;
         }
-        if ((!this.phonenumber(this.user.phoneNumber)) &&(this.user.phoneNumber.length < 10)&&(this.user.phoneNumber.length > 10)&&(this.user.phoneNumber < 0)
-        ) {
+        else {
+          this.nameerrorflag = false;
+        }
+        if (!this.phonenumber(this.user.phoneNumber) || this.user.phoneNumber < 0 || this.user.phoneNumber.length != 10) {
           this.phoneerrorflag = true;
-        } else {
+          this.errorflag = true;
+        }
+        else {
           this.phoneerrorflag = false;
         }
-        if (
-          this.CheckFirstLetterSpecial(this.user.name) &&
-          this.user.name.length > 3
-        ) {
-          this.nameerrorflag = false;
-        } else {
-          this.nameerrorflag = true;
+        if ((!this.CheckPassword(this.user.password))) { 
+          this.passworderrorflag=true;
+          this.errorflag=true;
         }
-        if (this.passworderrorflag == false &&this.nameerrorflag == false &&this.phoneerrorflag == false
-         ) {
-          this.errorflag = false;
+        else {
+          this.passworderrorflag=false;
+         }
+        if (!this.confirming) {
+          this.confirmflag = true;
+          this.errorflag = true;
+        }
+        else {
+          this.confirmflag = false;
+        }
+        if (this.errorflag == false) {
+          console.log(this.user);
+          adduserlist({
+            success: (data) => {
+              if (data.data == "Succesfully Register") {
+                this.$router.push({ path: "/login" });
+              } else {
+                this.errorflag = true;
+                this.errormessage="lOGGED IN"
+              }
+            },
+            error: (err) => {
+              this.errormessage="Please check the details"
+              console.log("NOT VAILD");
+              console.log(err);
+              // alert(err.data);
+            },
+            payload: this.user,
+          });
         } else {
           this.errorflag = true;
         }
-      }
-      console.log(this.errorflag);
-      if (this.errorflag == false) {
-        console.log(this.user);
-        adduserlist({
-          success: (data) => {
-            if (data.data == "Succesfully Register") {
-              // alert(data.data);
-              this.$router.push({ path: "/login" });
-            } else {
-              this.errorflag = true;
-            }
-            // alert(data.data);
-          },
-          error: (err) => {
-            console.log("NOT VAILD");
-            console.log(err);
-            // alert(err.data);
-          },
-          payload: this.user,
-        });
-      } else {
-        this.errorflag = true;
       }
     },
     reset() {
@@ -110,7 +100,8 @@ export default {
       return decimal.test(inputtxt);
     },
     phonenumber(inputtxt) {
-      var phoneno = /^\d{10}$/;
+      // var phoneno = /^\d{10}$/;
+      var phoneno = /^[1-9]{1}[0-9]{9}/;
       return phoneno.test(inputtxt);
     },
     CheckFirstLetterSpecial(inputtxt) {
@@ -120,3 +111,17 @@ export default {
     },
   },
 };
+// console.log("password ", this.CheckPassword(this.user.password));
+//       console.log("phonenumber ", this.phonenumber(this.user.phoneNumber));
+//       console.log("specialchar ", this.CheckFirstLetterSpecial(this.user.name));
+//       console.log("this.confirming ", this.confirming);
+//       console.log("ength ", this.user.name.length < 3)
+//       console.log("condition 1  ",
+//         this.phonenumber(this.user.phoneNumber) &&
+//         this.user.phoneNumber.length == 10
+//       );
+//       console.log("condition 2  ",
+//         this.CheckFirstLetterSpecial(this.user.name) &&
+//         this.user.name.length < 3
+//       );
+//       console.log("cond in cond ", this.user.name.length)
