@@ -34,9 +34,8 @@
     <div class="booking-body">
       <div class="grid-container">
         <DateSlotCardComponent
-          v-for="(dateSlot, index) in noOfDays"
+          v-for="(day, index) in noOfDays"
           :key="index"
-          :dateSlot="dateSlots[index]"
           :i="index"
         ></DateSlotCardComponent>
       </div>

@@ -43,12 +43,8 @@
         <div class="seats-row" v-for="(seat, indexi) in 10" :key="indexi">
           <div class="seats-col" v-for="(seat, indexj) in 10" :key="indexj">
             <span class="seat-number">{{ indexi * 10 + indexj + 1 }}</span>
-            <input
-              :disabled="false"
-              type="checkbox"
-              :value="indexi + 1 * indexj + 1"
-              @click="setSeats(indexi * 10 + indexj + 1)"
-            />
+            <div class="seat" @click="setSeats((indexi*10) + indexj+1)" :value="indexi + 1 * indexj + 1" v-if="checkSeatStatus(((indexi*10) + indexj+1))"></div>
+            <div class="booked-seat" v-else></div> 
           </div>
         </div>
       </div>
@@ -61,6 +57,20 @@
 <script src="./scripts/SeatBookingComponent.js"></script>
 
 <style scoped>
+.seat{
+  width: 15%;
+  padding: .4em;
+  /* background-color: rgb(28, 27, 27); */
+  border: .5px solid black;
+  border-radius: .1em;
+}
+.booked-seat{
+  width: 15%;
+  padding: .4em;
+  background-color: #d52344;
+  border: .5px solid black;
+  border-radius: .1em;
+}
 .error-message {
   background-color: #d52344;
   padding: 0.5em;
@@ -201,9 +211,9 @@
 .seating-body {
   border-radius: 0.5em;
   background-color: rgb(235, 235, 235);
-  margin: 0.5em 0.5em;
-  padding: 0.5em 0.3em;
-  /* height: 65vh; */
+  margin: 1em 0.5em;
+  padding: 1em 0.3em 2em .3em;
+  /* height: 85vh; */
   width: 90vw;
   display: flex;
   flex-direction: column;
@@ -236,8 +246,14 @@
   padding: 0.2em 0.3em;
 }
 .seats-col {
-  margin: 0.1em;
-  padding: 0.2em;
+    margin: 0.1em;
+    display: flex;
+    padding: 0.2em;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
 }
 .movie-hall {
   padding: 1em;

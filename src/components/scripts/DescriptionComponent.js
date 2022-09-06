@@ -25,7 +25,7 @@ export default {
             const role = localStorage.getItem('role');
             const username = localStorage.getItem('name');
             if(role === null || username === null || role === undefined || username === undefined){
-                this.$router.push({path: '/login'}); //then again redirect back to the TicketBookingCompnent
+                this.$router.push({path: '/login', query: { redirect: `/booking?movieId=${this.movie.movieId}`}}); //then again redirect back to the TicketBookingCompnent
             }else{
                 this.$router.push({path: '/booking', query: {movieId: this.movie.movieId}});
             }

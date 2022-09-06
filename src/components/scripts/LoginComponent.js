@@ -32,7 +32,8 @@ export default {
         this.nullflag = false;
         this.$store.dispatch("LOGIN_USER", {
           success: () => {
-            this.$router.push({ path: "/" });
+            // this.$router.push({ path: "/" });
+              this.$router.push(this.$route.query.redirect || '/');
           },
           user: this.user,
         });

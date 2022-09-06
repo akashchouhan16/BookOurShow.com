@@ -1,12 +1,13 @@
 import {getAllMovies, getMovieByMovieId, searchMovieByName, getMovieHallStatus} from '@/service/MovieService.js'
 
 // Utility:
-import { countDays, updateDateFormat } from '@/Utils';
+import { countDays } from '@/Utils';
 
 export default {
     state: {
         movies: [],
         movie: {}, //current Movie when descp component is viewed.
+        dateSlot: {},
         noOfDays: 0,
         filteredMovieList: [],
         movieHall: {}
@@ -17,6 +18,9 @@ export default {
         },
         getSpecificMovie(state){
             return state.movie;
+        },
+        getDateSlot(state){
+            return state.dateSlot
         },
         getFilteredMovieList(state){
             return state.filteredMovieList;
@@ -34,6 +38,9 @@ export default {
         },
         setSpecificMovie(state, newMovie){
             state.movie = newMovie;
+        },
+        setDateSlot(state, newDateSlot){
+            state.dateSlot = newDateSlot
         },
         setFilteredMovieList(state, newFilteredList){
             state.filteredMovieList = newFilteredList;
@@ -62,6 +69,10 @@ export default {
             getMovieByMovieId({
                 success: ({data})=>{
                     commit('setSpecificMovie', data);
+                    commit('setDateSlot', {
+                        startDate: data.startDate, endDate: data.endDate, slots: data.slots
+                    });
+                    
                     console.log(data);
 
                     //Logic to set no of days based on startDate and endDate:
@@ -88,10 +99,15 @@ export default {
         },
 
         UPDATE_MOVIE_HALL_STATUS({commit}, showDetails){
-            showDetails.date = updateDateFormat(showDetails.date)
+            
             getMovieHallStatus({
                 success: (data)=>{
-                    commit('setMovieHallStatus', data.seats)
+                    commit('setMovieHallStatus', data)
+                    console.log(data);
+                    // {
+                    //     slotId: data.slotId, //identifier for current movieHall,
+                    //     bookedSeats: data.bookedSeats //Array of index for seat numbers
+                    // }
                 },
                 error: (err)=>{
                     commit('setMovieHallStatus', {})

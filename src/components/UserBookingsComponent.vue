@@ -69,7 +69,8 @@ span {
 .booked-tickets {
   padding: 20px;
   background: #ffffff;
-  box-shadow: 20px 20px 60px #d9d9d9, -20px -20px 60px #ffffff;
+  /* box-shadow: 20px 20px 60px #e8e6e6, -20px -20px 60px #ffffff; */
+  box-shadow: 2px 2px 10px lightgray;
   height: 20vh;
   width: 70%;
   border-radius: 1em;
@@ -150,7 +151,8 @@ span {
   border-radius: 1em;
   background-color: #e1dede;
   margin: 1em;
-  margin-top: 7em;
+  /* margin-top: 7em; */
+  margin-top: 4em;
   height: 80vh;
   width: 95%;
   display: flex;

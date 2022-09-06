@@ -6,7 +6,7 @@
       <p class="movie-card-info">
         {{ movie.name ? movie.name : "Thiruchitrambalam" }} <br /><span
           class="movie-rating"
-          >4.5/5⭐ </span
+          > {{movie.rating}} </span
         ><span class="movie-id">
           {{ movie.duration | durationFilter }} |
           {{ movie.genre | filterGenre }}
@@ -18,7 +18,7 @@
       View Movie
     </button>
     <!-- <div class="no-data" v-if="movie.length">
-      No Data :(
+      No Data :( ⭐
     </div> -->
   </div>
 </template>

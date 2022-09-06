@@ -1,7 +1,7 @@
 <template>
   <div class="date-slot-card">
     <div class="date">
-      {{ movie.name }} On <span class="highlighted">{{ currentDate(i) }}</span>
+      <span class="highlighted">{{ currentDate(i) }}</span>
     </div>
     <div class="slots">
       <div class="slot" v-for="(slot, index) in movie.slots" :key="index">
@@ -27,30 +27,28 @@ export default {
     return {};
   },
   props: {
-    dateSlot: {
-      type: Object,
-      required: true,
-    },
     i: {
       type: Number,
       required: true,
     },
   },
+  created(){
+    this.$store.dispatch('GET_MOVIE_BY_ID', this.$route.query.movieId);
+  },
   computed: {
     ...mapGetters({
       movie: "getSpecificMovie",
+      dateSlot: 'getDateSlot'
     }),
   },
   methods: {
-    currentDate: (i) => {
-      // let dateArray = this.dateSlot.startDate.split('-');
-      // let date = new Date(parseInt(dateArray[0]), parseInt(dateArray[1]), parseInt(dateArray[2]));
-   
-      // let date = this.dataSlot.startDate; -> "YY-MM-DD"
+    currentDate(i){
 
-      let date = new Date();
+      // console.warn(this.dateSlot.startDate);
+      let date = new Date(this.dateSlot.startDate);
       date.setDate(date.getDate() + i);
-      return moment(date).format("DD-MM-YYYY");
+      return moment(date).format("YYYY-MM-DD");
+
     },
 
     bookTicket(slot) {
@@ -63,7 +61,10 @@ export default {
       console.log(
         "Selected Slot: " + slot + " | Date: " + this.dateSlot.startDate
       );
-      this.$router.push({ path: "/booking/seats" });
+      this.$router.push({
+        path: "/booking/seats",
+        query: { movieId: this.movie.movieId },
+      });
     },
   },
 };
@@ -76,7 +77,7 @@ export default {
   padding: 0.5em;
   border-radius: 0.3em;
   background-color: whitesmoke;
-  font-size: medium;
+  font-size: small;
 }
 .date-slot-card {
   background-color: rgb(255, 255, 255);
@@ -147,7 +148,7 @@ export default {
     padding: 0.5em;
     border-radius: 0.3em;
     background-color: whitesmoke;
-    font-size: xx-small;
+    font-size: x-small !important;
   }
   .slot-btn {
     padding: 0.8em 1em;
@@ -163,8 +164,11 @@ export default {
 }
 
 @media screen and (max-width: 500px) {
-  .date{
+  .date {
     width: 50%;
+  }
+  .highlighted{
+    font-size: small !important;
   }
   .slots {
     width: 50%;
@@ -179,7 +183,7 @@ export default {
     flex-wrap: nowrap;
     align-content: center;
   }
-  .slot-btn{
+  .slot-btn {
     font-size: xx-small;
   }
 }

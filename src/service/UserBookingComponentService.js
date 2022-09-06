@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const USER_BOOKING_HISTORY_API = 'http://10.30.1.144:8082/history/get/';
-const TICKET_BOOKING_API = 'http://10.30.1.35:8000/updateSeat'
+const TICKET_BOOKING_API = 'http://10.30.1.35:8000/updateseat'
 export const getUserBookingDetails = ({ success, error,userid}) => {
     axios.get(USER_BOOKING_HISTORY_API + userid)
         .then((response) => {
@@ -14,7 +14,7 @@ export const getUserBookingDetails = ({ success, error,userid}) => {
 
 
 export const bookTicketforUser = ({success, error, ticketObject}) =>{
-    axios.post(TICKET_BOOKING_API, ticketObject)
+    axios.put(TICKET_BOOKING_API, ticketObject)
         .then(({data})=>{
             success && success(data);
          })

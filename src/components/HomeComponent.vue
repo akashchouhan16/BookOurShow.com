@@ -11,13 +11,18 @@
     </div>
 
     <div class="movie-container">
-      <div class="grid-container">
+      <div class="grid-container" v-if="movies && movies.length">
         <MovieCardComponent
           v-for="(movie, index) in movies"
           :key="index"
           :movie="movie"
         ></MovieCardComponent>
       </div>
+        <div class="no-movie-card" v-else>
+          <div class="message-no-movie">
+            <h3>Something Went Wrong! :(</h3>
+          </div>
+        </div>
     </div>
   </div>
 </template>
@@ -25,6 +30,18 @@
 <script src="./scripts/HomeComponent.js"></script>
 
 <style scoped>
+.no-movie-card{
+  height: 40vh;
+  width: 100%;
+  background-color: whitesmoke;
+  color: rgb(108, 108, 108);
+  border-radius: 1em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: medium;
+}
+
 .add-movie-btn {
   color: white;
   border: none;
