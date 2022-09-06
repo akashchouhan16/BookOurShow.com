@@ -216,7 +216,7 @@
         </div>
       </div>
 
-      <div class="movie-tag-div">
+      <!-- <div class="movie-tag-div">
         <label for="movie-video" class="addmovie-tag"
           >Trailer Video</label
         ><br />
@@ -226,7 +226,7 @@
           class="add-movie-input"
           v-model="movieinfo.videoUrl"
         />
-      </div>
+      </div> -->
 
       <div class="movie-tag-div">
         <label for="movie-image" class="addmovie-tag"

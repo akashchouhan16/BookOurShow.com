@@ -199,7 +199,7 @@
         </div>
       </div>
 
-      <div class="movie-tag-div">
+      <!-- <div class="movie-tag-div">
         <div for="movie-video" class="addmovie-tag"
           >Trailer Video</div
         ><br />
@@ -209,7 +209,7 @@
           class="add-movie-input"
           v-model="movieupdate.videoUrl"
         />
-      </div>
+      </div> -->
 
       <div class="movie-tag-div">
         <div for="movie-image" class="addmovie-tag"
