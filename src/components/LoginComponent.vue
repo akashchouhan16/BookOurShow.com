@@ -1,10 +1,10 @@
 <template>
   <div class="login">
     <form class="login-form">
-      <h2>Login</h2>
+      <h2>Login
+      </h2>
       <br />
-      {{user.message}}
-      <div class="error-message-alert" v-if="nullflag">Input fields are empty</div>
+      <div class="error-message-alert centre-align" v-if="nullflag">Input fields are empty</div>
       <div class="login-input-div">
         <div for="phoneNumber" class="input-label">Phone Number
           <div class="error-message-alert" v-if="flag">Check Phone Number
@@ -47,7 +47,6 @@
 <style scoped>
 .centre-align{
   text-align: center;
-
 }
 h2{
   text-align: center;
@@ -110,7 +109,7 @@ input:focus {
   color:red;
   font-size: x-small;
   padding:0px 10px;
-  width:50%;
+  width: 50%;
 }
 .login-button:hover {
   background-color: #f91842 !important;
