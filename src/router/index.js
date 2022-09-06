@@ -17,6 +17,7 @@ import AdminBookingHistoryComponent from "@/components/AdminBookingHistoryCompon
 import SeatBookingComponent from "@/components/SeatBookingComponent.vue";
 import UpdateMovieComponent from "../components/UpdateMovieComponent.vue";
 import ConfirmBookingComponent from "@/components/ConfirmBookingComponent.vue";
+import FailedBookingComponent from '@/components/FailedBookingComponent.vue'
 
 //Functions
 const userBookingCheck = (to, from, next) => {
@@ -142,6 +143,11 @@ const routes = [
     path: "/booking/confirmation",
     component: ConfirmBookingComponent,
     beforeEnter: checkForBookingSteps,
+  },
+  {
+    path: '/booking/failed',
+    component: FailedBookingComponent,
+    beforeEnter: checkForBookingSteps
   },
   { path: "/bookedDetails", component: BookedDetailsComponent }, //
   {

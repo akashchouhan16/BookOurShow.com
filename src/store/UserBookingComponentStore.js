@@ -39,15 +39,18 @@ export default{
             })
         },
 
-        BOOK_TICKET_FOR_USER({commit}, ticketObject){
+        BOOK_TICKET_FOR_USER({commit}, {success, error, ticketObject}){
             bookTicketforUser({
                 success: (data)=>{
                     console.log(data);
                     commit('setBookingStatus', data);
+        
+                    success();
                 },
                 error: (err)=>{
                     console.warn(err);
                     commit('setBookingStatus', {});
+                    error();
                 },
                 ticketObject
             })

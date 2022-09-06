@@ -80,8 +80,16 @@ export default {
       };
 
       if (this.hasUserSelected && this.seatNumbers !== undefined) {
-        this.$store.dispatch("BOOK_TICKET_FOR_USER", ticketObject);
-        this.$router.push({ path: "/booking/confirmation", query: {movieId: this.movie.movieId, slotId: this.movieHallStatus.slotId}});
+        this.$store.dispatch("BOOK_TICKET_FOR_USER", {
+          success: ()=>{
+            this.$router.push({ path: "/booking/confirmation", query: {movieId: this.movie.movieId, slotId: this.movieHallStatus.slotId}});
+          },
+          error: ()=>{
+            this.$router.push({path: '/booking/failed', query: {movieId: this.movie.movieId}})
+          },
+          ticketObject
+        });
+        
       } else {
         this.errorFlag = true;
         setTimeout(() => {
