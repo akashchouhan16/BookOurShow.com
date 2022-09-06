@@ -24,14 +24,14 @@
           :tickets="tickets"
           class="booked-tickets"
         >
-        <!-- <div
+          <!-- <div
           v-for="(tickets, index) in 5"
           :key="index"
           :tickets="tickets"
           class="booked-tickets"
         > -->
           <div class="booked-tickets-left">
-            <h6>{{tickets.historyId}}</h6>
+            <h6>{{ tickets.historyId }}</h6>
             <h1 id="movieName">{{ tickets.movieName }}</h1>
             <br />
             <div class="left-container">
@@ -155,19 +155,21 @@ span {
   align-items: flex-start;
 }
 .booking-list {
-
   border-radius: 1em;
   background-color: #e1dede;
+  padding-top: 3em;
   margin: 1em;
   /* margin-top: 7em; */
   margin-top: 4em;
-  height: 80vh;
+  /* height: 80vh; */
   width: 95%;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  overflow: scroll;
+  flex-wrap: nowrap;
+  align-content: center;
   align-items: center;
-
 }
 
 @media screen and (max-width: 450px) {

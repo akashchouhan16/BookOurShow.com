@@ -19,6 +19,12 @@ export default {
             console.log("inside moviecard component.js")
             console.log(this.movie.movieId)
             this.$router.push({ path: '/updatemovie', query: { movieId: this.movie.movieId } });
+        },
+        checkIfAdmin(){
+            const role = localStorage.getItem('role');
+            if(role === undefined || role === '' || role !== 'admin')
+                return false;
+            else return true;
         }
     }
     , created() {
