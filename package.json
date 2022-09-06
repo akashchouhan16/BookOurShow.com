@@ -1,6 +1,6 @@
 {
-  "name": "theatre",
-  "version": "0.1.0",
+  "name": "bookourshow",
+  "version": "1.1.0",
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
@@ -14,7 +14,6 @@
     "core-js": "^3.8.3",
     "moment": "^2.29.4",
     "vue": "^2.7.10",
-    "vue-carousel": "^0.18.0",
     "vue-dplayer": "0.0.10",
     "vue-router": "^3.6.4",
     "vuex": "^3.6.2"
