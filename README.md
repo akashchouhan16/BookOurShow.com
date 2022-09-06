@@ -1,6 +1,6 @@
 # BookOurShow
 
-* A Revamp Project on Movie Application, Inspired from BookOurShow.
+* A Revamp Project on Movie Application, Inspired from BookMyShow.
 
 ### Changes Introduced:
 * Revamped landing page, Login and registration option.
