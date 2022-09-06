@@ -8,8 +8,7 @@ export default {
       user: {
         phoneNumber: "",
         password: "",
-        name: "",
-        message:''
+        name: ""
       },
 
     };

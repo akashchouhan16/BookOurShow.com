@@ -17,6 +17,9 @@
     <button class="view-movie-description-btn" @click="openMovieDescription()">
       View Movie
     </button>
+    <button class="view-movie-description-btn" @click="updateMovie()">
+      View Movie
+    </button>
     <!-- <div class="no-data" v-if="movie.length">
       No Data :( ⭐
     </div> -->
