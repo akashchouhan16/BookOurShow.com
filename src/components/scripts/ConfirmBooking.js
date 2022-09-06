@@ -11,9 +11,13 @@ export default{
             seats: JSON.parse(localStorage.getItem('seats'))
         }
     },
+    created(){
+        this.$store.dispatch('GET_MOVIE_BY_ID', this.$route.query.movieId);
+    },
     computed: {
         ...mapGetters({
-            movie: 'getSpecificMovie'
+            movie: 'getSpecificMovie',
+            bookingStatus: 'getBookingStatus'
         })
     },
     methods:{

@@ -33,7 +33,7 @@ export default {
     },
   },
   created(){
-    this.$store.dispatch('GET_MOVIE_BY_ID', this.$route.query.movieId);
+    // this.$store.dispatch('GET_MOVIE_BY_ID', this.$route.query.movieId);
   },
   computed: {
     ...mapGetters({

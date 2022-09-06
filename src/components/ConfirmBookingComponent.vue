@@ -30,11 +30,15 @@
                 Seats:
             </div>
             <div class="seats-seats">
-                <p class="seat-number" v-for="(seat, index) in seats" :key="index">
-                    {{seat.seatNumber}}
+                <p class="seat-number" v-for="(seat, index) in bookingStatus.seats" :key="index">
+                    {{seat}}
                 </p>
             </div>
         </div>
+      </div>
+      <div class="display-price">
+          <div class="price-tag">SubTotal: </div>
+          <div class="price-price">Rs. {{bookingStatus.totalAmount}} /-</div>
       </div>
       <div class="save-btn">
         <button class="save-ticket-invoice-btn" @click="saveTicket()">Save Ticket Invoice</button>
@@ -120,6 +124,9 @@
     font-size: small;
 }
 
+.price-price{
+  color: rgb(2, 189, 2);
+}
 .display-status{
     color: rgb(12, 243, 104);
     font-weight: bold;
