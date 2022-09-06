@@ -153,7 +153,7 @@ export default {
             this.dateerror = false;
             this.fieldflag = false;
             for (let field in this.movieinfo) {
-                this.movieinfo[field] = null;
+                this.movieinfo[field] = '';
             }
             this.movieinfo.slots = []
         },

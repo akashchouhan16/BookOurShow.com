@@ -5,14 +5,14 @@
           Sorry! Seat could not be booked :(
           <p class="secondary-failed-message">Seat was already booked for another user!
 
-            <button class="book-another-btn" @click="bookAnotherSeat()">Book other seat?</button>
+            <button class="book-another-btn" @click="bookAnotherSeat()">Book another seat?</button>
           </p>
       </div>
     </div>
   </div>
 </template>
 
-<script src=""></script>
+<script src="./scripts/FailedBookingComponent.js"></script>
 <style scoped>
 .book-another-btn{
   margin: 0.1em 0.8em;

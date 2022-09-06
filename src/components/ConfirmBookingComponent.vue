@@ -30,6 +30,7 @@
                 Seats:
             </div>
             <div class="seats-seats">
+              <br>
                 <p class="seat-number" v-for="(seat, index) in bookingStatus.seats" :key="index">
                     {{seat}}
                 </p>
@@ -140,6 +141,8 @@
     align-content: center;
     justify-content: space-around;
     align-items: center;
+    overflow: scroll;
+    padding: .5em;
 }
 .display-userId,  .display-name, .display-movie{
     display: flex;
