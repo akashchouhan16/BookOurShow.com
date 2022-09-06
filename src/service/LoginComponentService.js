@@ -7,7 +7,7 @@ export const getUserLogin = ({ success, error, user}) => {
         success && success(response)
         }).
         catch((e) => {
-            console.warn(e.response.data.message);
+            // console.warn(e.response.data.message);
             error && error(e)
         })
 }
