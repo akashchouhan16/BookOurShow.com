@@ -21,8 +21,8 @@
             <div class="date-date">{{date | filterUIDate }}</div>
         </div>
         <div class="display-slot">
-            <div class="slot-tag">Time </div>
-            <div class="slot-slot">{{slot}}</div>
+            <div class="slot-tag">Start Time</div>
+            <div class="slot-slot">{{slot | filterShowTime }}</div>
         </div>
         <div class="display-status">Confimed!</div>
         <div class="display-seats">

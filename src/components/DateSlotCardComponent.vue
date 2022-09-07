@@ -1,7 +1,7 @@
 <template>
   <div class="date-slot-card">
     <div class="date">
-      <span class="highlighted">{{ currentDate(i) }}</span>
+      <span class="highlighted">{{ currentDate(i) | filterUIDate }}</span>
     </div>
     <div class="slots">
       <div class="slot" v-for="(slot, index) in movie.slots" :key="index">
@@ -17,59 +17,7 @@
   </div>
 </template>
  
-<script>
-import moment from "moment";
-import { mapGetters } from "vuex";
-
-export default {
-  name: "DateSlotComponent",
-  date() {
-    return {};
-  },
-  props: {
-    i: {
-      type: Number,
-      required: true,
-    },
-  },
-  created(){
-    // this.$store.dispatch('GET_MOVIE_BY_ID', this.$route.query.movieId);
-  },
-  computed: {
-    ...mapGetters({
-      movie: "getSpecificMovie",
-      dateSlot: 'getDateSlot'
-    }),
-  },
-  methods: {
-    currentDate(i){
-
-      // console.warn(this.dateSlot.startDate);
-      let date = new Date(this.dateSlot.startDate);
-      date.setDate(date.getDate() + i);
-      return moment(date).format("YYYY-MM-DD");
-
-    },
-
-    bookTicket(slot) {
-      console.log(this.dataSlot);
-      console.warn(slot);
-    },
-    setSlotAndRedirect(slot, i) {
-      localStorage.setItem("slot", slot);
-      localStorage.setItem("date", this.currentDate(i));
-      localStorage.setItem('movieName', this.movie.name);
-      console.log(
-        "Selected Slot: " + slot + " | Date: " + this.dateSlot.startDate
-      );
-      this.$router.push({
-        path: "/booking/seats",
-        query: { movieId: this.movie.movieId },
-      });
-    },
-  },
-};
-</script>
+<script src="./scripts/DateSlotCardComponent.js"></script>
 
 <style scoped>
 .highlighted {

@@ -10,7 +10,7 @@ Vue.config.productionTip = false
 
 Vue.use(BootstrapVue)
 
-
+// Global Filters: 
 Vue.filter('durationFilter', (durationInMinutes)=>{
     const hours = durationInMinutes/60;
     const roundedHours = Math.floor(hours);
@@ -42,7 +42,9 @@ Vue.filter('filterUIDate', (datestring)=>{
     let date = datestring.substring(8);
     let month = getMonthName(datestring.substring(6,7))
     return (date + ' ' + month);
-    
+})
+Vue.filter('filterShowTime', (timeString)=>{
+    return (timeString.substring(0,1) + ' ' + timeString.substring(5,7));
 })
 
 new Vue({

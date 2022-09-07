@@ -22,11 +22,10 @@
           {{ movie.endDate | filterUIDate}}
         </div>
         <div class="secondary-slot">
-          Slots:
-          <div class="slot-1">9AM - 12PM</div>
-          <div class="slot-2">1PM - 4PM</div>
-          <div class="slot-3">5PM - 8PM</div>
-          <div class="slot-4">9PM - 12AM</div>
+          <div class="price-1">Normal Rs.{{movie.normalPrice}}/-</div>
+          <div class="price-2">Executive Rs.{{movie.executivePrice}}/-</div>
+          <div class="price-3">Premium Rs.{{movie.premiumPrice}}/-</div>
+          
         </div>
       </div>
     </div>
@@ -100,10 +99,9 @@
   font-size: small !important;
 }
 
-.slot-1,
-.slot-2,
-.slot-3,
-.slot-4 {
+.price-1,
+.price-2,
+.price-3{
   color: rgb(213, 211, 211);
   font-size: small;
   border-radius: 1em;
@@ -111,6 +109,7 @@
   padding: 0.3em 0.7em;
   margin: 0.2em 0.7em;
   font-size: x-small !important;
+  font-weight: bold;
 }
 
 .movie-details {
