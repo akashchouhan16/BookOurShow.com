@@ -29,7 +29,7 @@ export default {
     }
   },
   actions: {
-    LOGIN_USER({ commit }, { success, user }) {
+    LOGIN_USER({ commit }, { success, error,user }) {
       console.warn(user);
       getUserLogin({
         success: ({ data }) => {
@@ -45,17 +45,21 @@ export default {
             if(data.role === 'admin'){
               commit('setAdminStatus', true);
             }
-            success();
+            success&&success(data.statusCode);
           }
         },
         error: (err) => {
-          console.log(err);
+          // console.log(err.response.data.message);
+          // console.log(err);
+          // this.errormessage=err.response.data.message
           commit("setIsLoggedIn", false);
           localStorage.removeItem("role");
           localStorage.removeItem("userId");
           localStorage.removeItem("name");
           localStorage.removeItem('loggedIn');
           commit('setAdminStatus', false);
+          // console.log(this.errormessage)
+          error&&error(err.response.data.message);
         },
         user,
       });

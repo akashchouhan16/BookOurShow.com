@@ -6,8 +6,12 @@
       <div class="error-message" role="alert" v-if="errorflag">
         Please check all the fields!
       </div>
+              <div class="successloginmessage" >{{errormessage}}</div>
       <div class="success-message" role="alert" v-if="successflag">
-        {{errormessage}}
+
+        <!-- <div class="Failureloginmessage">Wrong Phone number or password</div>
+        <div class="existingloginmessage">User Already exists</div> -->
+        
       </div>
 
       <div class="register-input-div">
@@ -24,11 +28,14 @@
           v-model="user.name"
         />
       </div>
-      
+
       <div class="register-input-div">
-        <div for="phoneNumber" class="register-label">Phone Number<div class="error-message" v-if="phoneerrorflag">
-        Please enter a valid phone number
-      </div></div>
+        <div for="phoneNumber" class="register-label">
+          Phone Number
+          <div class="error-message" v-if="phoneerrorflag">
+            Please enter a valid phone number
+          </div>
+        </div>
         <input
           type="number"
           class="register-input"
@@ -36,12 +43,15 @@
           v-model="user.phoneNumber"
         />
       </div>
-      
+
       <div class="register-input-div">
-        <div for="password" class="register-label">Password<div class="error-message" v-if="passworderrorflag">
-        Password must contain at least a lowercase, uppercase, number and one
-        special character
-      </div></div>
+        <div for="password" class="register-label">
+          Password
+          <div class="error-message" v-if="passworderrorflag">
+            Password must contain at least a lowercase, uppercase, number and
+            one special character
+          </div>
+        </div>
         <input
           type="password"
           class="register-input"
@@ -50,9 +60,12 @@
         />
       </div>
       <div class="register-input-div">
-        <div for="confirm-password" class="register-label">Password<div class="error-message" v-if="confirmflag">
-        Passwords do not match
-      </div></div>
+        <div for="confirm-password" class="register-label">
+          Confirm Password
+          <div class="error-message" v-if="confirmflag">
+            Passwords do not match
+          </div>
+        </div>
         <input
           type="password"
           class="register-input"
@@ -123,11 +136,15 @@
   text-align: center;
   font-size: small;
 }
-.error-message{
-  color:red;
+.error-message {
+  color: red;
   font-size: x-small;
   margin-left: 10px;
-  width:fit-content;
+  width: fit-content;
+}
+.successloginmessage{
+  color:red;
+  font-size: small;
 }
 .register-label {
   font-size: small;
@@ -135,7 +152,6 @@
   height: fit-content;
   display: flex;
   flex-direction: row;
-  
 }
 .error-success {
   background-color: #41f641d8;
@@ -156,7 +172,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center; */
- /* margin: auto;
+/* margin: auto;
   height: 400px;
   background-color: whitesmoke;
   padding: 5px;
@@ -196,8 +212,8 @@ h6 {
   color: black;
   font-weight: bold;
 }
-.register-login-text:hover{
-  color:#d52344 ;
+.register-login-text:hover {
+  color: #d52344;
 }
 input:focus {
   outline: 2px solid #d52344 !important;
@@ -206,22 +222,22 @@ input:focus {
 @media screen and (max-width: 900px) {
   .register-form {
     width: 70%;
-    height:450px;
+    height: 450px;
   }
-  .register-input{
-    width:100%;
+  .register-input {
+    width: 100%;
   }
 }
 @media screen and (max-width: 460px) {
   .register-form {
     width: 80%;
-     height:450px;
+    height: 450px;
   }
 }
 @media screen and (max-width: 400px) {
   .register-form {
     width: 90%;
-    height:450px;
+    height: 450px;
   }
 }
 </style>

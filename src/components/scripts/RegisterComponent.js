@@ -1,8 +1,10 @@
 import { adduserlist } from "@/service/RegisterComponentService";
+import CheckPassword from '@/mixins/Register.mixins'
 export default {
   name: "RegisterComponent",
   data() {
     return {
+      compflag:false,
       errorflag: false,
       successflag: false,
       passworderrorflag: false,
@@ -19,6 +21,7 @@ export default {
       },
     };
   },
+  mixins:[CheckPassword],
   computed: {
     confirming() {
       return ((this.user.password) == (this.user.confirmpassword) ? true : false)
@@ -26,6 +29,8 @@ export default {
   },
   methods: {
     registerUser() {
+      this.logintrueflag=false;
+      this.errorflag = false;
       
       if (this.user.name == "" || this.user.password == "" || this.user.phoneNumber == "" || this.user.confirmpassword == "") {
         this.errorflag = true;
@@ -65,16 +70,22 @@ export default {
           adduserlist({
             success: (data) => {
               if (data.data == "Succesfully Register") {
+                this.errormessage=data.data;
                 this.$router.push({ path: "/login" });
               } else {
                 this.errorflag = true;
-                this.errormessage="lOGGED IN"
+                this.errormessage=data.data;
               }
+              console.log(this.errormessage)
+              // success(this.errormessage)
             },
             error: (err) => {
               this.errormessage="Please check the details"
-              console.log("NOT VAILD");
-              console.log(err);
+              console.log("NOT VAILD")
+              this.errormessage=err.response.data.message;
+              
+              console.log(err.response.data.message);
+              // error(this.errormessage)
               // alert(err.data);
             },
             payload: this.user,
@@ -93,12 +104,7 @@ export default {
         this.user[field] = null;
       }
     },
-    CheckPassword(inputtxt) {
-      var decimal =
-        /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{8,15}$/;
-      console.log(decimal.test(inputtxt) + "cinsill");
-      return decimal.test(inputtxt);
-    },
+    
     phonenumber(inputtxt) {
       // var phoneno = /^\d{10}$/;
       var phoneno = /^[1-9]{1}[0-9]{9}/;

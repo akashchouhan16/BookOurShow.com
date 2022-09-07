@@ -1,8 +1,11 @@
 <template>
   <div class="login">
+        <!-- <div class="failureerrormessage" v-else-if="loginfalseflag">Please check again</div> -->
     <form class="login-form">
       <h2>Login
       </h2>
+    <div class="successregistermessage">{{errormessage}}</div>
+
       <br />
       <div class="error-message-alert centre-align" v-if="nullflag">Input fields are empty</div>
       <div class="login-input-div">
@@ -59,6 +62,12 @@ h2{
 }
 .login-form:hover {
   box-shadow: 2px 2px 15px gray;
+}
+.successregistermessage{
+  text-align: center;
+  /* background-color:#d52344; */
+  color:red;
+  font-size: small;
 }
 .login-form {
   border: none;

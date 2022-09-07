@@ -5,6 +5,7 @@ export default {
     return {
       nullflag: false,
       flag: false,
+      errormessage:'',
       user: {
         phoneNumber: "",
         password: "",
@@ -41,12 +42,18 @@ export default {
         this.nullflag = false;
         this.flag = false;
         this.$store.dispatch("LOGIN_USER", {
-          success: () => {
+          success: (data) => {
+console.log("inside callback",data)
 
             // this.$router.push({ path: "/" });
               this.$router.push(this.$route.query.redirect || '/');
+// console.log("inside callback",data)
 
-
+          },
+          error:(err)=>{
+console.log(err)
+this.errormessage=err
+console.log(this.errormessage)
           },
           user: this.user
         });

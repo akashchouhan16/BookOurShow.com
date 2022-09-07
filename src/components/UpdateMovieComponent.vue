@@ -41,22 +41,27 @@
             >Time slot
           </div>
           <div class="movie-input-row-flex">
+            <!-- <div class="table" v-for="(slot,index) in movieupdate.slots" :key="index" :disabled=true>
+              {{slot}}<br/>
+                    </div> -->
             <table class="table">
               <tr class="table">
                 <td class="table-data">
                   <input
-                    type="checkbox"
+                    type="checkbox" :disabled=true
                     value="9:00 AM - 12:00 PM"
                     id="9:00 AM - 12:00 PM"
-                    :disabled=true
+                    v-model="movieupdate.slots"
+                   
                   />
                   9:00 AM</td>
                 <td  class="table-data">
                   <input
                     type="checkbox"
                     value="1:00 PM - 4:00 PM"
+v-model="movieupdate.slots" :disabled=true
                     id="1:00 PM - 4:00 PM"
-                    :disabled=true
+                    
                   />
                   1:00 PM</td>
               </tr>
@@ -65,18 +70,19 @@
                   <input
                     type="checkbox"
                     value="5:00 PM - 8:00 PM"
-                    id="5:00 PM - 8:00 PM"
+                    id="5:00 PM - 8:00 PM" :disabled=true
                     v-model="movieupdate.slots"
-                    :disabled=true
+                   
                   />
-                  5:00 PM</td>
+                  5:00 PM </td>
                 <td>
                   <input
                     type="checkbox"
                     value="9:00 PM - 12:00 AM"
+                    :disabled=true
                     id="9:00 PM - 12:00 AM"
                     v-model="movieupdate.slots"
-                    :disabled=true
+                    
                   />
                   9:00 PM</td>
               </tr>

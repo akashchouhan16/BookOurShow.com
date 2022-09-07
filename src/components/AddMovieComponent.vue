@@ -1,5 +1,6 @@
  <template>
   <div class="add-movie">
+    
     <form class="movie-form">
       <h2>Add Movie</h2>
       <br />
@@ -216,7 +217,7 @@
         </div>
       </div>
 
-      <!-- <div class="movie-tag-div">
+      <div class="movie-tag-div">
         <label for="movie-video" class="addmovie-tag"
           >Trailer Video</label
         ><br />
@@ -226,7 +227,7 @@
           class="add-movie-input"
           v-model="movieinfo.videoUrl"
         />
-      </div> -->
+      </div>
 
       <div class="movie-tag-div">
         <label for="movie-image" class="addmovie-tag"
@@ -251,6 +252,8 @@
       <div class="error-message" v-if="fillfieldsflag">
         Please fill all Required fields
       </div>
+      <span class="error" v-if="errordispayflag">{{errorMessageFromBackend}}</span>
+
       <button type="button" class="movie-button-input" @click="movieinfo1()">
         ADD
       </button>
@@ -267,8 +270,10 @@
 
 
 <style scoped>
-span {
-  color: #ff0000;
+.error {
+  color: #D52344;
+  width:80%;
+  font-size:small;
 }
 .error-message {
   background-color: #D52344;
