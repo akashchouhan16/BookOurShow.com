@@ -20,14 +20,14 @@
       <div class="movie-details-secondary">
         <div class="secondary-date">
           Tickets Available Till:
-          {{ movie.endDate ? movie.endDate : "03-09-2022" }}
+          {{ movie.endDate | filterUIDate}}
         </div>
         <div class="secondary-slot">
           Slots:
-          <div class="slot-1">9:00 - 12:00</div>
-          <div class="slot-2">13:00 - 16:00</div>
-          <div class="slot-3">17:00 - 20:00</div>
-          <div class="slot-4">21:00 - 00:00</div>
+          <div class="slot-1">9AM - 12PM</div>
+          <div class="slot-2">1PM - 4PM</div>
+          <div class="slot-3">5PM - 8PM</div>
+          <div class="slot-4">9PM - 12AM</div>
         </div>
       </div>
     </div>

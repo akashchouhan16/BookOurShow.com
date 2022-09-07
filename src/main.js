@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import App from './App.vue'
 import { BootstrapVue } from 'bootstrap-vue'
-
+import {getMonthName} from '@/Utils'
 
 import router from './router/index'
 import store from "@/store";
@@ -36,6 +36,13 @@ Vue.filter('filterGenre', (genre)=>{
 
 Vue.filter('filterUserId', (id)=>{
     return id.substring(0,7);
+})
+
+Vue.filter('filterUIDate', (datestring)=>{
+    let date = datestring.substring(8);
+    let month = getMonthName(datestring.substring(6,7))
+    return (date + ' ' + month);
+    
 })
 
 new Vue({

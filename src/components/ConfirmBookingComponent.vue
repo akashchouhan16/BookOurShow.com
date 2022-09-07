@@ -17,11 +17,11 @@
       </div>
       <div class="display-ticket-meta">
         <div class="display-date">
-            <div class="date-tag">Show Date: </div>
-            <div class="date-date">{{date}}</div>
+            <div class="date-tag">Date </div>
+            <div class="date-date">{{date | filterUIDate }}</div>
         </div>
         <div class="display-slot">
-            <div class="slot-tag">Slot: </div>
+            <div class="slot-tag">Time </div>
             <div class="slot-slot">{{slot}}</div>
         </div>
         <div class="display-status">Confimed!</div>
@@ -53,6 +53,9 @@
 <script src="./scripts/ConfirmBooking.js"></script>
 
 <style scoped>
+.date-tag, .slot-tag{
+  font-weight: bold;
+}
 .save-ticket-invoice-btn{
     border: none;
     border-radius: 1em;

@@ -102,7 +102,7 @@ export default {
         date: localStorage.getItem("date"),
         slot: localStorage.getItem("slot"),
       });
-      this.seatNumbers = [];
+      this.seatNumbers = this.newSeats = [];
     }
   },
 };

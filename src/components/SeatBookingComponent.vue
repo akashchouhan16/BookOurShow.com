@@ -20,20 +20,20 @@
       <div class="movie-details-secondary">
         <div class="secondary-date">
           Tickets Available Till:
-          {{ movie.endDate ? movie.endDate : "03-09-2022" }}
+          {{ movie.endDate | filterUIDate }}
         </div>
         <div class="secondary-slot">
           Slots:
-          <div class="slot-1">9:00 - 12:00</div>
-          <div class="slot-2">13:00 - 16:00</div>
-          <div class="slot-3">17:00 - 20:00</div>
-          <div class="slot-4">21:00 - 00:00</div>
+          <div class="slot-1">9AM - 12PM</div>
+          <div class="slot-2">1PM - 4PM</div>
+          <div class="slot-3">5PM - 8PM</div>
+          <div class="slot-4">9PM - 12AM</div>
         </div>
       </div>
     </div>
     <div class="seating-body">
-      <div class="error" v-if="errorFlag">Please Select Seats!</div>
-      <div class="seat-booking-title" v-else>Confirm Your Seats!</div>
+      
+      <div class="seat-booking-title">Confirm Your Seats!</div>
       <div class="movie-hall-screen">Screen</div>
       <div class="movie-hall">
         <div class="movie-hall-legend">
@@ -48,6 +48,7 @@
           </div>
         </div>
       </div>
+      <div class="error" v-if="errorFlag">Please Select Seats!</div>
       <div class="hall-btns">
         <button class="book-ticket-btn" @click="bookTicket()">Book</button>
         <button class="book-ticket-btn" @click="refresh()">Reset</button>
@@ -81,10 +82,12 @@
   border-radius: .1em;
 }
 .error{
-  color: #d52344 !important;
+  color: #e5032c !important;
+  font-size: small;
   font-weight: bold;
-  padding: 0.5em;
-  border-radius: 1em;
+  /* padding: 0.5em; */
+  margin-top: .5em;
+  /* border-radius: 1em; */
   width: 80%;
   display: flex;
   justify-content: center;

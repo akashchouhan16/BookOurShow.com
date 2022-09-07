@@ -22,3 +22,8 @@ export const updateDateFormat = (date)=>{
     console.warn(result);
     return result;
 }
+
+export const getMonthName = (month)=>{
+    let monthMap = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec'];
+    return monthMap[parseInt(month)-1];
+}
