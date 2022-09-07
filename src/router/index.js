@@ -8,9 +8,9 @@ import UserBookings from "@/components/UserBookingsComponent.vue";
 import UpcomingMoviesComponent from "@/components/UpcomingMoviesComponent.vue";
 import DescriptionComponent from "../components/DescriptionComponent.vue";
 import BookingComponent from "../components/BookingComponent";
-import BookedDetailsComponent from "../components/BookedDetailsComponent";
+
 import LoginComponent from "../components/LoginComponent";
-import DeleteComponent from "../components/DeleteComponent";
+
 import RegisterComponent from "../components/RegisterComponent";
 import NotFoundComponent from "@/components/NotFoundComponent";
 import AdminBookingHistoryComponent from "@/components/AdminBookingHistoryComponent.vue";
@@ -149,7 +149,6 @@ const routes = [
     component: FailedBookingComponent,
     beforeEnter: checkForBookingSteps
   },
-  { path: "/bookedDetails", component: BookedDetailsComponent }, //
   {
     path: "/login",
     component: LoginComponent,
@@ -162,7 +161,7 @@ const routes = [
       }
     },
   }, //admin or user loggin (SSO) while updating movies or while user books a ticket.
-  { path: "/delete", component: DeleteComponent }, //instead, we can have an update movie component
+  // { path: "/delete", component: DeleteComponent }, //instead, we can have an update movie component
   { path: "/register", component: RegisterComponent }, // register new user if user doesn't have credentials
   { path: "/notfound", component: NotFoundComponent },
   { path: "/*", redirect: "/notfound" },
