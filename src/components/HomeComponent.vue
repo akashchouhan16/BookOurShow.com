@@ -20,7 +20,7 @@
       </div>
         <div class="no-movie-card" v-else>
           <div class="message-no-movie">
-            <h3>Something Went Wrong! :(</h3>
+            <h3>Something went wrong! :(</h3>
           </div>
         </div>
     </div>
