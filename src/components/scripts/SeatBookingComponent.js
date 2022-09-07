@@ -1,4 +1,5 @@
 import { mapGetters } from "vuex";
+import movieMixin from '@/mixins/Movie.mixin.js'
 
 export default {
   name: "SeatBookingComponent",
@@ -10,17 +11,15 @@ export default {
       errorFlag: false,
     };
   },
+  mixins: [movieMixin],
   computed: {
     ...mapGetters({
-      movie: "getSpecificMovie",
       movieHallStatus: "getMovieHallStatus", //all the seat bookings for the current [date,slot,show]
     }),
   },
   created() {
-    this.$store.dispatch("GET_MOVIE_BY_ID", this.$route.query.movieId);
-
+    
     this.$store.dispatch("UPDATE_MOVIE_HALL_STATUS", {
-      // name: this.$store.getters.getSpecificMovie.name,
       name: localStorage.getItem('movieName'),
       date: localStorage.getItem("date"),
       slot: localStorage.getItem("slot"),

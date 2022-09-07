@@ -1,4 +1,5 @@
 import { mapGetters } from "vuex";
+import movieMixin from '@/mixins/Movie.mixin.js'
 
 export default{
     name: 'ConfirmBookingComponent',
@@ -11,12 +12,10 @@ export default{
             seats: JSON.parse(localStorage.getItem('seats'))
         }
     },
-    created(){
-        this.$store.dispatch('GET_MOVIE_BY_ID', this.$route.query.movieId);
-    },
+    mixins: [movieMixin],
     computed: {
         ...mapGetters({
-            movie: 'getSpecificMovie',
+            // movie: 'getSpecificMovie',
             bookingStatus: 'getBookingStatus'
         })
     },

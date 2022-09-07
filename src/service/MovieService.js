@@ -3,7 +3,7 @@ import axios from "axios";
 const GET_ALL_MOVIE_API = "http://10.30.1.35:8083/movies";
 const GET_MOVIE_BY_ID_API = "http://10.30.1.35:8083/movie/";
 const SEARCH_API = 'http://10.30.1.35:8083/movieByName/';
-const MOVIE_HALL_STATUS_API = 'http://10.30.1.35:8000/getSlotDetails';
+const MOVIE_HALL_STATUS_API = 'http://10.30.1.35:8083/getSlotDetails';
 const UPCOMING_MOVIES_API = 'http://10.30.1.35:8083/upcoming';
 
 export const getAllMovies = ({ success, error }) => {
