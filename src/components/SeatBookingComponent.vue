@@ -1,38 +1,8 @@
 <template>
   <div class="booking-container">
-    <div class="booking-banner">
-      <div class="movie-details-main">
-        <div class="title">
-          {{ movie.name ? movie.name : "Liger 2D" }}
-        </div>
-        <div class="movie-details">
-          <div class="movie-genre">
-            {{ movie.genre ? movie.genre : "Drama" }}
-          </div>
-          <div class="movie-duration">
-            {{ movie.duration | durationFilter }}
-          </div>
-          <div class="movie-rating">
-            {{ movie.rating ? movie.rating : "U/A" }}
-          </div>
-        </div>
-      </div>
-      <div class="movie-details-secondary">
-        <div class="secondary-date">
-          Tickets Available Till:
-          {{ movie.endDate | filterUIDate }}
-        </div>
-        <div class="secondary-slot">
-          Slots:
-          <div class="slot-1">9AM - 12PM</div>
-          <div class="slot-2">1PM - 4PM</div>
-          <div class="slot-3">5PM - 8PM</div>
-          <div class="slot-4">9PM - 12AM</div>
-        </div>
-      </div>
-    </div>
-    <div class="seating-body">
-      
+    <BookingBannerComponent></BookingBannerComponent>
+
+    <div class="seating-body">  
       <div class="seat-booking-title">Confirm Your Seats!</div>
       <div class="movie-hall-screen">Screen</div>
       <div class="movie-hall">

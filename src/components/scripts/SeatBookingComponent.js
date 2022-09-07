@@ -1,4 +1,5 @@
 import { mapGetters } from "vuex";
+import BookingBannerComponent from "@/components/BookingBannerComponent.vue";
 import movieMixin from '@/mixins/Movie.mixin.js'
 
 export default {
@@ -10,6 +11,9 @@ export default {
       hasUserSelected: false,
       errorFlag: false,
     };
+  },
+  components:{
+    BookingBannerComponent
   },
   mixins: [movieMixin],
   computed: {

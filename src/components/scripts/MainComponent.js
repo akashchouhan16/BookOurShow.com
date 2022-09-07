@@ -4,7 +4,7 @@ import DescriptionComponent from '@/components/DescriptionComponent'
 import BookingComponent from '@/components/BookingComponent.vue'
 import SeatBookingComponent from '@/components/SeatBookingComponent.vue'
 import LoginComponent from '@/components/LoginComponent'
-// import DeleteComponent from '@/components/DeleteComponent'
+import BookingBannerComponent from '@/components/BookingBannerComponent.vue'
 import RegisterComponent from '@/components/RegisterComponent'
 import DateSlotCardComponent from '@/components/DateSlotCardComponent'
 import UpdateMovieComponent from '@/components/UpdateMovieComponent'
@@ -17,7 +17,7 @@ export default {
      UserBookings,
      DescriptionComponent,
      LoginComponent,
-    //  DeleteComponent,
+      BookingBannerComponent,
      RegisterComponent,
      BookingComponent,
      SeatBookingComponent,

@@ -1,31 +1,40 @@
 <template>
-  <div class="booking-container">
-    <BookingBannerComponent></BookingBannerComponent>    
-    <div class="booking-body">
-      <div class="grid-container">
-        <DateSlotCardComponent
-          v-for="(day, index) in noOfDays"
-          :key="index"
-          :i="index"
-        ></DateSlotCardComponent>
+    <div class="booking-banner">
+      <div class="movie-details-main">
+        <div class="title">
+          {{ movie.name ? movie.name : "Liger 2D" }} 
+        </div>
+        <div class="movie-details">
+          <div class="movie-genre">
+            {{ movie.genre ? movie.genre : "Drama" }}
+          </div>
+          <div class="movie-duration">
+            {{ movie.duration | durationFilter }}
+          </div>
+          <div class="movie-rating">
+            {{ movie.rating ? movie.rating : "U/A" }}
+          </div>
+        </div>
+      </div>
+      <div class="movie-details-secondary">
+        <div class="secondary-date">
+          Tickets Available Till:
+          {{ movie.endDate | filterUIDate}}
+        </div>
+        <div class="secondary-slot">
+          Slots:
+          <div class="slot-1">9AM - 12PM</div>
+          <div class="slot-2">1PM - 4PM</div>
+          <div class="slot-3">5PM - 8PM</div>
+          <div class="slot-4">9PM - 12AM</div>
+        </div>
       </div>
     </div>
-  </div>
 </template>
 
-<script src="./scripts/BookingComponent.js">
-</script>
+<script src="./scripts/BookingBannerComponent.js"></script>
+
 <style scoped>
-.booking-container {
-  margin: 0;
-  padding: 0em;
-  display: flex;
-  flex-direction: column;
-  flex-wrap: nowrap;
-  align-content: center;
-  justify-content: center;
-  align-items: center;
-}
 .booking-banner {
   height: 20vh;
   width: 100%;

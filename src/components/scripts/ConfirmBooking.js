@@ -15,9 +15,11 @@ export default{
     mixins: [movieMixin],
     computed: {
         ...mapGetters({
-            // movie: 'getSpecificMovie',
             bookingStatus: 'getBookingStatus'
         })
+    },
+    created(){
+
     },
     methods:{
         saveTicket(){

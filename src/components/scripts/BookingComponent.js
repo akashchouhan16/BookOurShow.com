@@ -1,4 +1,5 @@
 import DateSlotCardComponent from '@/components/DateSlotCardComponent.vue'
+import BookingBannerComponent from '@/components/BookingBannerComponent.vue';
 import movieMixin from '@/mixins/Movie.mixin.js'
 import { mapGetters } from 'vuex';
 
@@ -10,16 +11,13 @@ export default {
     },
     mixins: [movieMixin],
     components:{
-        DateSlotCardComponent
+        DateSlotCardComponent,
+        BookingBannerComponent
     },
     computed:{
         ...mapGetters({
             noOfDays: 'getNoOfDays',
-            // movie: 'getSpecificMovie',
             dateSlot: 'getDateSlot'
         })
     }
-    // created(){
-    //     this.$store.dispatch('GET_MOVIE_BY_ID', this.$route.query.movieId);
-    // }
 }
